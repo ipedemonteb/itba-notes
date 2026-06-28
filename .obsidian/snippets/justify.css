@@ -1,0 +1,10 @@
+/* Justificar en el modo de lectura */
+.markdown-rendered p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Justificar en el modo de edición (Live Preview) */
+.markdown-source-view.mod-cm6 .cm-line {
+  text-align: justify;
+}

@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"05. Electivas/82.08 - Cloud Computing\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 9414143
+      }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/72.40 - Ingeniería del Software II\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6215260
+      }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/72.44 - Criptografía y Seguridad\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6084296
+      }
+    },
+    {
+      "query": "path:\"01. Primer Año/72.31 - Programación Imperativa\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6060758
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.5781203146932852,
+  "close": true
+}

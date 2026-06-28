@@ -1,0 +1,63 @@
+/* ============================================
+   SOURCE VIEW - Estructura de Image Converter
+   ============================================ */
+
+/* El contenedor real es .image-embed con alt en él */
+.markdown-source-view.mod-cm6 .image-embed {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* centrado por defecto */
+  width: 100% !important;
+}
+
+/* Derecha */
+.markdown-source-view.mod-cm6 .image-embed[alt*="right"] {
+  align-items: flex-end !important;
+}
+
+/* Izquierda */
+.markdown-source-view.mod-cm6 .image-embed[alt*="left"] {
+  align-items: flex-start !important;
+}
+
+/* El wrapper interno no debe interferir */
+.markdown-source-view.mod-cm6 .image-embed .image-wrapper {
+  display: contents !important; /* hereda el flex del padre */
+}
+
+/* ============================================
+   READING VIEW
+   ============================================ */
+
+.markdown-rendered .image-embed[alt*="center"] {
+  display: block !important;
+  text-align: center !important;
+  clear: both !important;
+}
+.markdown-rendered img[alt*="center"] {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.markdown-rendered .image-embed[alt*="right"] {
+  display: block !important;
+  text-align: right !important;
+  clear: both !important;
+}
+.markdown-rendered img[alt*="right"] {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+.markdown-rendered .image-embed[alt*="left"] {
+  display: block !important;
+  text-align: left !important;
+  clear: both !important;
+}
+.markdown-rendered img[alt*="left"] {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}

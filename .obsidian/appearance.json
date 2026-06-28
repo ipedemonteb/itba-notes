@@ -1,0 +1,9 @@
+{
+  "translucency": true,
+  "enabledCssSnippets": [
+    "table",
+    "justify",
+    "image-center"
+  ],
+  "cssTheme": ""
+}

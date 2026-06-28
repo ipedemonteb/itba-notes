@@ -1,0 +1,14 @@
+/* Reduce el espacio arriba de todas las tablas */
+.markdown-rendered table, 
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  margin-top: 4px !important; /* Ajusta este valor a tu gusto */
+}
+
+/* Opcional: Reduce el espacio debajo del último párrafo antes de una tabla */
+.markdown-rendered p + table {
+  margin-top: 0px !important;
+}
+
+.cm-line:has(+ .cm-embed-block.cm-table-widget) br {
+  display: none;
+}
