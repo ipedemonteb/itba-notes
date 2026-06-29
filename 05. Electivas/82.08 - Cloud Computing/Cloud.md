@@ -27,7 +27,13 @@ Docentes:
 - [[04. Almacenamiento]]
 - [[05. Redes Híbridas]]
 - [[06. Bases de Datos]]
+- [[07. Seguridad]]
+- [[08. Containers]]
+- [[09. Infrastructure as Code]]
+- [[10. Cómputo Serverless]]
 - [[11. Data Analysis]]
+- [[12. Disaster Recovery]]
+- [[13. Costos, Gobernanza y Observabilidad]]
 
 ---
 ## 📝 Trabajos Prácticos
