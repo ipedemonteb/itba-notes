@@ -34,6 +34,13 @@
         "a": 1,
         "rgb": 6060758
       }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/72.43 - Gestión de Proyectos Informáticos\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 12094946
+      }
     }
   ],
   "collapse-display": false,
@@ -46,6 +53,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.2698196540801137,
+  "scale": 0.25709311646262323,
   "close": true
 }
