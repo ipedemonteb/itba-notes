@@ -1,0 +1,43 @@
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# ============================================================
+# Obsidian – archivos de estado / caché (NO versionar)
+# ============================================================
+
+# Estado de la sesión: ventanas abiertas, posición del scroll, etc.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Caché interno de Obsidian
+.obsidian/cache
+.obsidian/trash
+
+# Historial de sincronización propio de Obsidian Sync (si se usa)
+.obsidian/sync.json
+
+# Caché de plugins individuales
+.obsidian/plugins/*/reference-files/cache.json
+
+# ============================================================
+# Obsidian – lo que SÍ se versiona (plugins, config, temas)
+# ============================================================
+# Se mantiene todo .obsidian/ excepto lo excluido arriba:
+#   - app.json
+#   - appearance.json
+#   - community-plugins.json
+#   - core-plugins.json
+#   - graph.json
+#   - types.json
+#   - plugins/*  (main.js, manifest.json, data.json, styles.css)
+#   - snippets/
+#   - themes/
