@@ -8,7 +8,7 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "path:\"05. Electivas/82.08 - Cloud Computing\"  ",
+      "query": "path:\"06. Electivas/82.08 - Cloud Computing\"  ",
       "color": {
         "a": 1,
         "rgb": 9414143
@@ -41,6 +41,13 @@
         "a": 1,
         "rgb": 12094946
       }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/72.27 - Sistemas de Inteligencia Artificial\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 13162076
+      }
     }
   ],
   "collapse-display": false,
@@ -53,6 +60,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.25709311646262323,
+  "scale": 0.6228794778210968,
   "close": true
 }
