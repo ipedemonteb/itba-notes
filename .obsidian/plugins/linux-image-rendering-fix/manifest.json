@@ -1,0 +1,11 @@
+{
+	"id": "linux-image-rendering-fix",
+	"name": "Linux Image Loading Fix",
+	"version": "1.2.1",
+	"minAppVersion": "1.12.7",
+	"description": "Fixes image loading issues on Linux. Ensures images display correctly on Ubuntu and other Linux distributions.",
+	"author": "Evgene Kopylov",
+	"authorUrl": "",
+	"fundingUrl": "",
+	"isDesktopOnly": true
+}

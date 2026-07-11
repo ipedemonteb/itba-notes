@@ -11,12 +11,12 @@
 }
 
 /* Derecha */
-.markdown-source-view.mod-cm6 .image-embed[alt*="right"] {
+.markdown-source-view.mod-cm6 .image-embed[alt*="right" i] {
   align-items: flex-end !important;
 }
 
 /* Izquierda */
-.markdown-source-view.mod-cm6 .image-embed[alt*="left"] {
+.markdown-source-view.mod-cm6 .image-embed[alt*="left" i] {
   align-items: flex-start !important;
 }
 
@@ -29,34 +29,34 @@
    READING VIEW
    ============================================ */
 
-.markdown-rendered .image-embed[alt*="center"] {
+.markdown-rendered .image-embed[alt*="center" i] {
   display: block !important;
   text-align: center !important;
   clear: both !important;
 }
-.markdown-rendered img[alt*="center"] {
+.markdown-rendered img[alt*="center" i] {
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-.markdown-rendered .image-embed[alt*="right"] {
+.markdown-rendered .image-embed[alt*="right" i] {
   display: block !important;
   text-align: right !important;
   clear: both !important;
 }
-.markdown-rendered img[alt*="right"] {
+.markdown-rendered img[alt*="right" i] {
   display: block !important;
   margin-left: auto !important;
   margin-right: 0 !important;
 }
 
-.markdown-rendered .image-embed[alt*="left"] {
+.markdown-rendered .image-embed[alt*="left" i] {
   display: block !important;
   text-align: left !important;
   clear: both !important;
 }
-.markdown-rendered img[alt*="left"] {
+.markdown-rendered img[alt*="left" i] {
   display: block !important;
   margin-left: 0 !important;
   margin-right: auto !important;
