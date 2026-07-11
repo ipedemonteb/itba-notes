@@ -12,3 +12,22 @@
 .cm-line:has(+ .cm-embed-block.cm-table-widget) br {
   display: none;
 }
+
+/* Centrar la tabla en modo edición (Live Preview) */
+.markdown-source-view.mod-cm6 .cm-table-widget table {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important; /* para que no ocupe todo el ancho disponible */
+}
+
+/* El wrapper del widget también necesita permitir que el table se centre */
+.markdown-source-view.mod-cm6 .cm-table-widget {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.markdown-preview-view table,
+.markdown-rendered table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

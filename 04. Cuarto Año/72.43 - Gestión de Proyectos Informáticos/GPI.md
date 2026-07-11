@@ -19,6 +19,11 @@ Docentes:
 ---
 ## 📋 Índice de Unidades
 
+- [[04. Cuarto Año/72.43 - Gestión de Proyectos Informáticos/Teoría/01. Introducción|01. Introducción]]
+- [[02. Modelos de Negocios Informáticos]]
+- [[03. Modelos de Ciclos de Vida]]
+- [[04. Análisis de Riesgo]]
+- 
 - [[06. Proceso de Estimación]]
 - [[07. Planificación]]
 

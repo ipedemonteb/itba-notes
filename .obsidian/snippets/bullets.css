@@ -3,7 +3,7 @@
 .markdown-preview-view div.el-p + div.el-ol,
 .markdown-rendered div.el-p + div.el-ul,
 .markdown-rendered div.el-p + div.el-ol {
-  margin-top: -0.6em !important;
+  margin-top: -0.8em !important;
 }
 
 /* El margen del propio div contenedor de la lista */
@@ -20,8 +20,8 @@
 .markdown-preview-view ol,
 .markdown-rendered ul.has-list-bullet,
 .markdown-rendered ol {
-  margin-top: 0.1em !important;
-  margin-block-start: 0.1em !important;
+  margin-top: 0 !important;
+  margin-block-start: 0 !important;
   padding-top: 0 !important;
 }
 
