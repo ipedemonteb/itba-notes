@@ -21,7 +21,7 @@ Docentes:
 ---
 ## 📋 Índice de Unidades
 
-- [[04. Cuarto Año/72.44 - Criptografía y Seguridad/Teoría/01. Introducción]]
+- [[04. Cuarto Año/72.44 - Criptografía y Seguridad/Teoría/01. Introducción|01. Introducción]]
 - [[02. Criptosistemas]]
 - [[03. MAC y Cifrado Autenticado]]
 - [[04. Cifrado Asimétrico y Firma Digital]]
@@ -40,4 +40,3 @@ Docentes:
 | N°  |              Tema              |                           Link                           |
 | :-: | :----------------------------: | :------------------------------------------------------: |
 | TPI | Secreto Compartido en Imágenes | [Repositorio](https://github.com/ipedemonteb/cripto-tpi) |
-

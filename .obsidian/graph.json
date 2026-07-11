@@ -48,9 +48,16 @@
         "a": 1,
         "rgb": 13162076
       }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/61.32 - Derecho para Ingenieros\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6069206
+      }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": 0,
   "nodeSizeMultiplier": 1,
@@ -60,6 +67,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.7300844503587212,
+  "scale": 0.5540100039621476,
   "close": true
 }
