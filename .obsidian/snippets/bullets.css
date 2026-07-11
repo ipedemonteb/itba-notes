@@ -1,0 +1,33 @@
+/* Espacio entre el párrafo y la lista siguiente (bullets y numeradas) */
+.markdown-preview-view div.el-p + div.el-ul,
+.markdown-preview-view div.el-p + div.el-ol,
+.markdown-rendered div.el-p + div.el-ul,
+.markdown-rendered div.el-p + div.el-ol {
+  margin-top: -0.6em !important;
+}
+
+/* El margen del propio div contenedor de la lista */
+.markdown-preview-view div.el-ul,
+.markdown-preview-view div.el-ol,
+.markdown-rendered div.el-ul,
+.markdown-rendered div.el-ol {
+  margin-top: 0 !important;
+  margin-block-start: 0 !important;
+}
+
+/* El margen del <ul>/<ol> en sí */
+.markdown-preview-view ul.has-list-bullet,
+.markdown-preview-view ol,
+.markdown-rendered ul.has-list-bullet,
+.markdown-rendered ol {
+  margin-top: 0.1em !important;
+  margin-block-start: 0.1em !important;
+  padding-top: 0 !important;
+}
+
+/* Espacio entre ítems de la lista (bullets y numeradas) */
+.markdown-preview-view li,
+.markdown-rendered li {
+  margin-top: 0.1em !important;
+  margin-bottom: 0.1em !important;
+}

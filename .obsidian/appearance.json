@@ -3,7 +3,8 @@
   "enabledCssSnippets": [
     "table",
     "justify",
-    "image-center"
+    "image-center",
+    "bullets"
   ],
   "cssTheme": ""
 }
