@@ -30,6 +30,8 @@ Docentes:
 - [[04. Algoritmos de Mejoramiento Iterativo]]
 - [[05. Aprendizaje por Refuerzo]]
 - [[06. Algoritmos Genéticos]]
+- [[07. Aprendizaje Automático]]
+- [[08. Redes Neuronales]]
 - 
 
 ---
