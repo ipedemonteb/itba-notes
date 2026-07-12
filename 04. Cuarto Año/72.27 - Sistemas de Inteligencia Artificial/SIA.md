@@ -32,6 +32,7 @@ Docentes:
 - [[06. Algoritmos Genéticos]]
 - [[07. Aprendizaje Automático]]
 - [[08. Redes Neuronales]]
+- [[09. Aprendizaje No Supervisado]]
 - 
 
 ---
