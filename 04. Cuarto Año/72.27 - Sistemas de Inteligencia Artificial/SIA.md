@@ -25,6 +25,11 @@ Docentes:
 ## 📋 Índice de Unidades
 
 - [[04. Cuarto Año/72.27 - Sistemas de Inteligencia Artificial/Teoría/01. Introducción|01. Introducción]]
+- [[02. Agentes y Ambientes]]
+- [[03. Métodos de Búsqueda]]
+- [[04. Algoritmos de Mejoramiento Iterativo]]
+- [[05. Aprendizaje por Refuerzo]]
+- [[06. Algoritmos Genéticos]]
 - 
 
 ---
