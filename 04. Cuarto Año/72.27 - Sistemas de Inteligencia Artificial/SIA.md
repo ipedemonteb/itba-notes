@@ -33,6 +33,7 @@ Docentes:
 - [[07. Aprendizaje Automático]]
 - [[08. Redes Neuronales]]
 - [[09. Aprendizaje No Supervisado]]
+- [[10. Deep Learning]]
 - 
 
 ---
