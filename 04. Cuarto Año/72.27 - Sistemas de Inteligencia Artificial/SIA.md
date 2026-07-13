@@ -34,7 +34,8 @@ Docentes:
 - [[08. Redes Neuronales]]
 - [[09. Aprendizaje No Supervisado]]
 - [[10. Deep Learning]]
-- 
+- [[11. Transformers]]
+- [[12. Redes Generativas Adversarias]]
 
 ---
 ## 📝 Trabajos Prácticos
