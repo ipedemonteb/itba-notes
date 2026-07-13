@@ -14,12 +14,12 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso            | Link                                                                                                          |
-| :----------------- | :------------------------------------------------------------------------------------------------------------ |
-| Apuntes            | [SIA - Apuntes](https://docs.google.com/document/d/1UpL1ZUxCU3RREsNb5IDF_dXliKJaTJX47wFr969aaUE/edit?tab=t.0) |
-| Resumen            | [SIA - Resumen](https://docs.google.com/document/d/1YzE-cwu8WFYySlAsosSY7uN3Z82wBQOHmTDXc6eoXSw/edit?tab=t.0) |
-| Exámenes Viejos    | -                                                                                                             |
-| Trabajos Prácticos | [Repositorio](https://github.com/ipedemonteb/sia-tps)                                                         |
+|      Recurso       |                                                     Link                                                      |
+| :----------------: | :-----------------------------------------------------------------------------------------------------------: |
+|      Apuntes       | [SIA - Apuntes](https://docs.google.com/document/d/1UpL1ZUxCU3RREsNb5IDF_dXliKJaTJX47wFr969aaUE/edit?tab=t.0) |
+|      Resumen       | [SIA - Resumen](https://docs.google.com/document/d/1YzE-cwu8WFYySlAsosSY7uN3Z82wBQOHmTDXc6eoXSw/edit?tab=t.0) |
+|  Exámenes Viejos   |                                                       -                                                       |
+| Trabajos Prácticos |                             [Repositorio](https://github.com/ipedemonteb/sia-tps)                             |
 
 ---
 ## 📋 Índice de Unidades
