@@ -1,6 +1,8 @@
+# SIA - Resumen Final
+
 ## Unidad 1 - Introducción
 
-La **inteligencia artificial** es entonces un sistema que sensa, procesa y actúa de manera que es adecuada en un contexto físico y temporal particular. Requiere una corporización para manifestarse con claridad y es un continuo, un ”moving goalpost”. Presenta Autonomía como un comportamiento emergente y manifiesta una conciencia, que se materializa como comportamientos que representan un conocimiento sobre su propia existencia, en relación al contexto físico y temporal, y una diferenciación en relación a los otros.
+La **inteligencia artificial** es un sistema que sensa, procesa y actúa de manera que es adecuada en un contexto físico y temporal particular. Requiere una corporización para manifestarse con claridad y es un continuo, un ”moving goalpost”. Presenta Autonomía como un comportamiento emergente y manifiesta una conciencia, que se materializa como comportamientos que representan un conocimiento sobre su propia existencia, en relación al contexto físico y temporal, y una diferenciación en relación a los otros.
 
 ---
 ## Unidad 2 - Agentes y Ambientes
@@ -52,7 +54,7 @@ Una heurística es **admisible** si nunca sobreestima el costo real ($h(a) ≤$ 
 Definimos un algoritmo de búsqueda genérico de la siguiente forma. Dados un árbol de búsqueda $Tr$, un conjunto frontera $Fr$ y un conjunto de nodos explorados $Exp$, el procedimiento es:
 1. Crear $Tr$, $Fr$ (y $Exp$) inicialmente vacíos.
 2. Insertar nodo inicial $n_0$ en $Tr$ y $Fr$.
-3. Mientras $Fr$ no esté vacía... (Paso 6 en caso de estar vacía)
+3. Mientras $Fr$ no esté vacía...
 	1. Extraer primer nodo de $Fr$ $\Rightarrow$ Nodo $n$
 	2. Si es goal: Devolver la solución, formada por el arco entre la raíz $n_0$, y el nodo $n$ en $Tr$. Termina Algoritmo.
 	3. Expandir el nodo $n$, generando los sucesores. Ingresar dichos sucesores en $Fr$ y colocarlos en $Tr$ como nodos sucesores de $n$. Agregar $n$ a $Exp$.
@@ -176,8 +178,7 @@ El **Perceptrón Simple (Escalón)** sirve exclusivamente para resolver problema
 Lo que hicimos hasta ahora es **aprendizaje**. Refiere al proceso de entrenar un perceptrón sobre un conjunto de datos, con el objetivo de minimizar el error o la función de costo de la red sobre las entradas del conjunto de datos. La **generalización** refiere a la habilidad del perceptrón de desempeñarse correctamente sobre datos que no fueron alimentados durante el entrenamiento.
 
 El **Perceptrón Simple Lineal** representa una evolución del modelo básico diseñada para problemas donde el objetivo no es separar categorías, sino realizar una regresión o ajuste de datos. En este esquema, ya no se busca una frontera que divida clases, sino encontrar los valores de los pesos ($w$) que definan un hiperplano capaz de ajustarse lo mejor posible a la distribución de los puntos en el espacio. La diferencia fundamental respecto al perceptrón tradicional radica en su función de activación, que en este caso es la función identidad. Esto implica que la salida de la neurona ya no es binaria (1 o -1), sino que puede tomar cualquier valor dentro de los números reales. $$
-O(h) = \theta(h(x)) = \displaystyle\sum_{i=1}^{n} x_i \cdot w_i + w_0
-$$
+O(h) = \theta(h(x)) = \displaystyle\sum_{i=1}^{n} x_i \cdot w_i + w_0$$
 La diferencia fundamental respecto al perceptrón tradicional radica en su función de activación, que en este caso es la función identidad. Esto implica que la salida de la neurona ya no es binaria (1 o -1), sino que puede tomar cualquier valor dentro de los números reales. Para entrenar este modelo, se define una función de error cuadrático que mide la discrepancia entre la salida real y la esperada; el objetivo del aprendizaje es minimizar este error acumulado. Para lograr este ajuste, se aplica un procedimiento de optimización basado en el descenso del gradiente, donde los pesos se actualizan de manera iterativa. La regla de actualización calcula la variación de cada peso en función de la tasa de aprendizaje, la entrada recibida y el error detectado. $$\begin{gathered}E(O) = \frac{1}{2} \sum_{\mu=0}^{p-1} (\zeta^{\mu} - O^{\mu})^2 \\ \Delta w = -\eta \frac{\partial E}{\partial w} = \eta(\zeta^{\mu} - O^{\mu})\theta'(h)x^{\mu} \end{gathered}$$
 
 El **Perceptrón Simple No Lineal** se utiliza en escenarios donde no es posible ajustar los datos mediante una línea recta, requiriendo en su lugar el uso de una función de naturaleza no lineal. La diferencia fundamental con respecto al modelo lineal radica en el cambio de la función de activación, sustituyendo la identidad por funciones de tipo *sigmoideo*, como la *tangente hiperbólica* (tanh) o la *función logística*. La regla de actualización de los pesos sinápticos se ajusta para incluir la derivada de la función de activación elegida. Esto permite que el entrenamiento siga siendo un proceso iterativo basado en el descenso del gradiente, con la ventaja de que el sistema puede emplear cualquier función de activación siempre y cuando sea derivable.
@@ -187,7 +188,7 @@ O = \theta\left( \sum_{i=0}^{n} x_i \cdot w_i \right) \qquad \begin{array}{ll} \
 \end{gathered}
 $$
 
-El **Perceptrón Multicapa (MLP)** representa la evolución del modelo conexionista hacia estructuras capaces de resolver problemas que no son linealmente separables. Su concepto fundamental se basa en la combinación de múltiples neuronas organizadas en capas, donde la suma de sus funciones individuales permite representar y aproximar comportamientos complejos que un perceptrón simple no podría abordar por sí solo. El **Teorema de Aproximación Universal** establece que una red neuronal con al menos una capa oculta, que contenga un número finito de neuronas y funciones de activación no lineales (como *sigmoide* o *ReLU*), puede aproximar cualquier función continua con alta precisión.
+El **Perceptrón Multicapa (MLP)** permite resolver problemas que no son linealmente separables. Su concepto fundamental se basa en la combinación de múltiples neuronas organizadas en capas, donde la suma de sus funciones individuales permite representar y aproximar comportamientos complejos que un perceptrón simple no podría abordar por sí solo. El **Teorema de Aproximación Universal** establece que una red neuronal con al menos una capa oculta, que contenga un número finito de neuronas y funciones de activación no lineales (como *sigmoide* o *ReLU*), puede aproximar cualquier función continua con alta precisión.
 
 El procesamiento de la información ocurre mediante un mecanismo llamado **feed-forward pass**, en el cual los datos viajan desde la entrada a través de las capas intermedias hasta generar un resultado final. Para que la red aprenda, se requiere minimizar una función de error ajustando los pesos sinápticos en la dirección opuesta al gradiente. Es aquí donde toma relevancia el **backpropagation**,  un algoritmo que permite calcular de manera eficiente el gradiente del error respecto a cada peso de la red, incluso en las capas ocultas donde no se dispone de un valor esperado ($\zeta$) directo. Su fundamento es la regla de la cadena del cálculo diferencial: dado que el error de la red depende de la salida, que a su vez depende de las capas ocultas, que a su vez dependen de los pesos, es posible descomponer esa dependencia en un producto de derivadas parciales y así "repartir" el error hacia atrás, capa por capa.
 
@@ -222,31 +223,24 @@ La **regularización** es un conjunto de técnicas diseñadas para reducir el er
 ---
 ## Unidad 9 - Aprendizaje No Supervisado
 
-En el **aprendizaje no supervisado**, la variable de respuesta no es información disponible. Puede resolver problemas menos definidos mediante Clustering, Asociación y Reducción de Dimensionalidad. Para saber si los resultados que obtenemos son significativos, se construyen modelos de predicción, que constan de estrategias para obtener características o patrones y sacar conclusiones.
+En el **aprendizaje no supervisado**, la variable de respuesta no es información disponible. Para saber si los resultados que obtenemos son significativos, se construyen modelos de predicción, que constan de estrategias para obtener características o patrones y sacar conclusiones. Resuelve los siguientes problemas:
+- **Clustering**: agrupar observaciones de forma tal que el grado de similitud entre miembros de un mismo grupo sea lo más fuerte posible. 
+- **Asociación**: encontrar relaciones entre los atributos del conjunto de datos. 
+- **Reducción de la Dimensionalidad**: proyecta el conjunto de datos en un espacio menor, dejando de lado las características menos relevantes.
 
-El **clustering** consiste en agrupar observaciones de forma tal que el grado de similitud entre miembros de un mismo grupo sea lo más fuerte posible. Implica identificar similitudes entre los datos y asignarlos a un grupo (cluster). La **asociación** consiste en encontrar relaciones entre los atributos del conjunto de datos. Utiliza memorias asociativas, que consisten en el almacenamiento y recuperación de información por asociación con otros datos. Un ejemplo es el Modelo de Hopfield. La **reducción de la dimensionalidad** proyecta el conjunto de datos en un espacio menor, dejando de lado las características menos relevantes.
-
-La **Red de Kohonen** es una red de una sola capa, en forma de grilla bidimensional ($k\times k$) y en la que cada neurona está conectada a todas las componentes de un vector de entrada n-dimensional.
+La **Red de Kohonen** es una grilla bidimensional ($k\times k$) de una sola capa donde cada neurona se conecta a toda la entrada, con sí misma y con neuronas vecinas en un radio $R$. Funciona mediante competencia: para cada dato de entrada, la neurona con los pesos más similares (ganadora) se activa y las demás se anulan. Esto permite agrupar y clasificar de forma no supervisada los datos similares en las mismas regiones de la grilla.
 ![[Pasted image 20260712213255.png|center|292]]
 
-Las neuronas están conectadas con sí mismas positivamente y también con las neuronas vecinas, donde el vecindario es de radio $R$. A lo largo del tiempo (épocas), algunas unidades toman un nivel de activación mayor mientras que el nivel de las demás se anula. Entonces, las neuronas compiten unas con otras. Dada la unidad de entrada $x$, la neurona que tenga vector de pesos $w$ "más parecido" a $x$ será ganadora. El objetivo es que finalmente sólo una de las de salida se active. Las demás son forzadas a valores de respuesta mínimos. Esto permite agrupar los datos que se introducen en la red. Los datos similares son clasificadas formando parte de la misma categoría o grupo y deben activar la misma neurona de salida.
 
-Si las variables de un conjunto de datos están muy correlacionadas entonces posee información redundante. El objetivo del método de **Principal Component Analysis (PCA)** es eliminar la redundancia. La idea es transformar el conjunto de variables original en otro conjunto. Tendrá variables que son combinaciones lineales de las anteriores pero no están correlacionadas entre sí. Entonces, dadas $p$ variables originales, se desean encontrar $q<p$ variables que sean combinaciones lineales de las $p$ originales, recogiendo la mayor parte de la información o variabilidad de los datos.  Para evitar el problema se deben **estandarizar** las variables cuando calculamos las componentes principales. De esta manera las magnitudes de los valores numéricos de las variables originales serán comparables.
+El objetivo del método de **Principal Component Analysis (PCA)** es eliminar la redundancia en variables muy correlacionadas de un conjunto de datos. La idea es transformar el conjunto de variables original en otro conjunto que tendrá variables que son combinaciones lineales de las anteriores pero no están correlacionadas entre sí.  Se deben **estandarizar** las variables cuando calculamos las componentes principales para que los valores numéricos de las variables originales serán comparables.
 
-Oja demostró que si se toma un perceptrón simple y se ignora el valor esperado $\zeta^{\mu}$, el vector de pesos resultante $w^{\text{final}}$ serı́a un punto sobre la dirección de máxima variación de los datos (la primer componente principal). Pero el problema es que no converge porque el $\Delta w$ va aumentando en cada paso y se hace tan grande que produce que el algoritmo sea inestable. Para solucionarlo, propuso normalizar los pesos ($\vert{}\vert{}w\vert{}\vert{}=1$) en cada paso. Al aproximar matemáticamente esta normalización usando un desarrollo de Taylor para ahorrar cálculo, llegó a su famosa regla:$$\Delta w_i = \eta (O x_i - O^2 w_i)$$El término negativo ($-O^2 w_i$) actúa como un "freno" que evita que los pesos exploten. Gracias a esto, el algoritmo se estabiliza y los pesos terminan convergiendo al autovector con mayor autovalor, que es justamente la dirección de la primera componente principal.
+**Oja** demostró que si se toma un perceptrón simple y se ignora el valor esperado $\zeta^{\mu}$, el vector de pesos resultante $w^{\text{final}}$ serı́a un punto sobre la dirección de máxima variación de los datos (la primer componente principal). Pero el problema es que no converge porque el $\Delta w$ va aumentando en cada paso y se hace tan grande que produce que el algoritmo sea inestable. Para solucionarlo, propuso normalizar los pesos ($\vert{}\vert{}w\vert{}\vert{}=1$) en cada paso. $$\Delta w_i = \eta (O x_i - O^2 w_i)$$El término negativo ($-O^2 w_i$) actúa como un "freno" que evita que los pesos exploten. Gracias a esto, el algoritmo se estabiliza y los pesos terminan convergiendo al autovector con mayor autovalor, que es justamente la dirección de la primera componente principal.
 
 La **Regla de Sanger** es una extensión de la regla de Oja. Mientras que esta última permite extraer únicamente la primera componente principal, la regla de Sanger utiliza un mecanismo de ortogonalización que permite a una red de múltiples neuronas extraer de forma ordenada las primeras $k$ componentes principales (PCA) de los datos. 
 
-El **Modelo de Hopfield** es un modelo que almacena información en la red y la asocia con patrones que tiene almacenados. Entonces, consiste en almacenar un conjunto de $p$ patrones tal que cuando se presenta un nuevo patrón $P_{in}$, la red responda con el patrón almacenado $P_{out}$ que más se parece a $P_{in}$. Es una red recurrente, ya que existe retroalimentación entre las neuronas, están todas conectadas entre sí (a diferencia de las redes feed-forward). No se conectan consigo mismas. Son binarias, y el conjunto de input y output permitido es {-1, 1} (activo o inactivo). Todas las neuronas están en una sola capa de entrada y salida.  
+El **Modelo de Hopfield** es una red recurrente y simétrica de neuronas binarias ($-1$ o $1$) completamente interconectadas, excepto consigo mismas ($w_{ii} = 0$, $w_{ij} = w_{ji}$). Funciona como una **memoria asociativa**: manteniendo la matriz de pesos $W$ fija, la red actualiza dinámicamente el estado de sus neuronas a partir de un patrón de entrada ruidoso hasta estabilizarse y converger en el patrón almacenado que más se le parece. Dados los patrones almacenados $\xi^\mu$, $\mu = 1, \dots, p$, presentamos un nuevo patrón $\zeta$. Como dijimos, queremos encontrar el patrón almacenado más cercano a $\zeta$ (usando redes neuronales).
 
-Como ya vimos, cada neurona tiene 2 estados, activo ($S_i=+1$) o inactivo ($S_i=-1$). Para una red de $N$ neuronas el estado queda representado por el vector de estados $S = [S_1, S_2, … ,S_N]$. Esto es lo que vamos a actualizar con Hopfield, y es una diferencia clave con lo que veníamos estudiando, ya que ahora $W$ se mantendrá fijo. Dados los patrones almacenados $\xi^\mu$, $\mu = 1, \dots, p$, presentamos un nuevo patrón $\zeta$. Como dijimos, queremos encontrar el patrón almacenado más cercano a $\zeta$ (usando redes neuronales). Para esto, primero buscamos los pesos sinápticos $w_{ij}$, $i = 1, \dots, N$, $j = 1, \dots, N$. Vamos a tener un peso para cada neurona, es decir que $w_{ij}$ va a ser el peso que va de la neurona $i$ a la $j$. Entonces, $w_{ji}$ va a ser igual a $w_{ij}$, porque la red es simétrica, y $w_{ii}$ va a ser cero por lo que vimos antes. Entonces, el **Modelo de Hopfield** es una red neuronal que cumple las siguientes características:
-* Cada neurona $i$ es un perceptrón simple con la función de activación escalón $(1, -1)$.
-* Cada par de neuronas $(i, j)$ se conectan por el peso sináptico $w_{ij}$.
-
-Las limitaciones de Hopfield  son:
-- El número máximo de patrones que puede almacenar es igual al $15\%$ del número de neuronas de la red. Es decir, $p≤0.15∗N$, donde $N$ es la dimensión de los patrones.
-- Los patrones deben ser "más o menos" ortogonales.
-- La Función de Energía $H$ puede tener otros mínimos locales que no son los patrones almacenados, llamados estados espurios. También son atractores, por lo que puede desembocar en ciclos.
+Sin embargo, el modelo presenta tres limitaciones clave: su capacidad de almacenamiento está acotada al $15\%$ del número de neuronas ($p \le 0.15N$), los patrones a guardar deben ser relativamente ortogonales para no interferir entre sí, y su función de energía puede contener estados espurios (mínimos locales que no son patrones reales) en los que la red puede quedar atrapada.
 
 ---
 ## Unidad 10 - Deep Learning
@@ -257,3 +251,88 @@ Las limitaciones de Hopfield  son:
 - Datasets masivos y estandarizados.
 - GPUs, Graphic Processing Units, hardware especializado para el procesamiento paralelo de multiplicación de matrices.
 
+El primer pilar del Deep Learning (la Profundidad o Múltiples Niveles de Composición) conecta con el problema de la dimensionalidad al proponer una estructura jerárquica aglomerativa que, en lugar de intentar resolver el problema en una sola capa plana, aprende representaciones intermedias capa por capa. Esta profundidad permite que la red capture patrones basados en la localidad a diferentes escalas e invarianza a las traslaciones, logrando navegar eficientemente por el hiperespacio al descomponer la complejidad en piezas manejables y composicionales, algo que los modelos simples no pueden procesar en dimensiones tan altas. El **problema fundamental de las redes neuronales** consiste en lo siguiente: cuando se aplica el algoritmo de backpropagation en muchas capas, los errores que se propagan pueden ser tan chicos que caen por fuera de la resolución computacional, y eso provoca que eventualmente los gradientes se vuelvan cero o exploten. Es decir aparece un problema numérico.
+
+Los **autoencoders** son arquitecturas de redes neuronales no supervisadas cuyo objetivo principal es reducir la dimensionalidad. Consta de dos redes neuronales artificiales de perceptrones multicapa, donde la salida de la primera red se conecta con la entrada de la segunda. Esta tiene la distribución invertida de neuronas en las capas y como salida tiene la misma dimensión que la entrada de la primera red. La formulación general:
+- $Z = f(X) = h(XW + b)$
+- $X' = g(Z) = h(ZV + p)$
+
+La red es entrenada por cualquier método de aprendizaje que sirva para un Multi-Layer Perceptron, pero para cada patrón de entrada $X$ se pone como salida esperada el mismo patrón $X$. La red por lo tanto aprende los pesos sinápticos que generan en la salida $X'$, el mismo valor presentado a la entrada. 
+![[Pasted image 20260713003329.png|center|400]]
+$L$ es la función de costo, y lo que se busca es que la entrada $X$ y la salida $X'$ sean lo más parecidas posible. Un **autoencoder lineal** se conforma por perceptrones lineales. Una vez que aprende, minimiza:
+$$\begin{gathered} J = \Vert{}X - ZV^T\Vert{} \\[1ex] X \approx ZV^T \end{gathered}$$
+- $X$: La matriz de datos de $n \times d$. Hay $n$ datos de dimensión $d$.
+- $Z$: La salida de la capa interna del autoencoder, del código de $n \times k$.
+- $V$: La matriz de pesos sinápticos asociada al decodificador de $k \times d$.
+
+>[!INFO] Uso de Autoencoders
+>Una de las herramientas que proveen los autoencoders es la **identificación de outliers**. Para esto, se lo entrena con el conjunto de entrenamiento. Luego se lo somete a nuevas muestras que no necesariamente se encuentran en el conjunto. Se toma alguna medida para obtener la diferencia entre cada valor de entrada del autoencoder y los valores obtenidos en la salida.
+
+Los **Denoising Autoencoderes (DAE)** son arquitecturas que, en vez de entrenarse con los elementos obtenidos directamente del conjunto de datos, se modela el ruido, es decir, se lo caracteriza numéricamente o en general con una función de distribución de probabilidad y se agrega a los datos $X$ generando una nueva instancia $\tilde{X}$. Sin embargo, la salida que se pone en la red corresponde al dato $X$ sin alterar.
+
+Los **Contractive Autoencoder (CAE)** agregan un término regularizador a las funciones de costo, que le resta sensibilidad a la entrada, intentando aprender representaciones más simples y crudas de los datos. $$\Vert{}J_h(X)\Vert{}_F^2 = \sum_{ij} \left( \frac{\partial h_j(X)}{\partial X_i} \right)^2$$
+Los **Sparse Autoencoder (SAE)** por otro lado, utilizan una arquitectura donde el espacio latente tiene más dimensiones que la entrada. Para lograr imponer restricciones que permitan adquirir información de la estructura de los datos, imponen un término regularizador que favorece la presencia de esparcicidad, esto es, que un número de neuronas del espacio latente estén en 0 anuladas. Los SAE se pueden utilizar para realizar **Feature Learning**, es decir para identificar caracterizaciones o transformaciones de los datos que son útiles para discriminarlos.
+
+Una **Red Neuronal Estocástica** es un modelo capaz de representar funciones estocásticas (mapeos no determinísticos regidos por una distribución de probabilidad condicional $p(y \mid x)$) al integrar un nodo o capa de muestreo en su arquitectura. Para lograr que la red siga siendo diferenciable y se pueda entrenar mediante retropropagación, se utiliza el **truco de la reparametrización** (_reparametrization trick_), el cual separa la aleatoriedad del flujo de gradientes calculando el valor estocástico como $z = \epsilon \odot \Sigma(X) + \mu(X)$, donde $\epsilon$ es un ruido aleatorio independiente y la red solo aprende a predecir los parámetros de la distribución (como la media $\mu$ y la desviación estándar $\Sigma$).
+
+Las **redes convolucionales** están basadas alrededor de la operación de convolución, y son generalmente aplicadas a procesamiento de imágenes. La idea es modificar una MLP de forma que realice una operación de convolución, de una capa a la otra. Se quiere imitar la misma idea de lo que se observa en la corteza visual, mediante la utilización de la convolución.
+
+![[Pasted image 20260713131003.png|center|378]]
+La **convolución** es una operación matemática que combina una señal o imagen de entrada con una pequeña matriz de pesos llamada **kernel o filtro**. Al deslizar este kernel sobre los datos, se realiza un promedio ponderado local que permite transformar la información para resaltar ciertos patrones, como suavizar variaciones o detectar bordes. Al aplicar esta operación en los bordes de una imagen, se utiliza un relleno de ceros (_padding_) que define el tamaño del resultado final: _valid_ (reduce el tamaño al no usar relleno), _same_ (mantiene el tamaño original agregando el relleno justo) o _full_ (agranda la salida). 
+
+La **capa de convolución** procesa una entrada tridimensional aplicando en paralelo un conjunto de filtros (kernels) cuyos pesos se comparten espacialmente, donde cada filtro debe tener la misma profundidad que la entrada para generar un único canal en el volumen de salida. Esta operación, regulada por hiperparámetros como el **stride** (tamaño del salto) y el **padding** (manejo de bordes), se combina con una función de activación no lineal, preferentemente **ReLU** ($\max(0,x)$). Se elige ReLU frente a las funciones sigmoideas porque no satura ante valores positivos grandes.
+![[Pasted image 20260713131637.png|center|348]]
+
+La **capa de pooling** es una operación fija y sin parámetros entrenables que realiza un submuestreo (downsampling) para reducir la resolución de la imagen y capturar invarianzas traslacionales. Funciona agrupando regiones locales y sintetizándolas en un único valor, comúnmente mediante MaxPooling, que selecciona el valor máximo de cada zona, lo que permite asegurar que las características visuales clave detectadas por las capas convolucionales sigan siendo relevantes en las etapas sucesivas de la red, independientemente de su posición exacta en la imagen.
+
+![[Pasted image 20260713132019.png|center|351]]
+Al final de una red convolucional, se utilizan capas densas tradicionales (MLP) con una activación **Softmax** para normalizar las salidas lineales en una distribución de probabilidad que enfatiza a la clase ganadora. Para aplicar **backpropagation** en las capas convolucionales, el principal desafío es que los pesos son compartidos espacialmente; esto se resuelve acumulando todas las variaciones locales del gradiente a lo largo de la imagen antes de actualizar cada peso del kernel. Matemáticamente, este proceso se puede simplificar representando la convolución como una multiplicación por una **matriz esparsa $C$** (donde los pesos del kernel se alinean vectorialmente frente a la entrada aplanada), lo que reduce la operación a una capa lineal clásica donde la regla de la cadena se aplica de forma trivial.
+
+>[!INFO] Eficiencia de las Convolutional Neural Networks (CNN)
+>Su éxito radica en que el uso de conexiones esparsas reduce drásticamente el costo computacional. Además, la compartición de pesos actúa como un regularizador implícito que exige más a los parámetros, mientras que su propiedad de **equivarianza a la traslación** y su capacidad para construir **jerarquías espaciales** permiten extraer características robustas de las imágenes sin importar su escala o posición.
+
+La **Inteligencia Artificial Explicable (xAI)** es un campo que busca comprender cómo los algoritmos de aprendizaje automático toman sus decisiones, una necesidad crítica en aplicaciones de alto impacto social y ético que también abre paso a una IA Responsable. Se fundamenta en dos principios clave:
+- **Legibilidad**: capacidad de mostrar qué características influyeron en la decisión.
+- **Explicabilidad**: capacidad de detallar la cadena lógica del razonamiento.
+
+---
+## Unidad 11 - Transformers
+
+Los **transformers** son redes neuronales utilizadas para transformar una secuencia en otra basada en un mecanismo de atención. Tienen una arquitectura general determinada por:
+- **Encoder**: Recibe la información de la cadena de entrada. Tiene dos componentes, el primero corresponde a una capa que implementa el **Mecanismo de Atención (Self-Attention)**, que relacionará los lexemas de la entrada entre sí. La segunda capa es un MLP. La salida pasa al encoder subsiguiente del stack.
+- **Decoder**: La salida final del último encoder es la entrada a cada uno de los decoders, y reciben una entrada adicional que viene de la salida hasta el momento para el primer decoder, y de la salida del decoder anterior para todos los otros. El decoder tiene una capa de Self-Attention, luego una capa de encoder-decoder-attention (que toma la salida de la capa anterior versus las entradas recibidas del encoder) y finalmente un MLP. La salida final del último decoder genera la salida actual, en este caso el token actual de traducción.
+![[Pasted image 20260713135832.png|center|541]]
+
+Los **embeddings** son los diferentes esquemas de codificación de los lexemas. Las palabras (o tokens) se transforman en números en base a un diccionario global de codificación. Luego, cada token es representado en un vector numérico de dimensión fija, capturando relaciones semánticas y sintácticas en función de su contexto en el lenguaje. Se requiere además que la codificación tenga en cuenta la ubicación del token en la secuencia.
+![[Pasted image 20260713134210.png|center|380]]
+
+El **Mecanismo de Atención** es una capa interna que poseen todos los encoders y decoders, cuya función es tener en cuenta otras palabras de la secuencia mientras se está analizando una en particular y permite relacionar los lexemas del lenguaje entre sí. Por ejemplo, de la secuencia "Yo soy un estudiante", la palabra "estudiante" está referenciando el pronombre "Yo". Por eso los pesos, los parámetros libres en el mecanismo de atención, deberían ser más fuertes entre estas dos palabras. $$\text{Attention}(Q, K, V) = \text{SoftMax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V$$
+- $Q$ (Queries/Consultas): Representa la palabra o token que se está analizando actualmente y que busca información en el resto de la secuencia.
+- $K$ (Keys/Claves): Representa las etiquetas o perfiles de todos los tokens de la secuencia con los cuales se va a comparar la consulta ($Q$).
+- $V$ (Values/Valores): Contiene la información real de los tokens, la cual se pondera y extrae una vez que se determina la relevancia de cada uno.
+- **$d_k$:** Es la dimensión de los vectores de las claves ($K$), utilizada en el denominador como un factor de escala ($\sqrt{d_k}$) para evitar que el producto punto crezca demasiado y sature la función SoftMax.
+
+El mecanismo de **Multi-Headed Attention** permite al encoder enfocarse en distintas posiciones de la secuencia de manera simultánea, logrando así capturar múltiples tipos de relaciones semánticas y sintácticas al mismo tiempo.
+
+>[!TIP] Positional Encoding
+>El mecanismo de atención procesa todos los tokens en paralelo, lo que significa que la red no tiene noción del orden ni de la posición de las palabras en la secuencia. Una posible solución es agregar información a cada palabra sobre su posición en la oración. A esta información se la llama **Positional Encoding**, lo que es un conjunto de $p_i$ valores que se le suma a cada embedding.
+
+Luego de pasar por los encoders y decoders, se deben traducir los números generados a palabras, por lo que se agregan dos nuevas capas:
+- **Capa Linear**: red neuronal fully-connected que proyecta el output del último decoder en un vector más grande llamado *logits*, que otorga un puntaje para cada token.
+- **Capa Softmax**: indica cuál token es el más probable que sea el siguiente. 
+
+---
+## Unidad 12 - Redes Generativas Adversarias
+
+Las **Generative Adversarial Networks (GAN)** son modelos diseñados para generar nuevas muestras de datos (como imágenes) a partir de una distribución conocida, aprendiendo de forma no supervisada la estructura probabilística de un conjunto de datos real. Su arquitectura se basa en un juego entre dos redes que compiten entre sí: 
+- **Generador ($G$)**: transforma ruido de un espacio latente en muestras artificiales.
+- **Discriminador ($D$)**: actúa como un clasificador supervisado intentando distinguir si una muestra es real o creada por el generador.
+
+Este conflicto se formaliza matemáticamente como un **juego MinMax** basado en la función de costo de entropía cruzada binaria (_Binary Cross Entropy_):
+$$\min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim P_{\text{data}}}[\log(D(x))] + \mathbb{E}_{z \sim P_z}[\log(1 - D(G(z)))]$$
+- **$\max_{D}$:** El discriminador busca maximizar esta función para clasificar correctamente las muestras reales como $1$ ($D(x) \to 1$) y las falsas como $0$ ($D(G(z)) \to 0$, lo que hace que $\log(1 - D(G(z))) \to 0$).
+- **$\min_{G}$:** El generador busca minimizarla para engañar al discriminador, intentando que este clasifique sus muestras falsas como reales ($D(G(z)) \to 1$, lo que empuja el término $\log(1 - D(G(z)))$ hacia $-\infty$).
+- **$x \sim P_{\text{data}}$:** Representa las muestras extraídas de la distribución de datos reales.
+- **$z \sim P_z$:** Representa los vectores de ruido aleatorio que alimentan al generador.
+
+Durante el entrenamiento alternado, ambas redes se ajustan hasta alcanzar un **Equilibrio de Nash**. En este punto óptimo, el generador logra replicar con exactitud la distribución de los datos reales ($P_g = P_{\text{data}}$) y el discriminador ya no puede diferenciarlos, quedando limitado a adivinar con una probabilidad de $0.5$ (equivalente a lanzar una moneda). Sin embargo, el entrenamiento de las GAN es altamente inestable y propenso al colapso modal (mode collapse). Este fallo ocurre cuando el generador descubre un tipo de muestra específico que engaña fácilmente al discriminador y se especializa únicamente en producir variaciones de ese único resultado. Al hacerlo, la red pierde la capacidad de generar diversidad y "colapsa" ignorando toda la variedad del conjunto de datos original.

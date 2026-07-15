@@ -2,5 +2,11 @@
   "newFileLocation": "root",
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "./Resources",
-  "focusNewTab": false
+  "focusNewTab": false,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
