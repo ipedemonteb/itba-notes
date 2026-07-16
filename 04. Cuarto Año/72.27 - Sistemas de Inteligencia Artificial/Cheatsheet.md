@@ -145,7 +145,7 @@ Los **criterios de corte** son las reglas que determinan cuándo dejar de iterar
 ---
 ## Unidad 7 - Aprendizaje Automático
 
-El **aprendizaje automático** se define bajo un enfoque libre de modelo como la capacidad de determinar el mapeo o la relación funcional entre un conjunto de entradas $X$ y sus respectivas salidas $Y$. El objetivo es que, mediante la observación de datos, el sistema logre configurar estos parámetros de manera que pueda predecir o clasificar correctamente nuevas entradas basándose en patrones identificados previamente. 
+El **aprendizaje automático** se define bajo un enfoque libre de modelo como la capacidad de determinar el mapeo o la relación funcional entre un conjunto de entradas $X$ y sus respectivas salidas $Y$. El objetivo es que, mediante la observación de datos, el sistema logre configurar una serie de parámetros de manera que pueda predecir o clasificar correctamente nuevas entradas basándose en patrones identificados previamente. 
 
 Este ajuste de parámetros se lleva a cabo a través de un **proceso de optimización**, el cual busca encontrar la configuración interna que minimice la diferencia entre la salida predicha y la salida real. El problemas básico de la optimización es encontrar la combinación de los parámetros para una función que hacen que esta sea lo más grande o más chica posible.
 
@@ -175,7 +175,7 @@ El **hiperplano de separación** es una frontera geométrica fundamental en los 
 
 El **Perceptrón Simple (Escalón)** sirve exclusivamente para resolver problemas de clasificación binaria que sean linealmente separables. Su función es encontrar un hiperplano que divida perfectamente dos clases de datos.
 
-Lo que hicimos hasta ahora es **aprendizaje**. Refiere al proceso de entrenar un perceptrón sobre un conjunto de datos, con el objetivo de minimizar el error o la función de costo de la red sobre las entradas del conjunto de datos. La **generalización** refiere a la habilidad del perceptrón de desempeñarse correctamente sobre datos que no fueron alimentados durante el entrenamiento.
+El **aprendizaje** refiere al proceso de entrenar un perceptrón sobre un conjunto de datos, con el objetivo de minimizar el error o la función de costo de la red sobre las entradas del conjunto de datos. La **generalización** refiere a la habilidad del perceptrón de desempeñarse correctamente sobre datos que no fueron alimentados durante el entrenamiento.
 
 El **Perceptrón Simple Lineal** representa una evolución del modelo básico diseñada para problemas donde el objetivo no es separar categorías, sino realizar una regresión o ajuste de datos. En este esquema, ya no se busca una frontera que divida clases, sino encontrar los valores de los pesos ($w$) que definan un hiperplano capaz de ajustarse lo mejor posible a la distribución de los puntos en el espacio. La diferencia fundamental respecto al perceptrón tradicional radica en su función de activación, que en este caso es la función identidad. Esto implica que la salida de la neurona ya no es binaria (1 o -1), sino que puede tomar cualquier valor dentro de los números reales. $$
 O(h) = \theta(h(x)) = \displaystyle\sum_{i=1}^{n} x_i \cdot w_i + w_0$$
@@ -240,6 +240,10 @@ La **Regla de Sanger** es una extensión de la regla de Oja. Mientras que esta �
 
 El **Modelo de Hopfield** es una red recurrente y simétrica de neuronas binarias ($-1$ o $1$) completamente interconectadas, excepto consigo mismas ($w_{ii} = 0$, $w_{ij} = w_{ji}$). Funciona como una **memoria asociativa**: manteniendo la matriz de pesos $W$ fija, la red actualiza dinámicamente el estado de sus neuronas a partir de un patrón de entrada ruidoso hasta estabilizarse y converger en el patrón almacenado que más se le parece. Dados los patrones almacenados $\xi^\mu$, $\mu = 1, \dots, p$, presentamos un nuevo patrón $\zeta$. Como dijimos, queremos encontrar el patrón almacenado más cercano a $\zeta$ (usando redes neuronales).
 
+Hopfield demostró que su red está asociada a una **Función de Energía**, dada por:
+$$H = -\frac{1}{2} \sum_{i,j} w_{ij}S_iS_j$$
+Y que los mínimos locales de esta función son los patrones almacenados. Con esto, podemos tomar una propiedad central de una Función de Energía, que es que siempre decrece (o permanece constante) cuando el sistema evoluciona
+
 Sin embargo, el modelo presenta tres limitaciones clave: su capacidad de almacenamiento está acotada al $15\%$ del número de neuronas ($p \le 0.15N$), los patrones a guardar deben ser relativamente ortogonales para no interferir entre sí, y su función de energía puede contener estados espurios (mínimos locales que no son patrones reales) en los que la red puede quedar atrapada.
 
 ---
@@ -251,7 +255,9 @@ Sin embargo, el modelo presenta tres limitaciones clave: su capacidad de almacen
 - Datasets masivos y estandarizados.
 - GPUs, Graphic Processing Units, hardware especializado para el procesamiento paralelo de multiplicación de matrices.
 
-El primer pilar del Deep Learning (la Profundidad o Múltiples Niveles de Composición) conecta con el problema de la dimensionalidad al proponer una estructura jerárquica aglomerativa que, en lugar de intentar resolver el problema en una sola capa plana, aprende representaciones intermedias capa por capa. Esta profundidad permite que la red capture patrones basados en la localidad a diferentes escalas e invarianza a las traslaciones, logrando navegar eficientemente por el hiperespacio al descomponer la complejidad en piezas manejables y composicionales, algo que los modelos simples no pueden procesar en dimensiones tan altas. El **problema fundamental de las redes neuronales** consiste en lo siguiente: cuando se aplica el algoritmo de backpropagation en muchas capas, los errores que se propagan pueden ser tan chicos que caen por fuera de la resolución computacional, y eso provoca que eventualmente los gradientes se vuelvan cero o exploten. Es decir aparece un problema numérico.
+El primer pilar del Deep Learning (la Profundidad o Múltiples Niveles de Composición) conecta con el problema de la dimensionalidad al proponer una estructura jerárquica aglomerativa que, en lugar de intentar resolver el problema en una sola capa plana, aprende representaciones intermedias capa por capa. Esta profundidad permite que la red capture patrones basados en la localidad a diferentes escalas e invarianza a las traslaciones, logrando navegar eficientemente por el hiperespacio al descomponer la complejidad en piezas manejables y composicionales, algo que los modelos simples no pueden procesar en dimensiones tan altas. 
+
+El **problema fundamental de las redes neuronales** consiste en lo siguiente: cuando se aplica el algoritmo de backpropagation en muchas capas, los errores que se propagan pueden ser tan chicos que caen por fuera de la resolución computacional, y eso provoca que eventualmente los gradientes se vuelvan cero o exploten. Es decir aparece un problema numérico.
 
 Los **autoencoders** son arquitecturas de redes neuronales no supervisadas cuyo objetivo principal es reducir la dimensionalidad. Consta de dos redes neuronales artificiales de perceptrones multicapa, donde la salida de la primera red se conecta con la entrada de la segunda. Esta tiene la distribución invertida de neuronas en las capas y como salida tiene la misma dimensión que la entrada de la primera red. La formulación general:
 - $Z = f(X) = h(XW + b)$
@@ -264,6 +270,8 @@ $$\begin{gathered} J = \Vert{}X - ZV^T\Vert{} \\[1ex] X \approx ZV^T \end{gather
 - $X$: La matriz de datos de $n \times d$. Hay $n$ datos de dimensión $d$.
 - $Z$: La salida de la capa interna del autoencoder, del código de $n \times k$.
 - $V$: La matriz de pesos sinápticos asociada al decodificador de $k \times d$.
+
+La salida del código interno $Z$ del autoencoder lineal son las salidas de las proyecciones de los datos en los componentes principales. $$T_{PCA}(X) = X E = Z$$
 
 >[!INFO] Uso de Autoencoders
 >Una de las herramientas que proveen los autoencoders es la **identificación de outliers**. Para esto, se lo entrena con el conjunto de entrenamiento. Luego se lo somete a nuevas muestras que no necesariamente se encuentran en el conjunto. Se toma alguna medida para obtener la diferencia entre cada valor de entrada del autoencoder y los valores obtenidos en la salida.
