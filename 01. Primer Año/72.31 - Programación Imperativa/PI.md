@@ -25,6 +25,7 @@ Docentes:
 - [[03. Variables]]
 - [[04. Operadores]]
 - [[05. Proposiciones]]
+- [[06. Funciones y Macros]]
 
 ---
 ## 📝 Trabajos Prácticos
