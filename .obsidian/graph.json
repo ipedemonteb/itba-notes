@@ -62,6 +62,13 @@
         "a": 1,
         "rgb": 14074460
       }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/61.23 - Economía para Ingenieros\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14062428
+      }
     }
   ],
   "collapse-display": false,
@@ -75,5 +82,5 @@
   "linkStrength": 1,
   "linkDistance": 275,
   "scale": 0.4154170994955785,
-  "close": false
+  "close": true
 }
