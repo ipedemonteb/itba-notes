@@ -26,6 +26,7 @@ Docentes:
 - [[04. Operadores]]
 - [[05. Proposiciones]]
 - [[06. Funciones y Macros]]
+- [[07. Arreglos]]
 
 ---
 ## 📝 Trabajos Prácticos

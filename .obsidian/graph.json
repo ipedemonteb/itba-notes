@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": false,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "path:\"06. Electivas/82.08 - Cloud Computing\"  ",
@@ -55,6 +55,13 @@
         "a": 1,
         "rgb": 6069206
       }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/72.25 - Simulación de Sistemas\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14074460
+      }
     }
   ],
   "collapse-display": false,
@@ -67,6 +74,6 @@
   "repelStrength": 9.98611111111111,
   "linkStrength": 1,
   "linkDistance": 275,
-  "scale": 0.5406842109280524,
-  "close": true
+  "scale": 0.4154170994955785,
+  "close": false
 }
