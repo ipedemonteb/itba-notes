@@ -22,7 +22,9 @@ Docentes:
 
 - [[01. Sistemas y Modelos]]
 - [[02. Sistemas de Muchas Partículas]]
-- 
+- [[03. Autómatas Celulares]]
+- [[04. Simulaciones Dirigidas por Eventos]]
+- [[05. Simulaciones Dirigidas por el Paso Temporal]]
 
 ---
 ## 📝 Trabajos Prácticos
