@@ -11,12 +11,12 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso         | Link                                                                                                             |
-| :-------------- | :--------------------------------------------------------------------------------------------------------------- |
-| Apuntes         | [Cripto - Apuntes](https://docs.google.com/document/d/1UpL1ZUxCU3RREsNb5IDF_dXliKJaTJX47wFr969aaUE/edit?tab=t.0) |
-| Guías           | [Cripto - Guías](https://drive.google.com/drive/u/0/folders/180kG1yg_0J4Go5DiQTEfP-WLZcJtUvzC)                   |
-| Exámenes Viejos | [Cripto - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/1x-DInZl09pzczYSxSkOSVjVK7E_8OgY8)         |
-| Resumen         | [Cripto - Resumen](https://docs.google.com/document/d/1O-a1yOPocWSpS87dliwzL_Cj130DeaM1IVYM6iQ8rEo/edit?tab=t.0) |
+|     Recurso     |                                                       Link                                                       |
+| :-------------: | :--------------------------------------------------------------------------------------------------------------: |
+|     Apuntes     | [Cripto - Apuntes](https://docs.google.com/document/d/1UpL1ZUxCU3RREsNb5IDF_dXliKJaTJX47wFr969aaUE/edit?tab=t.0) |
+|      Guías      |          [Cripto - Guías](https://drive.google.com/drive/u/0/folders/180kG1yg_0J4Go5DiQTEfP-WLZcJtUvzC)          |
+| Exámenes Viejos |     [Cripto - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/1x-DInZl09pzczYSxSkOSVjVK7E_8OgY8)     |
+|     Resumen     | [Cripto - Resumen](https://docs.google.com/document/d/1O-a1yOPocWSpS87dliwzL_Cj130DeaM1IVYM6iQ8rEo/edit?tab=t.0) |
 
 ---
 ## 📋 Índice de Unidades

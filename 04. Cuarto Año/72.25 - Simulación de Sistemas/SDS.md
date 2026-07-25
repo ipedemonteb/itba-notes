@@ -12,10 +12,10 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso            | Link                                                                                                                                 |
-| :----------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| Apuntes            | [SDS - Apuntes](https://docs.google.com/document/d/1aeCbrjPz_F7UU5tCtYaiUhSs6oyN-Ra5sPNmfBJPAG8/edit?tab=t.0#heading=h.kclhjeeehjst) |
-| Trabajos Prácticos | [SDS - Trabajos Prácticos](https://drive.google.com/drive/folders/1WKrNu9J5tqaSHL0PCDiHcWOQzmxXfBPo)                                 |
+|      Recurso       |                                                                 Link                                                                 |
+| :----------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
+|      Apuntes       | [SDS - Apuntes](https://docs.google.com/document/d/1aeCbrjPz_F7UU5tCtYaiUhSs6oyN-Ra5sPNmfBJPAG8/edit?tab=t.0#heading=h.kclhjeeehjst) |
+| Trabajos Prácticos |                 [SDS - Trabajos Prácticos](https://drive.google.com/drive/folders/1WKrNu9J5tqaSHL0PCDiHcWOQzmxXfBPo)                 |
 
 ---
 ## 📋 Índice de Unidades
@@ -25,6 +25,8 @@ Docentes:
 - [[03. Autómatas Celulares]]
 - [[04. Simulaciones Dirigidas por Eventos]]
 - [[05. Simulaciones Dirigidas por el Paso Temporal]]
+- [[06. Sistemas Granulares]]
+- [[07. Simulación de Multitudes]]
 
 ---
 ## 📝 Trabajos Prácticos

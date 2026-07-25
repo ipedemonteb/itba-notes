@@ -10,12 +10,12 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso         | Link                                                                                                         |
-| :-------------- | :----------------------------------------------------------------------------------------------------------- |
-| Apuntes         | [PI - Apuntes](https://docs.google.com/document/d/1-dnJbNjdJKs85Ld8jtPwhAf2J8f4ZrmY6Vq1Y3OTpJ8/edit?tab=t.0) |
-| Guías           | [PI - Guías](https://drive.google.com/drive/u/0/folders/1ovmqgJ5eCU5K36r84XDy8Cj2Bt5gs9KJ)                   |
-| Exámenes Viejos | [PI - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/1dKxJpnREtka1X7PlHQlsQDUnKimLz-0c)         |
-| Recursos        | [PI - Useful](https://drive.google.com/drive/u/0/folders/1-28eakzg_3FqQfPPnMSPiUK0SQvGawWS)                  |
+|     Recurso     |                                                     Link                                                     |
+| :-------------: | :----------------------------------------------------------------------------------------------------------: |
+|     Apuntes     | [PI - Apuntes](https://docs.google.com/document/d/1-dnJbNjdJKs85Ld8jtPwhAf2J8f4ZrmY6Vq1Y3OTpJ8/edit?tab=t.0) |
+|      Guías      |          [PI - Guías](https://drive.google.com/drive/u/0/folders/1ovmqgJ5eCU5K36r84XDy8Cj2Bt5gs9KJ)          |
+| Exámenes Viejos |     [PI - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/1dKxJpnREtka1X7PlHQlsQDUnKimLz-0c)     |
+|    Recursos     |         [PI - Useful](https://drive.google.com/drive/u/0/folders/1-28eakzg_3FqQfPPnMSPiUK0SQvGawWS)          |
 
 ---
 ## 📋 Índice de Unidades

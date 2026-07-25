@@ -11,12 +11,12 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso       | Link                                                                                                                          |
-| :------------ | :---------------------------------------------------------------------------------------------------------------------------- |
-| Apuntes       | [Cloud - Apuntes](https://docs.google.com/document/d/1xal2TzXFU3Lq7BDj66Oe4fm8GcqucVQyUcpCnd5XW-8/edit?tab=t.0)               |
-| Guías         | [Cloud - Guías](https://drive.google.com/drive/u/0/folders/1XBbfsAQNEFYHSDOYvwZupEuDrZye6KOg)                                 |
+|    Recurso    |                                                             Link                                                              |
+| :-----------: | :---------------------------------------------------------------------------------------------------------------------------: |
+|    Apuntes    |        [Cloud - Apuntes](https://docs.google.com/document/d/1xal2TzXFU3Lq7BDj66Oe4fm8GcqucVQyUcpCnd5XW-8/edit?tab=t.0)        |
+|     Guías     |                 [Cloud - Guías](https://drive.google.com/drive/u/0/folders/1XBbfsAQNEFYHSDOYvwZupEuDrZye6KOg)                 |
 | Servicios AWS | [Cloud - Servicios AWS](https://docs.google.com/spreadsheets/d/1ksjFyjVvU0708jceAu50A1YfZrPRK5N1PYc-bap-1Vw/edit?gid=0#gid=0) |
-| Resumen       | [Cloud - Resumen](https://docs.google.com/document/d/1Ba3ac5F-Dg1kWp0CBmvmovprz2LdJlO0gj0x7YjJqUk/edit?tab=t.0)               |
+|    Resumen    |        [Cloud - Resumen](https://docs.google.com/document/d/1Ba3ac5F-Dg1kWp0CBmvmovprz2LdJlO0gj0x7YjJqUk/edit?tab=t.0)        |
 
 ---
 ## 📋 Índice de Unidades

@@ -14,12 +14,12 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso         | Link                                                                                                              |
-| :-------------- | :---------------------------------------------------------------------------------------------------------------- |
-| Apuntes         | [Derecho - Apuntes](https://docs.google.com/document/d/1QolPRiihc5kQonwix1u2ZwlEp6eUk5gpKrjkdzZg2yE/edit?tab=t.0) |
-| Resumen         | [Derecho - Resumen](https://docs.google.com/document/d/1kg9vzrmdGFeoCQazHA3LrsPG9Tv1MK2EtUwW6lj1_Dc/edit?tab=t.0) |
-| Exámenes Viejos | [Derecho - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/14lzbqHX2C3OGYn7jmE5AO-1mNxAzEpBR)         |
-| Parcialitos     | [Derecho - Parcialitos](https://drive.google.com/drive/u/0/folders/1WUlMyL2Eo_nSZklMLdj-mL02QYwxnwUP)             |
+|     Recurso     |                                                       Link                                                        |
+| :-------------: | :---------------------------------------------------------------------------------------------------------------: |
+|     Apuntes     | [Derecho - Apuntes](https://docs.google.com/document/d/1QolPRiihc5kQonwix1u2ZwlEp6eUk5gpKrjkdzZg2yE/edit?tab=t.0) |
+|     Resumen     | [Derecho - Resumen](https://docs.google.com/document/d/1kg9vzrmdGFeoCQazHA3LrsPG9Tv1MK2EtUwW6lj1_Dc/edit?tab=t.0) |
+| Exámenes Viejos |     [Derecho - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/14lzbqHX2C3OGYn7jmE5AO-1mNxAzEpBR)     |
+|   Parcialitos   |       [Derecho - Parcialitos](https://drive.google.com/drive/u/0/folders/1WUlMyL2Eo_nSZklMLdj-mL02QYwxnwUP)       |
 
 ---
 ## 📋 Índice de Unidades

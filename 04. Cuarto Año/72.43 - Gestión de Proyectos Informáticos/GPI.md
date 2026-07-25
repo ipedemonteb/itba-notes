@@ -10,11 +10,11 @@ Docentes:
 ---
 ## 🔗 Links Útiles
 
-| Recurso         | Link                                                                                                          |
-| :-------------- | :------------------------------------------------------------------------------------------------------------ |
-| Apuntes         | [GPI - Apuntes](https://docs.google.com/document/d/1TlZ0PArlDkwFE4BQViJUD4JfXd2AmMi7pRX4YiOcbfw/edit?tab=t.0) |
-| Exámenes Viejos | [GPI - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/1oLQMWIXKK0Fu9NRSxM75_8NbymO6HfCC)         |
-| Resumen         | [GPI - Resumen](https://docs.google.com/document/d/1kUU-R2iZdJgdv1yD37ScktPkBNZOtnslxEJfsWAml0g/edit?tab=t.0) |
+|     Recurso     |                                                     Link                                                      |
+| :-------------: | :-----------------------------------------------------------------------------------------------------------: |
+|     Apuntes     | [GPI - Apuntes](https://docs.google.com/document/d/1TlZ0PArlDkwFE4BQViJUD4JfXd2AmMi7pRX4YiOcbfw/edit?tab=t.0) |
+| Exámenes Viejos |     [GPI - Exámenes Viejos](https://drive.google.com/drive/u/0/folders/1oLQMWIXKK0Fu9NRSxM75_8NbymO6HfCC)     |
+|     Resumen     | [GPI - Resumen](https://docs.google.com/document/d/1kUU-R2iZdJgdv1yD37ScktPkBNZOtnslxEJfsWAml0g/edit?tab=t.0) |
 
 ---
 ## 📋 Índice de Unidades
