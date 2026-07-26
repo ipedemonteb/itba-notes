@@ -27,6 +27,7 @@ Docentes:
 - [[05. Proposiciones]]
 - [[06. Funciones y Macros]]
 - [[07. Arreglos]]
+- [[08. Punteros]]
 
 ---
 ## 📝 Trabajos Prácticos
