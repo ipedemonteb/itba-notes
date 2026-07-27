@@ -20,7 +20,7 @@ Docentes:
 ---
 ## 📋 Índice de Unidades
 
-- [[01. Funciones en C]]
+- [[01. Programas]]
 - [[02. Datos]]
 - [[03. Variables]]
 - [[04. Operadores]]
@@ -28,6 +28,8 @@ Docentes:
 - [[06. Funciones y Macros]]
 - [[07. Arreglos]]
 - [[08. Punteros]]
+- [[09. Strings]]
+- [[10. Memoria]]
 
 ---
 ## 📝 Trabajos Prácticos
