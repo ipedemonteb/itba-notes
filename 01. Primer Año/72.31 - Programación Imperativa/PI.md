@@ -30,6 +30,10 @@ Docentes:
 - [[08. Punteros]]
 - [[09. Strings]]
 - [[10. Memoria]]
+- [[11. Estructuras]]
+- [[12. Recursividad]]
+- [[13. Listas]]
+- [[14. Punteros a Función]]
 
 ---
 ## 📝 Trabajos Prácticos
