@@ -34,6 +34,7 @@ Docentes:
 - [[12. Recursividad]]
 - [[13. Listas]]
 - [[14. Punteros a Función]]
+- [[15. Tipo Abstracto de Datos]]
 
 ---
 ## 📝 Trabajos Prácticos
