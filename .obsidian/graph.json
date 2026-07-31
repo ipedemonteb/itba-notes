@@ -69,6 +69,13 @@
         "a": 1,
         "rgb": 14062428
       }
+    },
+    {
+      "query": "path:\"02. Segundo Año/72.33 - Programación Orientada a Objetos\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 10868316
+      }
     }
   ],
   "collapse-display": false,
@@ -81,6 +88,6 @@
   "repelStrength": 9.98611111111111,
   "linkStrength": 1,
   "linkDistance": 275,
-  "scale": 0.12560737941388356,
+  "scale": 0.8975481607522623,
   "close": true
 }
