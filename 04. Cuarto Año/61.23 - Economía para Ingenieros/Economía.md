@@ -29,4 +29,8 @@ Docentes:
 - [[04. Competencia Perfecta]]
 - [[05. Competencia Imperfecta]]
 - [[06. Macroeconomía]]
+- [[07. Oferta y Demanda Agregada]]
+- [[08. Política Fiscal]]
+- [[09. Política Monetaria]]
+- [[10. Sector Externo]]
 
