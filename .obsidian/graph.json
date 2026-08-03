@@ -69,6 +69,13 @@
         "a": 1,
         "rgb": 14062428
       }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/72.42 - Programación de Objetos Distribuidos\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6079190
+      }
     }
   ],
   "collapse-display": false,
@@ -82,5 +89,5 @@
   "linkStrength": 1,
   "linkDistance": 275,
   "scale": 0.2644624076466941,
-  "close": true
+  "close": false
 }
