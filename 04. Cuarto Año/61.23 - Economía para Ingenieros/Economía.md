@@ -26,4 +26,7 @@ Docentes:
 - [[04. Cuarto Año/61.23 - Economía para Ingenieros/Teoría/01. Introducción|01. Introducción]]
 - [[02. Oferta y Demanda]]
 - [[03. Producción y Oferta]]
+- [[04. Competencia Perfecta]]
+- [[05. Competencia Imperfecta]]
+- [[06. Macroeconomía]]
 
