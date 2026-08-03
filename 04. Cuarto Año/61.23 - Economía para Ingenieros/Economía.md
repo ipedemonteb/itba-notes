@@ -33,4 +33,7 @@ Docentes:
 - [[08. Política Fiscal]]
 - [[09. Política Monetaria]]
 - [[10. Sector Externo]]
+- [[11. Contabilidad]]
+- [[12. Valor Tiempo del Dinero]]
+- [[13. Evaluación de Proyectos]]
 
