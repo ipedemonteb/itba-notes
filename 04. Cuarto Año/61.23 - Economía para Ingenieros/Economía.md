@@ -24,5 +24,6 @@ Docentes:
 ## 📋 Índice de Unidades
 
 - [[04. Cuarto Año/61.23 - Economía para Ingenieros/Teoría/01. Introducción|01. Introducción]]
-- 
+- [[02. Oferta y Demanda]]
+- [[03. Producción y Oferta]]
 
