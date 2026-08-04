@@ -19,7 +19,6 @@ Docentes:
 | Exámenes Viejos |                       [Economía - Exámenes Viejos](https://drive.google.com/drive/folders/1yDtDQJhTF2WNg7BZmQE_CfkcmxwKLkJk)                        |
 |   Calculadora   |           [Economía - Calculadora](https://docs.google.com/spreadsheets/d/171dMiF3NmbJkV02PPKsHtlgLzEF9HlEAiEwIQlIOxZs/edit?gid=0#gid=0)            |
 
-
 ---
 ## 📋 Índice de Unidades
 
