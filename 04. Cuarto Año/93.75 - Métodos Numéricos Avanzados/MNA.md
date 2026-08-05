@@ -21,3 +21,5 @@ Docentes:
 
 - [[01. Números Complejos]]
 - [[02. Espacios Vectoriales]]
+- [[03. Análisis de Fourier]]
+- [[04. Ecuaciones Diferenciales]]
