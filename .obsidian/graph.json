@@ -76,6 +76,27 @@
         "a": 1,
         "rgb": 6079190
       }
+    },
+    {
+      "query": "path:\"05. Quinto Año/72.20 - Redes de Infromación\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14069084
+      }
+    },
+    {
+      "query": "path:\"04. Cuarto Año/93.75 - Métodos Numéricos Avanzados\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 13948508
+      }
+    },
+    {
+      "query": "path:\"02. Segundo Año/72.33 - Programación Orientada a Objetos\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6080726
+      }
     }
   ],
   "collapse-display": false,
@@ -88,6 +109,6 @@
   "repelStrength": 9.98611111111111,
   "linkStrength": 1,
   "linkDistance": 275,
-  "scale": 0.4837723808895747,
+  "scale": 0.6033945309862133,
   "close": true
 }
