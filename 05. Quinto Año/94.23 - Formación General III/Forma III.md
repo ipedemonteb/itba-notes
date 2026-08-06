@@ -1,0 +1,20 @@
+---
+Código: "94.23"
+Nombre: Formación General III
+Cursada: 2C-2026
+Créditos: "3"
+Docentes:
+  - Cecilia Angelica Pedro
+  - Romina Calamante
+---
+## 🔗 Links Útiles
+
+| Recurso |                                                        Link                                                         |
+| :-----: | :-----------------------------------------------------------------------------------------------------------------: |
+| Apuntes | [Forma III - Apuntes](https://docs.google.com/document/d/1V4qlt_QwC-12I6C_CYpyFZDwuLr59jg_eiFQiWac-XU/edit?tab=t.0) |
+
+---
+## 📋 Índice de Unidades
+
+- [[05. Quinto Año/72.20 - Redes de Infromación/Teoría/01. Introducción|01. Introducción]]
+- 
