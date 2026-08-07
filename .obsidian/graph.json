@@ -111,6 +111,13 @@
         "a": 1,
         "rgb": 6073814
       }
+    },
+    {
+      "query": "path:\"05. Quinto Año/12.83 - Seguridad Ocupacional y Ambiental\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14077020
+      }
     }
   ],
   "collapse-display": true,
@@ -123,6 +130,6 @@
   "repelStrength": 10.4704861111111,
   "linkStrength": 1,
   "linkDistance": 244,
-  "scale": 0.4683217550373943,
+  "scale": 0.502662066316435,
   "close": true
 }
