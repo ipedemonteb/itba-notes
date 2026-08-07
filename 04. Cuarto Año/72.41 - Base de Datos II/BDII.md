@@ -22,6 +22,9 @@ Docentes:
 
 - [[04. Cuarto Año/72.41 - Base de Datos II/Teoría/01. Introducción|01. Introducción]]
 - [[02. Modelo de Entidades y Relaciones]]
+- [[03. Vistas]]
+- [[04. Consultas]]
+- [[05. Restricciones de Integridad]]
 
 ---
 ## 📝 Trabajos Prácticos
