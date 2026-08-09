@@ -6,5 +6,7 @@
     "image-center",
     "bullets"
   ],
-  "cssTheme": ""
+  "cssTheme": "Cupertino",
+  "baseFontSize": 16,
+  "nativeMenus": true
 }
