@@ -25,6 +25,7 @@ Docentes:
 - [[03. Vistas]]
 - [[04. Consultas]]
 - [[05. Restricciones de Integridad]]
+- [[06. Seguridad Transaccional]]
 
 ---
 ## 📝 Trabajos Prácticos
