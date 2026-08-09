@@ -1,3 +1,6 @@
 {
-  "minimal-style@@bases-toolbar-opacity": 1
+  "minimal-style@@bases-toolbar-opacity": 1,
+  "cupertino@@adaptive-mode-off": true,
+  "cupertino@@colorful-frame": false,
+  "cupertino@@zoom-off": true
 }

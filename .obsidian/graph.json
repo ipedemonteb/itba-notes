@@ -118,6 +118,13 @@
         "a": 1,
         "rgb": 14077020
       }
+    },
+    {
+      "query": "path:\"06. Electivas/73.69 - Large Language Models\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6053078
+      }
     }
   ],
   "collapse-display": true,
@@ -130,6 +137,6 @@
   "repelStrength": 10.4704861111111,
   "linkStrength": 1,
   "linkDistance": 244,
-  "scale": 0.31427058727727136,
+  "scale": 0.3164015420267892,
   "close": true
 }
