@@ -30,6 +30,9 @@ Docentes:
 - [[08. MongoDB]]
 - [[09. Cassandra]]
 - [[11. Redis]]
+- [[12. HBase]]
+- [[13. DynamoDB]]
+- [[14. PostGIS]]
 
 ---
 ## 📝 Trabajos Prácticos
