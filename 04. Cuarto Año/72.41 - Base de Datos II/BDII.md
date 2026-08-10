@@ -26,6 +26,10 @@ Docentes:
 - [[04. Consultas]]
 - [[05. Restricciones de Integridad]]
 - [[06. Seguridad Transaccional]]
+- [[07. Bases de Datos NoSQL]]
+- [[08. MongoDB]]
+- [[09. Cassandra]]
+- [[11. Redis]]
 
 ---
 ## 📝 Trabajos Prácticos
