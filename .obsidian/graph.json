@@ -125,6 +125,13 @@
         "a": 1,
         "rgb": 6053078
       }
+    },
+    {
+      "query": "path:\"03. Tercer Año/72.07 - Protocolos de Comunicación\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6053037
+      }
     }
   ],
   "collapse-display": true,
@@ -137,6 +144,6 @@
   "repelStrength": 10.4704861111111,
   "linkStrength": 1,
   "linkDistance": 244,
-  "scale": 0.29831597281566136,
+  "scale": 0.4968874279242084,
   "close": true
 }
