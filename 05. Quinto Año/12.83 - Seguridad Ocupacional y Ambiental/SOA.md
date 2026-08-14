@@ -16,4 +16,5 @@ Docentes:
 ## 📋 Índice de Unidades
 
 - [[01. Seguridad Ocupacional]]
+- [[02. Barreras]]
 - 
