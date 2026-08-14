@@ -139,6 +139,13 @@
         "a": 1,
         "rgb": 14063452
       }
+    },
+    {
+      "query": "path:\"03. Tercer Año/72.38 - Proyecto de Aplicaciones Web\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 11261532
+      }
     }
   ],
   "collapse-display": true,
@@ -151,6 +158,6 @@
   "repelStrength": 10.4704861111111,
   "linkStrength": 1,
   "linkDistance": 244,
-  "scale": 0.6126867556490078,
+  "scale": 0.4952113402093565,
   "close": true
 }
