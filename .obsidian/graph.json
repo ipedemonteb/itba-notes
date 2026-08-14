@@ -132,6 +132,13 @@
         "a": 1,
         "rgb": 6053037
       }
+    },
+    {
+      "query": "path:\"05. Quinto Año/94.23 - Formación General III\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14063452
+      }
     }
   ],
   "collapse-display": true,
@@ -144,6 +151,6 @@
   "repelStrength": 10.4704861111111,
   "linkStrength": 1,
   "linkDistance": 244,
-  "scale": 0.3159532079609163,
+  "scale": 0.882512012332949,
   "close": true
 }
