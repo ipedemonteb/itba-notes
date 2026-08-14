@@ -34,6 +34,7 @@ Docentes:
 - [[07. Routing]]
 - [[08. Capa de Enlace]]
 - [[09. SSH]]
+- [[10. Programación en Sockets]]
 
 ---
 ## 📝 Trabajos Prácticos
