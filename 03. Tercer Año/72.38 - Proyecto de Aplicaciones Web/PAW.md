@@ -24,6 +24,7 @@ Docentes:
 
 - [[03. Tercer Año/72.38 - Proyecto de Aplicaciones Web/Teoría/01. Introducción|01. Introducción]]
 - [[02. Contexto Histórico]]
+- [[03. Frontend]]
 
 ---
 ## 📝 Trabajos Prácticos
