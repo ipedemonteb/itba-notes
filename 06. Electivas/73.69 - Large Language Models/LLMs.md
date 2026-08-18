@@ -17,6 +17,7 @@ Docentes:
 ## 📋 Índice de Unidades
 
 - [[01. Transformers]]
+- [[02. Transformación de Texto a Embeddings]]
 
 ---
 ## 📝 Trabajos Prácticos
