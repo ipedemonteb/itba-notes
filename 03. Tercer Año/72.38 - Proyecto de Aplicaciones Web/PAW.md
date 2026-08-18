@@ -26,6 +26,8 @@ Docentes:
 - [[02. Contexto Histórico]]
 - [[03. Frontend]]
 - [[04. Spring]]
+- [[05. Unit Testing]]
+- [[06. Formularios]]
 
 ---
 ## 📝 Trabajos Prácticos
