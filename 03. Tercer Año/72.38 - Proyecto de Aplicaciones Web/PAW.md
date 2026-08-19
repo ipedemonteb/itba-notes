@@ -29,6 +29,9 @@ Docentes:
 - [[05. Unit Testing]]
 - [[06. Formularios]]
 - [[07. Gestión de Permisos y Accesos]]
+- [[08. Aspect Oriented Programming]]
+- [[09. Hibernate]]
+- [[10. Single Page Applications]]
 
 ---
 ## 📝 Trabajos Prácticos
