@@ -28,6 +28,7 @@ Docentes:
 - [[04. Spring]]
 - [[05. Unit Testing]]
 - [[06. Formularios]]
+- [[07. Gestión de Permisos y Accesos]]
 
 ---
 ## 📝 Trabajos Prácticos
