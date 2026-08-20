@@ -18,6 +18,8 @@ Docentes:
 
 - [[01. Transformers]]
 - [[02. Transformación de Texto a Embeddings]]
+- [[03. Transfer Learning & Finetuning]]
+- 
 
 ---
 ## 📝 Trabajos Prácticos
