@@ -32,6 +32,7 @@ Docentes:
 - [[08. Aspect Oriented Programming]]
 - [[09. Hibernate]]
 - [[10. Single Page Applications]]
+- [[11. API REST]]
 
 ---
 ## 📝 Trabajos Prácticos
