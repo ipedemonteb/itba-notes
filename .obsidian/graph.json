@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": false,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "path:\"06. Electivas/82.08 - Cloud Computing\"  ",
@@ -155,9 +155,9 @@
   "lineSizeMultiplier": 1,
   "collapse-forces": false,
   "centerStrength": 0.497743055555556,
-  "repelStrength": 10.4704861111111,
-  "linkStrength": 1,
+  "repelStrength": 10.1991123905482,
+  "linkStrength": 0.417853697293003,
   "linkDistance": 244,
-  "scale": 0.46694992645672695,
+  "scale": 0.20304204862966982,
   "close": true
 }
