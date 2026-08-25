@@ -23,6 +23,7 @@ Docentes:
 ## 📋 Índice de Unidades
 
 - [[01. Binarios]]
+- [[02. Procesadores y Lenguaje Assembler]]
 
 ---
 ## 📝 Trabajos Prácticos

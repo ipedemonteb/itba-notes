@@ -9,5 +9,6 @@
     "margin": "0",
     "downscalePercent": 100
   },
-  "defaultViewMode": "source"
+  "defaultViewMode": "source",
+  "promptDelete": false
 }

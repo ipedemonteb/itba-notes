@@ -4,7 +4,8 @@
     "table",
     "justify",
     "image-center",
-    "bullets"
+    "bullets",
+    "mermaid"
   ],
   "cssTheme": "Cupertino",
   "baseFontSize": 16,
