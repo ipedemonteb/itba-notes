@@ -22,4 +22,5 @@ Docentes:
 - [[02. Tecnología de Centro de Cómputos y Oficinas]]
 - [[03. Redes]]
 - [[04. Protocolos de Ruteo]]
+- [[05. Redes WAN]]
 
