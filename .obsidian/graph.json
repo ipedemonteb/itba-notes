@@ -78,7 +78,7 @@
       }
     },
     {
-      "query": "path:\"05. Quinto Año/72.20 - Redes de Infromación\"  ",
+      "query": "path:\"05. Quinto Año/72.20 - Redes de Información\"  ",
       "color": {
         "a": 1,
         "rgb": 14069084
@@ -165,6 +165,6 @@
   "repelStrength": 10.1015833380625,
   "linkStrength": 0.694568980194087,
   "linkDistance": 244,
-  "scale": 0.22067964069819004,
+  "scale": 0.21986433283537285,
   "close": true
 }
