@@ -1,11 +1,11 @@
 {
   "collapse-filter": false,
-  "search": "-file:excalidraw",
+  "search": "",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": false,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "path:\"06. Electivas/82.08 - Cloud Computing\"  ",
@@ -161,10 +161,10 @@
   "nodeSizeMultiplier": 0.997907986111111,
   "lineSizeMultiplier": 1,
   "collapse-forces": false,
-  "centerStrength": 0.497743055555556,
-  "repelStrength": 10.1015833380625,
+  "centerStrength": 0.500938281901585,
+  "repelStrength": 10.4357798165138,
   "linkStrength": 0.694568980194087,
   "linkDistance": 244,
-  "scale": 0.3000254397077124,
+  "scale": 0.1796032767388711,
   "close": true
 }
