@@ -24,6 +24,7 @@ Docentes:
 
 - [[01. Binarios]]
 - [[02. Procesadores y Lenguaje Assembler]]
+- [[03. Assembler y C]]
 
 ---
 ## 📝 Trabajos Prácticos
