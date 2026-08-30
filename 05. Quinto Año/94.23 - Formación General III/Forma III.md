@@ -21,3 +21,4 @@ Docentes:
 - [[03. El Factor Tiempo]]
 - [[04. Estrategia]]
 - [[05. Estructura y Funciones]]
+- [[06. Modelo Factoreal]]
