@@ -23,4 +23,5 @@ Docentes:
 - [[03. Redes]]
 - [[04. Protocolos de Ruteo]]
 - [[05. Redes WAN]]
+- [[06. Internet]]
 
