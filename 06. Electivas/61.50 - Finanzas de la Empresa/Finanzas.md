@@ -21,3 +21,4 @@ Docentes:
 - [[02. Análisis Financiero]]
 - [[03. Acciones y Bonos]]
 - [[04. Teoría de Cartera]]
+- [[05. Planificación Financiera]]
