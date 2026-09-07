@@ -19,3 +19,4 @@ Docentes:
 - [[02. Barreras]]
 - [[03. Riesgos]]
 - [[04. Aseguradoras de Riesgo del Trabajo]]
+- [[05. Accidentes]]
