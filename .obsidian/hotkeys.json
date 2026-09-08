@@ -7,5 +7,14 @@
       ],
       "key": "8"
     }
+  ],
+  "editor:toggle-numbered-list": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "7"
+    }
   ]
 }
