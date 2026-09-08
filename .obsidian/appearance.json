@@ -5,7 +5,8 @@
     "justify",
     "image-center",
     "bullets",
-    "mermaid"
+    "mermaid",
+    "pdf-callout-fix"
   ],
   "cssTheme": "Cupertino",
   "baseFontSize": 16,

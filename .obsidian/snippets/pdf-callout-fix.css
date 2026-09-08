@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Fix para exportación a PDF (Obsidian / Tema Cupertino)
+   Resuelve:
+   1. Cajas / sombras grises rectangulares alrededor de los callouts y bloques pre
+   2. Línea horizontal clarita / costura en la parte superior del recuadro
+   ========================================================================== */
+
+@media print {
+  /* 1. Eliminar sombras que Chromium rasteriza como cajas grises con esquinas rectas */
+  .callout,
+  body:is(.mod-macos, .adaptive-mode-off) .callout:not([data-callout="note-toolbar"]),
+  .markdown-rendered pre,
+  body:is(.mod-macos, .adaptive-mode-off) .markdown-rendered pre {
+    box-shadow: none !important;
+  }
+
+  /* 2. Reemplazar el degradado por un fondo plano, usando la misma sintaxis relativa que el tema */
+  body:is(.mod-macos, .adaptive-mode-off) .callout:not([data-callout="note-toolbar"]) {
+    background: hsl(from var(--callout-color) h s l / 0.1) !important;
+  }
+}
