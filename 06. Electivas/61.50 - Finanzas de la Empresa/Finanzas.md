@@ -22,3 +22,4 @@ Docentes:
 - [[03. Acciones y Bonos]]
 - [[04. Teoría de Cartera]]
 - [[05. Planificación Financiera]]
+- [[06. Colocación de Ahorros]]
