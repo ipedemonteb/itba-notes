@@ -21,6 +21,7 @@ Docentes:
 - [[03. Transfer Learning & Finetuning]]
 - [[04. Reasoning Models]]
 - [[05. Desarrollo en Producción]]
+- [[06. AI Safety]]
 
 ---
 ## 📝 Trabajos Prácticos
