@@ -189,7 +189,7 @@ Aparte de las funciones operativas y de apoyo, existen otras tres también de gr
 - **Funciones de Resguardo**: cumplen las tareas de control de las anteriores. Ejemplos: auditoría interna, calidad de procesos y productos, preparación de presupuestos y cuentas, control de tendencias de gastos, etc.
 
 Una **estructura organizacional** es el sistema de relacionamiento entre roles, o sea, posiciones que mantienen las personas al trabajar juntas y donde se establecen los límites dentro de los cuales la gente se relaciona entre sí. Como todavía no sabemos cuántos niveles tiene esta organización, en nuestra **estructura universal molécula** vamos a tener un **estrato N** a partir de la figura del PRE, que es desde donde vamos a empezar a medir la organización. Además, vamos a tener un **estrato N-1**, que serán los segmentos que la organización va a necesitar para cumplir con su misión organizacional.
-![[Pasted image 20260823191215.png|418]]
+![[Pasted image 20260823191215.png|center|418]]
 
 ---
 ## Modelo Factoreal
