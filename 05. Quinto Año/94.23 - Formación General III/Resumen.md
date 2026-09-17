@@ -1,6 +1,6 @@
 ## La Organización Natural
 
-La **Teoría de la Organización Natural (TON)** tiene como propósito el estudio de las organizaciones que componen ese estamento. Se centra en la naturaleza humana y las leyes que la investigación identifica. Las organizaciones se ubican en una zona intermedia de la sociedad, porque no se conforman por trabajadores independientes, sino de varios actores que permiten que se conforme como tal. Una primera diferencia que podemos establecer entre organizaciones y trabajadores independientes es la existencia de estos actores. Los trabajadores brindan un servicio a partir de conocimiento o un título y a partir de eso cobran honorarios.
+La **Teoría de la Organización Natural (TON)** se centra en la naturaleza humana y las leyes que la investigación identifica. Las organizaciones se ubican en una zona intermedia de la sociedad, porque no se conforman por trabajadores independientes, sino de varios actores que permiten que se conforme como tal. Una primera diferencia que podemos establecer entre organizaciones y trabajadores independientes es la existencia de estos actores. Los trabajadores brindan un servicio a partir de conocimiento o un título y a partir de eso cobran honorarios.
 
 Para conformar una organización, lo mínimo que necesitamos son dos personas que tengan una idea que cubra una necesidad de mercado o sea una innovación. 
 - **Asociación**: Las personas que financian o que aportan capitales para que la idea sea implementada.
@@ -89,8 +89,8 @@ El **tiempo** es concebido por las personas como un espacio, donde los sucesos s
 3. Futuro
 
 En Grecia:
-- **Cronos** es la **cantidad** de tiempo: el reloj, el calendario, los segundos que corren sin importar lo que hagas. Es lineal e igual para todos.
-- **Kairós** es la **calidad** del tiempo: el momento justo, el tiempo que tarda algo en madurar o estar listo. Es personal y único para cada proceso.
+- **Cronos** es la cantidad de tiempo: el reloj, el calendario, los segundos que corren sin importar lo que hagas. Es lineal e igual para todos.
+- **Kairós** es la calidad del tiempo: el momento justo, el tiempo que tarda algo en madurar o estar listo. Es personal y único para cada proceso.
 
 La **definición del rol** dentro de una organización consiste en establecer cuál es la necesidad de trabajo que viene asociado a ese rol, que es distinto a la persona que lo cumplirá. Para un rol, se debe definir cuál es su **nivel de trabajo (NdT)**, es decir, cuáles son las acciones o tareas incluidas dentro de él. Queda definido por el nivel jerárquico y la función que desempeña el rol en la organización, despojado de la persona.
 
