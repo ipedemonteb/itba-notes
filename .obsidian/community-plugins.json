@@ -9,5 +9,6 @@
   "linux-image-rendering-fix",
   "obsidian-icon-folder",
   "obsidian-tikzjax",
-  "obsidian-excalidraw-plugin"
+  "obsidian-excalidraw-plugin",
+  "better-export-pdf"
 ]
