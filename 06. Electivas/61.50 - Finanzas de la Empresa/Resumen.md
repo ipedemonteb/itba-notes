@@ -24,7 +24,6 @@ Donde:
 - $Ke$ (Acciones ordinarias / Equity)
 
 Con esto, ahora podríamos pensar cuánto valor se gana en un período de tiempo. La métrica se conoce como **Economic Value Added (EVA)**. Se usa al principio del período para presupuestar o al final para controlar y comparar las espectativas. 
-
 $$EVA= +UON-WACC\times TOC$$
 Donde:
 - $UON$: Utilidad Operativa Neta y se refiere a las utilidades antes de restarles intereses pero después de descontarles los impuestos a las ganancias. El costo de intereses se incluye en el WACC.
@@ -158,6 +157,11 @@ Donde:
 - $n$: cantidad total de períodos comprendidos desde la fecha actual hasta el vencimiento final.
 
 El **rendimiento de un bono** se mide mediante la **Tasa Interna de Retorno (TIR)**, conocida en el ámbito financiero internacional como Yield to Maturity (YTM). A diferencia de la valuación donde se busca determinar el valor del activo a partir de una tasa dada, en este caso el precio de mercado es un dato conocido y la TIR representa la verdadera incógnita a despejar. La fórmula matemática para calcular el rendimiento del bono es: $$P = \sum_{t=1}^{n} \frac{C_t}{(1 + \text{TIR})^t}$$
+Los bonos pueden emitirse:
+- **A la par** (Tasa Cupón = YTM → Precio = Valor Nominal): El bono paga exactamente el interés que el mercado exige.
+- **Sobre la par** (Tasa Cupón > YTM → Precio > Valor Nominal): El cupón del bono es más tentador que el mercado, por lo que cotiza más caro.
+- **Bajo la par** (Tasa Cupón < YTM → Precio < Valor Nominal): El cupón del bono se quedó corto frente al mercado, por lo que debe venderse más barato para ser atractivo.
+
 La **duration** de un bono representa el promedio ponderado del tiempo que tarda un inversor en recuperar el dinero invertido, funcionando como un punto de equilibrio en el eje temporal donde se conceptualiza la concentración de todos los flujos de fondos futuros.
 
 ---
