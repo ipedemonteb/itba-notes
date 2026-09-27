@@ -4,13 +4,169 @@ La **capa física** es el soporte físico para entablar comunicaciones. El **med
 
 El **Unshielded Twisted Pair (UTP)** consiste en dos hilos de un material de cobre que funcionan de manera diferencial. Es muy poco inmune al ruido, ya que no tiene la malla que veíamos antes. Para mejorar la supervivencia se lo trenza.
 
-La **fibra óptica** consiste en un filamento de vidrio del grosor de un cabello o de un polímero con características similares al vidrio de la frecuencia a la que transmite.
+La **fibra óptica** consiste en un filamento de vidrio del grosor de un cabello o de un polímero con características similares al vidrio de la frecuencia a la que transmite. El transporte de información se realiza según dos modos:
+- **Multimodo**: Se utiliza para cortas distancias (menores a 1Km), y se idetnfican mediante una cobertura exterior de color naranja.
+- **Monomodo**: Se utiliza para distancias largas (mayores a 1Km), y se identifican mediante una cobertura exterior de color amarillo.
 
+Los **cables submarinos** son la misma fibra monomodo que vimos recién pero con embañado mecánico que, según la zona a instalar, es más o menos gordo. 
 
+Los **medios no guiados** transportan ondas electromagnéticas sin usar un conductor físico, propagando la señal a través del aire o del vacío a la velocidad de la luz. El espectro para medios no guiados se divide en tres rangos principales según el uso y comportamiento de la onda:
+- **Microondas ($2\text{ GHz}$ a $40\text{ GHz}$):** Se utilizan para enlaces punto a punto terrestres (entre torres de telecomunicación) o enlaces satelitales, requiriendo alineación precisa y línea de vista despejada.
+- **Ondas Radioeléctricas ($30\text{ MHz}$ a $1\text{ GHz}$):** Tienen un comportamiento omnidireccional, lo que significa que la señal se propaga en todas direcciones. Por esta razón, son ideales para esquemas de difusión masiva (broadcast), como la radio FM y la televisión abierta.
+- **Infrarrojo ($3 \times 10^{11}\text{ Hz}$ a $2 \times 10^{14}\text{ Hz}$):** No pueden atravesar paredes ni objetos sólidos, por lo que su uso queda relegado a aplicaciones locales de corto alcance y dentro de entornos cerrados, como mandos a distancia.
 
+Los **radioenlaces de microondas terrestres** son sistemas de comunicación inalámbrica punto a punto que utilizan ondas electromagnéticas de alta frecuencia para transmitir datos a través de la atmósfera.
 
+En las **comunicaciones inalámbricas por satélite**, los sistemas se clasifican según la altitud de su órbita con respecto a la Tierra:
+- **GEO (Geostationary Earth Orbit):** Aporx. $36.000\text{ km}$. El periodo orbital coincide con la velocidad de rotación terrestre y por ende permanece en una posición fija. Facilita la comunicación sin necesidad de mover las antenas receptoras.
+- **MEO (Medium Earth Orbit):** Entre $10.000\text{ km}$ y $20.000\text{ km}$. No giran a la misma velocidad angular que la Tierra y son menos comunes para telecomunicaciones convencionales.
+- **LEO (Low Earth Orbit):** De $5.000\text{ km}$ o menos. Al estar tan cerca de la Tierra, se desplazan a gran velocidad y requieren antenas motorizadas con capacidad de seguimiento o la creación de constelaciones.
 
+Las **VSAT (Very Small Aperture Terminals)** utilizan antenas parabólicas mucho más compactas, de entre $1\text{ m}$ y $2\text{ m}$ de diámetro (las otras eran muy caras). No cuentan con la potencia suficiente para comunicarse directamente entre sí, y por ende, el enlace siempre debe realizarse mediante el esquema: VSAT $\rightarrow$ Satélite $\rightarrow$ VSAT. Para superar la falta de potencia de las antenas pequeñas y permitir la comunicación entre diferentes terminales: VSAT origen $\rightarrow$ Satélite $\rightarrow$ Hub $\rightarrow$ Satélite $\rightarrow$ VSAT destino.
 
+El **Belio (B)** es una unidad logarítmica que expresa la relación entre dos magnitudes del mismo tipo, como la presión o la potencia respecto a un valor de referencia:
+$$\text{Belio} = \log_{10}\left(\frac{\text{Magnitud}}{\text{Referencia}}\right)$$
+En sistemas de transmisión, la ganancia o pérdida lineal en veces se define como la razón entre la potencia de salida ($P_o$) y la potencia de entrada ($P_i$):
+$$\text{Ganancia (veces)} = \frac{P_o}{P_i}$$
+
+---
+## Cableado Estructurado
+
+El **cableado estructurado** es un tendido de cables que provee voz, datos, video, audio, seguridad, control y monitoreo, en cualquier puesto de trabajo. El objetivo es justamente evitar el cableado independiente o propietario por cada servicio (telefonía, datos, monitoreo, etc.) y por proveedor.
+
+El tramo que va desde la toma de usuario en la pared hasta el rack o armario de telecomunicaciones de esa misma planta, es el **tendido horizontal** (con un límite estricto de $100\text{m}$ por canal). Para interconectar los diferentes pisos con la sala de comunicaciones principal (MDF o Data Center), se utiliza el **tendido vertical**, el cual requiere medios de mayor capacidad y ancho de banda.
+
+Historicamente, la infraestructura de cableado en edificios pasó por dos etapas:
+- **Instalaciones Heterogéneas:** Redes separadas para voz y datos. 
+- **Instalaciones Homogéneas:** Red unificada bajo un mismo estándar.
+
+El cable **Unshielded Twisted Pair (UTP)** que vimos previamente es el medio de cobre estándar utilizado en redes LAN y cableado horizontal. El **cable directo** se utiliza para interconectar dispositivos que operan en diferentes capas de red, como un servidor a un switch o un switch a un router. En cambio, el **cable cruzado** se emplea tradicionalmente para conectar dispositivos que operan en el mismo nivel o que comparten la misma configuración de pines de transmisión y recepción.
+
+Los **conectores** de cobre más comunes son el **RJ-11**, utilizado históricamente en telefonía analógica con 4 o 6 posiciones, y el **RJ-45**, el estándar indiscutido para redes de datos (Ethernet).
+
+El **rack** o gabinete de telecomunicaciones es la estructura metálica estandarizada diseñada para alojar y organizar los equipos de red, paneles de conexiones (patch panels), servidores y sistemas de energía (UPS). La altura útil y la capacidad de los racks se miden en **Unidades de Rack (U o RU)**. Todos los equipos para montaje en rack (como un switch estándar de $1\text{U}$ o un servidor de $2\text{U}$ a $4\text{U}$) respetan esta modularidad vertical y los orificios normalizados en los rieles.
+
+La **patchera de cobre (Patch Panel)** es el elemento pasivo modular (típicamente de $1\text{U}$ o $2\text{U}$ con 24 o 48 puertos) que sirve como punto de terminación y ordenamiento de todo el cableado horizontal que llega al rack. En su vista posterior, los cables UTP rígidos que vienen desde los puestos de trabajo se conectan de forma directa y permanente sin ficha RJ-45. En su vista frontal, cada cable queda expuesto a través de una boca hembra RJ-45 numerada y rotulada.  La patchera se interconecta a los switches mediante cables de parcheo cortos y flexibles  llamados **patch cords**. 
+
+La **roseta** es la caja plástica superficial ubicada en el área de trabajo donde finaliza el extremo de usuario del cableado horizontal. En su interior aloja uno o más conectores hembra, sirviendo como punto de interfaz físico y estandarizado para que el usuario conecte su computadora, teléfono IP o dispositivo de red.
+
+El **piso técnico (Raised Floor)** es una estructura modular sobreelevada mediante pedestales metálicos sobre la losa original, creando una cámara de aire subterránea por donde pueden realizarse tendidos de cables. Las **bandejas de cableado aéreo (Overhead Cabling Trays)**, por el contrario, consisten en sistemas de rejillas o canalizaciones metálicas suspendidas del techo o ancladas por encima de la parte superior de los racks.
+
+La **montante** es el conducto o pozo vertical de la infraestructura de un edificio destinado al paso y soporte ordenado de los cables de datos y telecomunicaciones entre los distintos pisos. Permite interconectar los armarios de distribución de cada planta con la sala principal de equipos de forma protegida.
+
+En un cableado estructurado como el de la imagen, podemos distinguir las siguientes partes:
+![[Pasted image 20260813182554.png|center|209]]
+1. **Conexión al Dispositivo Final**: el dispositivo es lo que conocemos como estación de trabajo, y puede ser una desktop, una laptop, etc. Se conoce como Work Area (WA). Lo que nos importa es conocer qué cantidad de estaciones de trabajo vamos a necesitar. Contemplan espacios de entre $4\text{m}^2$ y $10\text{m}^2$.
+2. **Cableado Horizontal**: son las conexiones rojas que van desde la estación de trabajo hacia el rack 3, que es la sala de telecomunicaciones de piso. Para estas conexiones, generalmente se utiliza cobre y son menores a $100\text{m}$. De ellos, se considera que $90\text{m}$ son de conexión permanente, para así dejar $5\text{m}$ extra de cada lado para futuras necesidades. 
+3. **Sala de Telecomunicaciones (TR)**: es donde vamos a tener nuestros racks. Llega el cable proveniente de la roseta y se conecta a una patchera por la parte trasera. Por la parte delantera se utiliza un patch cord corto para conectarse a un switch. Contienen el tráfico acumulado de todas las estaciones de trabajo de ese piso.
+4. **Cableado Vertical**: son las conexiones que permiten conectar las salas de telecomunicaciones entre distintos. Se utiliza fibra por las distancias y porque no tiene interferencia, además de ser más rápida. Se quiere conectar los switches de acceso a uno de distribución. Estas conexiones se conocen como uplinks.![[Pasted image 20260811202312.png|center|268]]
+5. **Servidores**: se encuentran en el Equipment Room (ER), y es donde van a estar los racks grandes. Cada uno va a tener su propio switch (Switch ToR) que se va a conectar a todos los servidores que contiene dentro. Estos se pueden conectar directo a los switches core, aunque puede haber una capa intermedia si estos últimos no tienen puertos suficientes para todos los ToRs.![[Pasted image 20260813190859.png|center|227]]
+6. **Routers y Switches**: es donde se encuentran los switches de las capas de distribución y los core, además de routers que permiten la conexión a internet. Suelen enocontrarce también en el ER.
+7. **Conexión externa**: es la conexión entrante y saliente del edificio hacia los proveedores de servicios, como por ejemplo el ISP. El espacio se conoce como Entrance Facilities (EF).
+
+---
+## Redes
+
+Un **hub** es un dispositivo de capa 2 que permite aumentar las conexiones de dispositivos terminales a un servicio de red. Replica las tramas que recibe por todas las otras interfaces que tiene, sin ningún tipo de criterio.
+
+Un **puente (bridge)** es un dispositivo de red que se utiliza para interconectar dos segmentos LAN, dividiendo dominios de colisión y filtrando el tráfico al decidir qué tramas se reenvían entre interfaces en función de las direcciones MAC.
+
+Un **switch** consiste en un puente de más de dos puertos. Es un conector similar al hub, pero que posee un poco de inteligencia. Puede construir una **MAC Address Table**, y maneja Unicast, Broadcast y Multicast.
+- **Switch Layer 2 - Unmanaged**: Solo conmuta tramas por dirección MAC en un único dominio de difusión predeterminado.
+- **Switch Layer 2 - Managed**: Permite configurar parámetros avanzados como VLANs, priorización de tráfico (QoS), seguridad de puertos (Port Security) y prevención de bucles mediante Spanning Tree (STP).
+- **Switch Layer 3**: Switch multicapa que cuenta con funciones de enrutamiento IP por hardware (Capa 3), permitiendo rutear tráfico entre diferentes VLANs a velocidad de cable (wirespeed) sin depender de un router externo.
+
+Para garantizar alta disponibilidad y evitar SPOFs, cada switch de la capa de acceso cuenta con un doble enlace ascendente (uplink) conectado en paralelo hacia ambos switches de distribución.
+
+Todos estos componentes son necesarios porque se trabaja sobre un **medio compartido**. Se necesita gestionar este medio porque no se pueden tener enlaces individuales con los distintos dispositivos finales. Si no se gestiona, ocurren las colisiones de tráfico.
+
+El **Stacking de Switches** es una tecnología que permite unir físicamente múltiples switches para que operen y se comporten como un único switch lógico dentro de la red. La interconexión física del stacking se realiza habitualmente en **topología en anillo**, cerrando el circuito con un cable entre el primer y el último switch para garantizar redundancia y tolerancia a fallos en caso de que un enlace o equipo caiga.
+
+Una **VLAN (Virtual Local Area Network)** es una tecnología que permite segmentar una red física en múltiples redes lógicas independientes, definiendo dominios de broadcast acotados y garantizando la separación y seguridad del tráfico entre diferentes áreas o servicios. Al utilizar stacking, una misma VLAN puede extenderse a través de múltiples switches físicos dentro de la matriz.
+
+En un puerto configurado como **VLAN Untagged** (puerto de acceso), los dispositivos finales no reconocen ni gestionan etiquetas de VLAN, simplemente transmiten y reciben tramas estándar de Ethernet. En una interfaz configurada como **VLAN Tagged** los extremos son conscientes de la pertenencia a múltiples redes y requieren que las tramas incluyan explícitamente el encabezado VLAN Tag. Un puerto en modo **VLAN Trunk** está diseñado para transportar el tráfico de múltiples VLANs a través de un único enlace físico mediante el etiquetado de tramas.
+
+El  **Spanning Tree Protocol (STP)** es un protocolo que detecta caminos redundantes y bloquea lógicamente determinados puertos para mantener una topología libre de bucles, activándolos automáticamente solo en caso de que falle un enlace activo. El objetivo de STP es construir una topología lógica en forma de árbol deshabilitando los enlaces redundantes para evitar bucles. Para ello, todos los switches participan en la elección de un nodo central llamado **Root Bridge**, el cual se define a partir del Bridge ID de menor valor. Una vez establecido el nodo raíz, cada switch no-root selecciona un único **Root Port**, que corresponde a la interfaz física con el menor costo de enlace para alcanzar al Root Bridge. Finalmente, los enlaces sobrantes que podrían generar loops se colocan en estado bloqueado.
+
+El **diseño tradicional de datacenters** utiliza una arquitectura jerárquica pensada para centralizar el flujo de datos hacia el exterior (tráfico Norte-Sur). Los servidores dentro de cada rack se conectan a los ToR en Capa 2, los cuales concentran su tráfico en switches de agregación intermedios, para finalmente confluir en los switches de núcleo (Core en Capa 3). 
+
+La **arquitectura moderna Spine-Leaf** está diseñada para optimizar el tráfico Este-Oeste (East/West), es decir, la comunicación intensiva y horizontal directa entre servidores dentro del data center. En este esquema de dos niveles, los servidores se conectan a los switches de acceso (Leaf, L2/L3) y cada uno de estos se enlaza de forma directa con absolutamente todos los switches centrales (Spine, L3), sin conexiones entre spines ni entre leafs. 
+
+**Power over Ethernet (PoE)** es una tecnología estandarizada bajo la norma IEEE 802.3af que permite suministrar energía eléctrica a través de los mismos pares de cobre del cable de red utilizados para la transmisión de datos.
+
+Un **router** es un dispositivo de red de Capa 3 cuya función principal es conectar redes distintas y gestionar el reenvío de paquetes entre ellas en función de sus direcciones IP de destino. En la práctica, se utiliza típicamente como el equipo de borde que interconecta una LAN con una WAN.
+
+Una **WAN (Wide Area Network)** es una red de telecomunicaciones que interconecta múltiples redes locales (LAN) a través de grandes distancias geográficas. Existen distintos tipos de WAN:
+- **Línea dedicada**: Enlace punto a punto exclusivo y privado provisto por la operadora de telecomunicaciones.
+- **Multiprotocol Label Switching (MPLS)**: Red privada virtual gestionada por el ISP que utiliza etiquetas para conmutar paquetes de forma rápida. 
+- **Banda ancha (DSL/Cable/Fibra)**: Conexiones de acceso a Internet estándar y de bajo costo. Se utilizan habitualmente en oficinas remotas o sucursales pequeñas.
+- **Wireless (4G/5G)**: Conectividad inalámbrica celular (a través de redes públicas de operadoras o redes 5G privadas). Se emplea principalmente como enlace de respaldo (backup) ante caídas de la línea principal o para brindar acceso en ubicaciones temporales y de difícil despliegue físico.
+
+Los proveedores de telecomunicaciones comercializan diferentes modalidades de vínculos WAN según el nivel de control, el ancho de banda y la infraestructura requerida:
+- **Punto a Punto**: Enlace directo y dedicado entre dos ubicaciones mediante la instalación de un router en cada extremo.
+- **LAN to LAN**: Interconexión transparente de redes de área local ubicadas en sitios remotos a través del backbone del proveedor. 
+- **Fibra oscura**: Arrendamiento de filamentos de fibra óptica ya tendidos e instalados físicamente por la empresa de telecomunicaciones que se encuentran sin iluminar (sin equipamiento óptico activo conectado). El cliente adquiere el derecho de uso exclusivo y aporta sus propios transmisores y switches para gestionar el protocolo, la velocidad y la capacidad total del enlace.
+
+**Wi-Fi (Wireless Fidelity)** es la tecnología estándar de redes locales inalámbricas (WLAN) regida por la familia de normas IEEE 802.11x. En los **medios compartidos**, el emisor chequea y, si está libre el medio, transmite. Esto tiene dos problemas principales:
+- **Problema Near-Far**: Ocurre cuando dos emisores transmiten hacia el receptor simultáneamente y , por las diferencia de distancias, la señal del nodo más cercano arriba con una potencia significativamente superior, saturando el receptor y enmascarando por completo la señal débil del nodo lejano.
+- **Problema Hidden Node**: Sucede cuando dos estaciones están dentro del rango de cobertura del Access Point pero fuera del alcance mutuo. Al no poder escucharse entre sí, ambas asumen que el canal está libre e inician transmisiones en paralelo hacia el AP, provocando colisiones destructivas en el receptor. 
+
+---
+## Protocolos de Ruteo
+
+Un **Sistema Autónomo (AS)** es un conjunto de redes administradas por el mismo ente. Rige una sola política de ruteo.  NO necesariamente es un ISP. 
+![[Pasted image 20260819103846.png|center|380]]
+
+El objetivo de un protocolo de ruteo es crear una **tabla de ruteo** con "costos" mínimos para llegar a destino. Cada protocolo define ese costo utilizando variables específicas. En un esquema de **enrutamiento distribuido**, no existe una entidad centralizada que calcule la topología completa, sino que cada router procesa de forma autónoma la información de la red.
+
+Los **EGP (Exterior Gateway Protocol)** se suelen usar al cambiar de países, o empresas, por ejemplo. Debemos pensar que, para que entre en juego su utilización, debemos estar hablando de un cambio grande o significativo. 
+- **Path Vector Routing**: Es un protocolo basado en tres pilares:
+	- **Ruteo por Path:** Los anuncios incluyen el path que decidió el router y sirve para detectar loops. 
+	- **Ruteo Jerárquico:** Se rutea dentro de los AS y fuera de los AS de manera independiente. 
+	- **Direccionamiento Topológico:** Se asignan ruteo por bloques de direcciones. 
+
+**BGP (Border Gateway Protocol)** es el protocolo estándar de vector de trayectoria diseñado para interconectar ASs a escala global. Sus sesiones de vecindad se configuran de manera puramente manual y corren sobre TCP por el puerto `179` para garantizar una transmisión confiable de los anuncios de enrutamiento. 
+
+BGP debe su éxito y predominio en Internet a su capacidad para aplicar **políticas de tránsito** altamente configurables, en lugar de limitarse a criterios rígidos de rendimiento técnico. Estas políticas se definen por razones de seguridad, motivos políticos o conveniencia económica.
+
+El mecanismo fundamental de BGP para evitar bucles (loops) de enrutamiento se basa en la inspección de `AS-PATH`:
+- Descarte por coincidencia de ASN
+- Invariabilidad de la ruta
+
+Los **Interior Gate Protocol (IGP)** se utilizan dentro de un Sistema Autónomo, por lo que están diseñados para redes pequeñas, e incluye protocolos como RIP, OSPF, iBGP, EIGRP. Estos protocolos están diseñados para redes pequeñas, y no se preocupan por enrutamiento hacia entidades externas al sistema autónomo. Se pueden clasificar en:
+- **Link-State Routing**: Cada router construye una visión completa e idéntica de la topología de la red para luego calcular de forma independiente los caminos más cortos hacia cada destino.
+	- OSPF
+	- IS-IS
+- **Protocolos de Vector Distancia**: Cada nodo conoce la red únicamente a través de los anuncios que intercambia de forma periódica o disparada por eventos exclusivamente con sus vecinos directos ("ruteo por rumor").
+	- RIPv1
+	- IGRP
+
+Podemos comparar:
+
+|                    **Distance Vector**                     |                                         **Link State**                                          |
+| :--------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+|   Cada router comparte su tabla de ruteo con sus vecinos   |         Cada router comparte el mapa completo que tiene de la red con todos los routers         |
+| Las decisiones de ruteo, se basan en información limitada  | Las decisiones de ruteo, se toman con todo el mapa completo de la red (mas reliable y accurate) |
+|                    Fácil de configurar                     |                                      Difícil de configurar                                      |
+|                       Converge lento                       |                                       Convergencia rápida                                       |
+| Su métrica es la cantidad de saltos entre origen y destino |          Su métrica esta dada por multiples factores: bandwith, delay en un link, etc           |
+|              Preferible para networks chicas               |                                Preferible para networks grandes                                 |
+
+La **IANA (Internet Assigned Numbers Authority)** es el organismo responsable de la coordinación global del direccionamiento en Internet, encargado de asignar bloques de **[[06. Capa de Red|direcciones IP]]** (IPv4 e IPv6) y **números de sistemas autónomos (ASN)**.
+
+En el ecosistema global de Internet, los Sistemas Autónomos se estructuran en tres tipos según su conectividad y políticas de tránsito:
+- **Red Stub**: Posee una única conexión hacia la red BGP (un solo ISP). Al ser un extremo de la topología sin caminos alternativos, no transporta tráfico de terceros; solo origina y recibe paquetes propios.
+- **Red Multiconexión**: Cuenta con múltiples conexiones hacia diferentes Sistemas Autónomos para redundancia y balanceo de carga. Sin embargo, no actúa como red de paso: rechaza el reenvío de paquetes cuyo origen y destino pertenezcan a ASs externos ajenos a su red.
+- **Redes de Tránsito**: Infraestructuras diseñadas para transportar tráfico de terceros entre distintos Sistemas Autónomos. Aplican políticas y restricciones de enrutamiento y cobran comercialmente por el servicio de tránsito IP prestado.
+
+El **mecanismo de BlackHole** en BGP es una técnica utilizada para mitigar ataques DDoS. Consiste en anunciar una ruta específica para la dirección IP de la víctima de modo que el tráfico entrante sea redirigido hacia una interfaz nula o destino de descarte (`Null0`). El mecanismo opera anunciando una ruta de host específica para la IP víctima bajo ataque:
+1. Publicación de máscara específica
+2. Soporte del Carrier/ISP
+3. Descarte en el borde
+
+La **Distancia Administrativa (AD)** es el criterio utilizado por un router para seleccionar la mejor ruta hacia un destino cuando este es aprendido simultáneamente a través de diferentes protocolos de enrutamiento o fuentes administrativas. Define el grado de confiabilidad de la fuente mediante un valor entero entre `0` y `255`.
+
+**IGRP (Interior Gateway Routing Protocol)** es un protocolo de enrutamiento interior por vector de distancia desarrollado por Cisco. Su principal innovación fue la implementación de una métrica compuesta. Luego, Cisco desarrolló **EIGRP (Enhanced Interior Gateway Routing Protocol)**, un protocolo de enrutamiento por vector de distancia avanzado (o híbrido) sin clase. A diferencia de su antecesor, elimina por completo las actualizaciones periódicas por broadcast: los routers solo envían actualizaciones parciales y dirigidas en el momento exacto en que se produce una modificación en la topología.
 
 ---
 ## Wide Area Network (WAN)
