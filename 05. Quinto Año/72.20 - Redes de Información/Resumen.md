@@ -133,7 +133,7 @@ El mecanismo fundamental de BGP para evitar bucles (loops) de enrutamiento se ba
 - Descarte por coincidencia de ASN
 - Invariabilidad de la ruta
 
-Los **Interior Gate Protocol (IGP)** se utilizan dentro de un Sistema Autónomo, por lo que están diseñados para redes pequeñas, e incluye protocolos como RIP, OSPF, iBGP, EIGRP. Estos protocolos están diseñados para redes pequeñas, y no se preocupan por enrutamiento hacia entidades externas al sistema autónomo. Se pueden clasificar en:
+Los **Interior Gate Protocol (IGP)** se utilizan dentro de un Sistema Autónomo, por lo que están diseñados para redes pequeñas, e incluye protocolos como RIP, OSPF, iBGP, EIGRP. Estos protocolos no se preocupan por enrutamiento hacia entidades externas al sistema autónomo. Se pueden clasificar en:
 - **Link-State Routing**: Cada router construye una visión completa e idéntica de la topología de la red para luego calcular de forma independiente los caminos más cortos hacia cada destino.
 	- OSPF
 	- IS-IS
@@ -143,14 +143,14 @@ Los **Interior Gate Protocol (IGP)** se utilizan dentro de un Sistema Autónomo,
 
 Podemos comparar:
 
-|                    **Distance Vector**                     |                                         **Link State**                                          |
-| :--------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
-|   Cada router comparte su tabla de ruteo con sus vecinos   |         Cada router comparte el mapa completo que tiene de la red con todos los routers         |
-| Las decisiones de ruteo, se basan en información limitada  | Las decisiones de ruteo, se toman con todo el mapa completo de la red (mas reliable y accurate) |
-|                    Fácil de configurar                     |                                      Difícil de configurar                                      |
-|                       Converge lento                       |                                       Convergencia rápida                                       |
-| Su métrica es la cantidad de saltos entre origen y destino |          Su métrica esta dada por multiples factores: bandwith, delay en un link, etc           |
-|              Preferible para networks chicas               |                                Preferible para networks grandes                                 |
+|                                         **Link State**                                          |                    **Distance Vector**                     |
+| :---------------------------------------------------------------------------------------------: | :--------------------------------------------------------: |
+|         Cada router comparte el mapa completo que tiene de la red con todos los routers         |   Cada router comparte su tabla de ruteo con sus vecinos   |
+| Las decisiones de ruteo, se toman con todo el mapa completo de la red (mas reliable y accurate) | Las decisiones de ruteo, se basan en información limitada  |
+|                                      Difícil de configurar                                      |                    Fácil de configurar                     |
+|                                       Convergencia rápida                                       |                       Converge lento                       |
+|          Su métrica esta dada por multiples factores: bandwith, delay en un link, etc           | Su métrica es la cantidad de saltos entre origen y destino |
+|                                Preferible para networks grandes                                 |              Preferible para networks chicas               |
 
 La **IANA (Internet Assigned Numbers Authority)** es el organismo responsable de la coordinación global del direccionamiento en Internet, encargado de asignar bloques de **[[06. Capa de Red|direcciones IP]]** (IPv4 e IPv6) y **números de sistemas autónomos (ASN)**.
 
@@ -179,7 +179,7 @@ Una **WAN (Wide Area Network)** es una red de telecomunicaciones diseñada para 
 
 Existen dos tipos de redes:
 - **Redes Broadcast** (Generalmente LAN): Como por ejemplo el Wi-Fi, donde todos nos conectamos.
-- **Redes Punto a Punto** (Generalmente WAN): Las puntas normalmente son routers o switches, no computadoras como en la figura.
+- **Redes Punto a Punto** (Generalmente WAN): Las puntas normalmente son routers o switches, no computadoras.
 
 **Frame Relay** es una tecnología de conmutación de paquetes para redes WAN que opera en las capas física y de enlace de datos. Este protocolo prescinde de mecanismos pesados de corrección de errores en el nivel físico y delega esa tarea en las capas superiores, logrando una transmisión considerablemente más ágil y eficiente. Permite multiplexar múltiples circuitos virtuales sobre un único enlace, por lo que cada router requiere solo una interfaz física para conectarse a múltiples destinos remotos simultáneamente.
 ![[Pasted image 20260825190625.png|center|390]]
@@ -202,12 +202,14 @@ La **buferización (buffering)** es una técnica que se aplica directamente en e
 Las **normas de encolamiento** entran en juego en las interfaces del router, donde cada puerto dispone de una cola de memoria para retener temporalmente los paquetes que esperan ser transmitidos.
 - **Cola FIFO**: Se retienen los paquetes y los despacha estrictamente en el mismo orden cronológico en el que ingresaron.
 - **Cola de Prioridad**: Clasifica el tráfico separándolo en cuatro colas jerárquicas. La interfaz sólo transmite paquetes de un nivel inferior cuando la cola de mayor prioridad se encuentra completamente vacía. Hay riesgo de inanición (starvation).
-- **Cola Personalizada**: Aplica Round-Robin para alternar de forma cíclica entre distintas colas. El administrador puede definir qué tipo de tráfico se asocia a cada y otras reglas.
+- **Cola Personalizada**: Aplica Round-Robin para alternar de forma cíclica entre distintas colas. El administrador puede definir qué tipo de tráfico se asocia a cada una y otras reglas.
 - **Weighted Fair Queueing (WFQ)**: Crea dinámicamente una cola separada para cada flujo de tráfico individual. El algoritmo busca la equidad al balancear flujos de poco caudal frente a transferencias masivas.
 
-La **clasificación de tráfico** permite identificar y categorizar los paquetes según criterios como listas de control de acceso (ACL por IP y puerto), el puerto físico del switch o el tipo de aplicación. 
+La **clasificación de tráfico** permite identificar y categorizar los paquetes según criterios como listas de control de acceso (ACL por IP y puerto), el puerto físico del switch o el tipo de aplicación. Una vez clasificado el flujo, el router o switch procede al etiquetado insertando marcas en la cabecera del paquete en Capa 2 o Capa 3 para que los dispositivos subsiguientes reconozcan su prioridad sin reanalizarlo.
+- **Capa 3**: Se implementa sobre la cabecera IPv4 redefiniendo el antiguo campo ToS (Type of Service) bajo el estándar DSCP (Differentiated Services Code Point).
+- **Capa 2**: La priorización está orientada a entornos LAN y opera a nivel MAC mediante el estándar IEEE 802.1p, el cual se inserta dentro del encabezado de VLAN.
 
-En la configuración de un **Firewall/Router**, las reglas de filtrado permiten controlar el flujo de tráfico entre diferentes zonas de la red definiendo una acción específica (Allow, Deny o Discard).
+En la configuración de un **Firewall/Router**, las reglas de filtrado permiten controlar el flujo de tráfico entre diferentes zonas de la red definiendo una acción específica (Allow, Deny o Discard). Para cada regla se establecen la zona de origen y destino, el servicio o protocolo de aplicación involucrado, y los criterios de origen, destino y usuarios autorizados. 
 
 **MPLS (Multiprotocol Label Switching)** es una tecnología de conmutación de alto rendimiento que asigna una etiqueta a los datagramas para acelerar su reenvío en los routers del núcleo de la red. Al recibir un paquete, los equipos intermedios únicamente leen la etiqueta y no la dirección IP de destino, definiendo una ruta o circuito virtual preestablecido a lo largo de toda la infraestructura. Esta tecnología se ubica entre las capas 2 y 3. Para establecer los caminos de conmutación, los routers intercambian información de etiquetas de forma coordinada.
 
@@ -228,6 +230,8 @@ Los **IXP (Internet Exchange Points)** son centros neurálgicos de interconexió
 
 **CABASE (Cámara Argentina de Internet)** es la entidad pionera en Argentina que nuclea a ISPs, empresas de telecomunicaciones y proveedores de contenido, responsable de crear y operar la red federal de IXPs del país.
 
+Los **carriers** son los operadores de telecomunicaciones propietarios de las redes troncales de Internet, y son los responsables del transporte de datos. No nos podemos desentender de ellos, porque a la larga alguien debe brindar conectividad hacia donde el ISP no llega, como por ejemplo hasta Japón.
+
 Un **PAT (Punto de Agregación de Tráfico)** es un punto de presencia intermedio provisto por un miembro de la red para extender el alcance físico del IXP Regional. Su objetivo es facilitar el acceso remoto de varios miembros distantes hacia el punto de intercambio central sin que cada uno deba tender un enlace directo y costoso hasta la sede principal de CABASE.
 
 Los **Looking Glass Servers** son herramientas de diagnóstico públicas provistas por ISPs e IXPs con acceso de solo lectura, diseñadas para consultar el estado de la red y las tablas de enrutamiento desde la perspectiva externa de un router específico.
@@ -244,7 +248,7 @@ La arquitectura de un ISP se organiza en capas jerárquicas:
 - **Aggregation Network**: también llamada red de distribución. Red de múltiples capas que va consolidando el tráfico de diferentes partes de la red de acceso.
 - **Edge Network**: red de borde. Se usa tanto como borde de la red de interior (hacia los usuarios) como de la red exterior (hacia internet).
 	- Red que termina el tráfico de los usuarios donde son autenticados y se controla el ancho de banda (esto también puede hacerse en la red de acceso)
-	- Red donde se interconecta con otras redes (ISPs/IXP )
+	- Red donde se interconecta con otras redes (ISPs/IXP)
 - **Core Network**: red de núcleo es la red que interconecta a todo el ISP internamente. En particular conecta los Edge entre sí.
 ![[Pasted image 20260908182228.png|center|399]]
 
