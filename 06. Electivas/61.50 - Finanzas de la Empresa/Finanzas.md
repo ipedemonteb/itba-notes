@@ -23,3 +23,4 @@ Docentes:
 - [[04. Teoría de Cartera]]
 - [[05. Planificación Financiera]]
 - [[06. Colocación de Ahorros]]
+- [[07. Gestión del Riesgo]]
