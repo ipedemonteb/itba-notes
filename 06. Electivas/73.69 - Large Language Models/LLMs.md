@@ -22,6 +22,7 @@ Docentes:
 - [[04. Reasoning Models]]
 - [[05. Desarrollo en Producción]]
 - [[06. AI Safety]]
+- [[07. RAG]]
 
 ---
 ## 📝 Trabajos Prácticos
