@@ -25,4 +25,5 @@ Docentes:
 - [[05. Redes WAN]]
 - [[06. Internet]]
 - [[07. ISPs, VPN y DMZ]]
+- [[08. Virtual Data Center]]
 
