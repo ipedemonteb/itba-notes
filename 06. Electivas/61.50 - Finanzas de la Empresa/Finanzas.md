@@ -24,3 +24,4 @@ Docentes:
 - [[05. Planificación Financiera]]
 - [[06. Colocación de Ahorros]]
 - [[07. Gestión del Riesgo]]
+- [[08. Derivados]]
