@@ -22,3 +22,5 @@ Docentes:
 - [[04. Estrategia]]
 - [[05. Estructura y Funciones]]
 - [[06. Modelo Factoreal]]
+- [[07. Capacidad de las Personas]]
+- 
