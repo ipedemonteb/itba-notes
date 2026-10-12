@@ -22,3 +22,4 @@ Docentes:
 - [[05. Accidentes]]
 - [[06. Análisis de Seguridad de Puestos de Trabajo]]
 - [[07. Sistemas de Gestión]]
+- [[08. Aspectos Legales]]
