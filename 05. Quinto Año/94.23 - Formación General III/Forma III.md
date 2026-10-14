@@ -16,11 +16,12 @@ Docentes:
 ---
 ## 📋 Índice de Unidades
 
-- [[01. La Organización Natural]]
+- [[01. Teoría de la Organización Natural]]
 - [[02. Trabajo y Tarea]]
-- [[03. El Factor Tiempo]]
+- [[03. Factor Tiempo]]
 - [[04. Estrategia]]
 - [[05. Estructura y Funciones]]
 - [[06. Modelo Factoreal]]
 - [[07. Capacidad de las Personas]]
-- 
+- [[08. Complejidad]]
+- [[09. Modelos de Organizaciones]]
