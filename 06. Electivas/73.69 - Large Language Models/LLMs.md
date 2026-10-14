@@ -23,6 +23,7 @@ Docentes:
 - [[05. Desarrollo en Producción]]
 - [[06. AI Safety]]
 - [[07. RAG]]
+- [[08. Imágenes y Audio]]
 
 ---
 ## 📝 Trabajos Prácticos
