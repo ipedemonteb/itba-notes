@@ -1,0 +1,181 @@
+/* =========================================================
+   Mermaid estilo Claude para Obsidian (versión final)
+   - Look Claude por defecto
+   - Respeta colores puestos con `style` / `classDef`
+   - Arregla el recorte de texto del tema (Cupertino u otros)
+   Guardar en: <vault>/.obsidian/snippets/claude-mermaid.css
+   Activar en: Ajustes → Apariencia → Fragmentos CSS
+   (Este archivo reemplaza al snippet anterior de márgenes)
+   ========================================================= */
+
+/* ---------- Paleta (modo claro) ---------- */
+body {
+  --cm-accent: #D97757;          /* terracota Claude */
+  --cm-accent-soft: #F5E6DF;     /* relleno suave de nodos */
+  --cm-text: #3D3D3A;
+  --cm-label-bg: #F0EEE6;        /* fondo de labels en flechas */
+  --cm-cluster-bg: #FAF9F5;
+  --cm-cluster-border: #E3DFD3;
+  --cm-line: #D97757;
+  --cm-font: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- Paleta (modo oscuro) ---------- */
+body.theme-dark {
+  --cm-accent: #E08A6D;
+  --cm-accent-soft: #3A2A24;
+  --cm-text: #E8E6DC;
+  --cm-label-bg: #30302E;
+  --cm-cluster-bg: #262624;
+  --cm-cluster-border: #3E3E3A;
+  --cm-line: #E08A6D;
+}
+
+/* =========================================================
+   1. ANTI-RECORTE
+   Que el texto se dibuje igual a como Mermaid lo midió,
+   sin márgenes ni tamaños que agrega el tema.
+   ========================================================= */
+.markdown-rendered .mermaid svg,
+.mermaid svg,
+.mermaid foreignObject {
+  overflow: visible !important;
+}
+
+.mermaid foreignObject p,
+.mermaid foreignObject span,
+.mermaid foreignObject div {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
+  white-space: nowrap;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   2. TIPOGRAFÍA
+   La fuente se fija en la raíz y se hereda, así Mermaid
+   mide y dibuja con la misma.
+   ========================================================= */
+.mermaid svg {
+  font-family: var(--cm-font) !important;
+  color: var(--cm-text);
+}
+.mermaid foreignObject p,
+.mermaid foreignObject span,
+.mermaid foreignObject div {
+  font-family: inherit !important;
+}
+
+/* Color de texto: solo donde vos no pusiste `color:` */
+.mermaid .nodeLabel:not([style*="color"]),
+.mermaid .edgeLabel:not([style*="color"]),
+.mermaid .cluster-label span:not([style*="color"]) {
+  color: var(--cm-text) !important;
+}
+.mermaid .nodeLabel p,
+.mermaid .edgeLabel p {
+  color: inherit !important;
+}
+/* Labels en SVG puro (htmlLabels: false) */
+.mermaid svg text:not([style*="fill"]) {
+  fill: var(--cm-text) !important;
+}
+
+/* =========================================================
+   3. NODOS — solo los que no tienen `fill` propio
+   ========================================================= */
+.mermaid .node rect:not([style*="fill"]),
+.mermaid .node polygon:not([style*="fill"]),
+.mermaid .node path:not([style*="fill"]),
+.mermaid .node ellipse:not([style*="fill"]) {
+  fill: var(--cm-accent-soft) !important;
+}
+/* Borde terracota solo en nodos sin colores propios */
+.mermaid .node rect:not([style*="fill"]):not([style*="stroke"]),
+.mermaid .node polygon:not([style*="fill"]):not([style*="stroke"]),
+.mermaid .node path:not([style*="fill"]):not([style*="stroke"]),
+.mermaid .node ellipse:not([style*="fill"]):not([style*="stroke"]) {
+  stroke: var(--cm-accent) !important;
+  stroke-width: 1.5px !important;
+}
+/* Nodos con relleno propio pero sin borde: borde sutil que
+   oscurece levemente su propio color, en vez de terracota */
+.mermaid .node rect[style*="fill"]:not([style*="stroke"]),
+.mermaid .node polygon[style*="fill"]:not([style*="stroke"]),
+.mermaid .node path[style*="fill"]:not([style*="stroke"]),
+.mermaid .node ellipse[style*="fill"]:not([style*="stroke"]) {
+  stroke: rgba(0, 0, 0, 0.18) !important;
+  stroke-width: 1px !important;
+}
+.mermaid .node rect {
+  rx: 6px;
+  ry: 6px;
+}
+
+/* Círculos de decisión: sólidos como en Claude */
+.mermaid .node circle:not([style*="fill"]) {
+  fill: var(--cm-accent) !important;
+}
+.mermaid .node circle:not([style*="stroke"]) {
+  stroke: var(--cm-accent) !important;
+}
+
+/* =========================================================
+   4. FLECHAS — respeta `linkStyle` con stroke propio
+   ========================================================= */
+.mermaid .flowchart-link:not([style*="stroke"]),
+.mermaid .edgePath .path:not([style*="stroke"]),
+.mermaid path.relation:not([style*="stroke"]),
+.mermaid .messageLine0:not([style*="stroke"]),
+.mermaid .messageLine1:not([style*="stroke"]) {
+  stroke: var(--cm-line) !important;
+  stroke-width: 2px !important;
+}
+/* Puntas de flecha: toman el color de la línea que las usa
+   (context-stroke). Así una flecha con linkStyle azul tiene
+   punta azul, y las demás quedan terracota.
+   La primera declaración es el respaldo si no hay soporte. */
+.mermaid marker path,
+.mermaid .arrowheadPath,
+.mermaid .arrowMarkerPath {
+  fill: var(--cm-line) !important;
+  stroke: var(--cm-line) !important;
+  fill: context-stroke !important;
+  stroke: context-stroke !important;
+}
+
+/* =========================================================
+   5. LABELS SOBRE LAS FLECHAS
+   ========================================================= */
+.mermaid .edgeLabel,
+.mermaid .edgeLabel p,
+.mermaid .edgeLabel span,
+.mermaid .labelBkg {
+  background-color: var(--cm-label-bg) !important;
+}
+.mermaid .edgeLabel rect {
+  fill: var(--cm-label-bg) !important;
+  opacity: 1 !important;
+}
+
+/* =========================================================
+   6. SUBGRAFOS — solo los que no tienen estilo propio
+   ========================================================= */
+.mermaid .cluster rect:not([style*="fill"]) {
+  fill: var(--cm-cluster-bg) !important;
+}
+.mermaid .cluster rect:not([style*="stroke"]) {
+  stroke: var(--cm-cluster-border) !important;
+  stroke-width: 1px !important;
+}
+.mermaid .cluster rect {
+  rx: 8px;
+  ry: 8px;
+}

@@ -1,8 +1,8 @@
 {
   "name": "Cupertino",
-  "version": "3.2.12",
-  "minAppVersion": "1.13.4",
+  "version": "4.1.0",
+  "minAppVersion": "1.14.0",
   "author": "Alexis C",
-  "authorUrl": "https://github.com/aaaaalexis",
-  "fundingUrl": "https://www.buymeacoffee.com/sevenaxis"
+  "authorUrl": "https://github.com/svnaxis",
+  "fundingUrl": "https://www.buymeacoffee.com/svnaxis"
 }
