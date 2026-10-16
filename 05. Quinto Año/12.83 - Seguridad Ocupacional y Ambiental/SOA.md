@@ -5,6 +5,7 @@ Cursada: 2C-2026
 Créditos: "3"
 Docentes:
   - Hernan Dario Ordoñez
+  - Estefanía Chamorro
 ---
 ## 🔗 Links Útiles
 
