@@ -24,6 +24,7 @@ Docentes:
 - [[06. AI Safety]]
 - [[07. RAG]]
 - [[08. Imágenes y Audio]]
+- [[09. Métricas]]
 
 ---
 ## 📝 Trabajos Prácticos
