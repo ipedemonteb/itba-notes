@@ -25,3 +25,5 @@ Docentes:
 - [[06. Colocación de Ahorros]]
 - [[07. Gestión del Riesgo]]
 - [[08. Derivados]]
+- [[09. Opciones Reales]]
+- [[10. Estructura Financiera]]
