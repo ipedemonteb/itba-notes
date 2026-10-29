@@ -18,6 +18,7 @@ Docentes:
 ---
 ## 📋 Índice de Unidades
 
+### Teóricas:
 - [[01. Tipos de Vínculos]]
 - [[02. Tecnología de Centro de Cómputos y Oficinas]]
 - [[03. Redes]]
@@ -28,3 +29,8 @@ Docentes:
 - [[08. Virtual Datacenter]]
 - [[09. Contenedores]]
 - [[10. Kubernetes]]
+### Prácticas:
+- [[01. Protocolos]]
+- [[02. BGP]]
+- [[03. Cloud]]
+- [[04. Docker]]
