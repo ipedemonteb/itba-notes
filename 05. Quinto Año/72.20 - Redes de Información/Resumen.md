@@ -300,3 +300,135 @@ Con **dos firewalls**, en cambio, la DMZ queda encerrada entre dos equipos disti
 ![[Pasted image 20260908204922.png|center|230]]
 
 Existe un problema de side channel attack, ya que los servidores pueden hablar entre sí. Para corregir este problema se introducen **jump servers** como único punto de entrada administrativo.
+
+---
+## Cloud
+
+Las **zonas de disponibilidad** constituyen particiones lógicas y físicas dentro de la infraestructura de los datacenters virtuales diseñadas para garantizar alta disponibilidad y tolerancia a fallos. Físicamente, una AZ puede estar compuesta por uno o más datacenters discretos que albergan millones de servidores a gran escala. La separación geográfica y el diseño eléctrico son factores críticos para asegurar la resiliencia sin degradar el rendimiento del sistema. A pesar de encontrarse físicamente separadas, mantienen una interconexión de red de alta eficiencia que permite tratarlas casi como un único entorno coordinado. 
+
+Las **Virtual Private Cloud (VPCs)** son construcciones de red definidas por software (SDN) y permiten la implementación de recursos de las IaaS. Son regionales o globales y contienen subredes. Una **Software Defined Networking (SDN)** organiza la conectividad en una arquitectura modular de tres capas superpuestas:
+```mermaid
+%%{init: {'themeVariables': { 'fontSize': '12px' }, 'flowchart': { 'nodeSpacing': 20, 'rankSpacing': 30 }}}%%
+flowchart TD
+    A["Application Layer (Routing, Load Balancing)"]
+    B["Control Layer (SDN Controller)"]
+    C["Infrastructure Layer (Switches, Data Plane)"]
+
+    A <-->|Northbound APIs| B
+    B <-->|Southbound APIs| C
+
+    style A fill:#1e7b15,color:#fff
+    style B fill:#1e7b15,color:#fff
+    style C fill:#1e7b15,color:#fff
+```
+- **Capa de aplicación**: aloja los servicios y políticas de red superiores.
+	- Interfaz Northbound APIs: comunica las aplicaciones y servicios con el controlador central.
+- **Capa de control**: actúa como el cerebro que toma las decisiones de tráfico y traduce las políticas.
+	- Interfaz Southbound APIs: transmite las instrucciones y reglas de reenvío desde el controlador hacia el hardware físico.
+- **Capa de infraestructura**: conforma el plano de datos, integrado por conmutadores físicos encargados de mover el tráfico real según las directivas recibidas.
+
+La segmentación interna y el aislamiento en AWS se resuelven asignando **subredes** dentro de cada zona de disponibilidad. 
+- **Subredes públicas**: configuradas con salida y enrutamiento hacia Internet para servicios expuestos al tráfico externo.
+- **Subredes privadas**: aisladas del acceso público directo, reservadas para componentes internos como bases de datos o lógica de negocio. 
+
+Google Cloud maneja un comportamiento distinto donde las subredes son componentes regionales y no se atan rígidamente a una única zona física. 
+
+El tamaño de los bloques de red asignables está delimitado por restricciones técnicas que fijan tanto una capacidad mínima como una máxima dentro de la infraestructura:
+- Bloque mínimo con máscara `/28`, lo que equivale a un total de 16 direcciones IP.
+- Bloque máximo con máscara `/16`, que permite abarcar un espacio de hasta 65536 direcciones IP.
+
+Debemos tener en cuenta los aspectos básicos de las direcciones IP públicas y privadas en Google Cloud:
+- **IP Privada**: Se asigna del rango de subred a las VM mediante DHCP, y el lease se renueva cada 24 horas. El nombre de la VM y la IP se registran con un DNS acotado a la red.
+- **IP Pública**: Se puede asignar desde un grupo (efímera) o se puede reservar (estática). Se factura cuando no está vinculada a una VM en ejecución. La VM no conoce la IP externa; está mapeada (NAT 1 a 1) a la IP interna.
+
+Las **rutas** en una red virtual definen el camino que debe seguir el tráfico emitido desde una máquina virtual hacia cualquier otro destino, vinculando un rango de direcciones IP de destino con un salto o recurso específico. En un esquema de enrutamiento basado en software como el de Google Cloud, las **tablas de enrutamiento** se aplican directamente a las interfaces de las máquinas virtuales, resolviendo los saltos de forma distribuida.
+
+Las rutas dentro de una red virtual se clasifican en dos grandes categorías según su origen, abarcando cuatro tipos operativos específicos. 
+- **Rutas Generadas por el Sistema**
+	- **Ruta predeterminada**: canalizar el tráfico general no emparejado hacia el exterior.
+	- **Ruta de subred**: permitir la comunicación directa entre las instancias de las subredes locales.
+- **Rutas Personalizadas**
+	- **Ruta estática**: personalizada e ingresada manualmente por el administrador.
+	- **Ruta dinámica**: personalizada pero aprendida y actualizada automáticamente mediante protocolos de enrutamiento.
+
+Al momento de reenviar un paquete, el motor de red aplica un orden estricto de evaluación secuencial para determinar qué entrada debe utilizarse:
+1. Primero, se consideran las rutas de las subredes.
+2. Luego, busca otra ruta con el destino más específico.
+3. Si más de una ruta tiene el mismo destino más específico, se considera la prioridad de la ruta.
+4. Si no se encuentra un destino aplicable, descarta el paquete.
+
+Un WAF está diseñado específicamente para frenar ataques dirigidos a vulnerabilidades de las aplicaciones web, tales como:
+- **SQL Injection (SQLi)**
+- **Cross-Site Scripting (XSS)**
+- **Ataques de denegación de servicio a nivel de aplicación (DDoS en capa 7)**
+- **Inclusión de archivos o ataques de bots maliciosos**
+
+El **firewall** de una VPC opera bajo una arquitectura distribuida, protegiendo a las instancias de máquinas virtuales contra accesos y conexiones no autorizadas. Aunque las reglas se definen y aplican globalmente a nivel de toda la red virtual, el filtrado efectivo ocurre en la interfaz de cada instancia, donde el tráfico se permite o rechaza de manera individual. 
+
+Las **redes compartidas** permiten que varios proyectos independientes se conecten a una única red de VPC centralizada y común, facilitando que servicios desacoplados en proyectos distintos, como recomendación, personalización o analítica, interactúen de forma segura con un servidor central de aplicaciones web mientras mantienen sus respectivos almacenes de datos aislados.
+
+Cuando las cargas de trabajo pertenecen a entidades administrativas completamente separadas, como ocurre en la relación entre un consumidor y un proveedor de software como servicio, se recurre al **intercambio de tráfico entre VPCs**.
+
+**Cloud VPN** es un servicio gestionado que conecta de forma segura y cifrada una red local o centro de datos con una red de VPC en Google Cloud atravesando la Internet pública.
+- Soporte para conexiones de tipo sitio a sitio entre las puertas de enlace corporativas y la nube.
+- Compatibilidad con esquemas de enrutamiento tanto estático como dinámico mediante Cloud Router.
+- Negociación y seguridad mediante protocolos criptográficos basados en IKEv1 e IKEv2.
+
+En una **topología de VPN estática**, el túnel cifra la comunicación entre la IP externa regional asignada a la puerta de enlace de Cloud VPN en la nube y la IP externa del dispositivo de VPN local. El tráfico interno se distribuye mediante tablas de enrutamiento fijas configuradas manualmente hacia los distintos recursos en las regiones. la **topología de enrutamiento dinámico** introduce el componente Cloud Router para automatizar el aprendizaje e intercambio de topologías de red sin intervención estática.
+
+**Cloud Interconnect** constituye una solución de conectividad empresarial diseñada para extender redes locales hacia una VPC de Google Cloud mediante enlaces directos de alta capacidad.
+- **Interconexión Dedicada**: se establece una conexión física directa entre la red del cliente y la red de Google en una instalación de colocación o coubicación conjunta.
+- **Interconexión de Socio**: se proporciona conectividad a la VPC a través de un proveedor de servicios externo compatible.
+
+El **balanceo de cargas** permite distribuir las solicitudes de los usuarios entre conjuntos de instancias de cómputo para optimizar la disponibilidad y el rendimiento. 
+![[Pasted image 20261005122141.png|center|591]]
+El **balanceador global HTTP(S)** procesa las conexiones a través de un flujo estructurado por etapas lógicas. ![[Pasted image 20261005122237.png|center|618]]
+El paquete ingresa desde Internet hacia una IP global externa gestionada por una regla de reenvío global, la cual analiza la dirección, el protocolo y el puerto de entrada. Esta regla delega la solicitud a un proxy de destino asistido por un mapa de URL, el cual inspecciona el contenido de la petición para asociarla a un servicio de backend específico. Dicho servicio evalúa la capacidad de entrega de cada zona, el estado operativo reportado por las verificaciones de estado continuas y las reglas de firewall vigentes antes de despachar el paquete al grupo de instancias administradas correspondiente.
+
+Un **servicio de DNS** en la nube es un sistema de nombres de dominio (DNS) gestionado y distribuido globalmente por un proveedor cloud. Estos servicios incluyen algunas funcionalidades avanzadas como:
+- DNS Geográfico (GeoDNS)
+- DNS Privado
+- Integración con otros servicios en la nube
+
+Una **Hosted Zone** en los servicios cloud de DNS actúa fundamentalmente como un contenedor lógico para alojar y organizar conjuntos de registros DNS. Por convención y diseño, adopta exactamente la misma denominación que el nombre de dominio correspondiente que administra, como por ejemplo `itba.edu.ar`. 
+- **Public Hosted Zones**: orientadas a la resolución de nombres de dominio accesibles públicamente desde cualquier cliente en Internet.
+- **Private Hosted Zones**: configuradas exclusivamente para resolver nombres internos dentro del límite privado de una red de VPC.
+
+El **almacenamiento** en la nube representa la capa de persistencia fundamental dentro de los centros de datos virtuales, desacoplando los datos del hardware físico local mediante infraestructura gestionada por software.
+- **Almacenamiento de archivos**: sistema de ficheros jerárquico y compartido accesible de forma concurrente por múltiples instancias mediante protocolos de red. Ej.: Elastic File System (EFS).
+- **Almacenamiento en bloques**: provee volúmenes de bajo nivel que actúan como discos duros montados directamente en el sistema operativo de las instancias. Ej.: Elastic Block Storage (EBS), EC2 Instance Store.
+- **Almacenamiento de objetos**: gestiona datos no estructurados junto con metadatos asociados mediante un espacio plano, ideal para distribución web, escalabilidad masiva y preservación a largo plazo. Ej.: Amazon S3, Amazon Glacier.
+
+La **facturación en la nube (cloud billing)** es el sistema que utilizan los proveedores tecnológicos para medir, calcular y cobrar de forma automatizada por los recursos informáticos consumidos.
+- **Medición de uso (Metering)**
+- **Procesamiento y tarifas**
+- **Ciclos de cobro y pagos**
+- **Control y visibilidad**
+- **Optimización y descuentos**
+- **Gestión de cuentas**
+
+---
+## Site Reliability Engineering
+
+**Site Reliability Engineering** surge como una disciplina formal originada en Google ante la necesidad crítica de operar sistemas masivos a escala. Este enfoque traslada la mentalidad, las metodologías y las herramientas del desarrollo de software hacia los desafíos operativos de disponibilidad y mantenimiento de la infraestructura.
+
+La relación y distinción entre DevOps y Site Reliability Engineering suele sintetizarse bajo la analogía programática de que SRE implementa DevOps. Mientras DevOps se define como un conjunto amplio de pautas culturales orientadas a derribar los silos entre desarrollo, operaciones y arquitectura de TI, SRE toma ese núcleo conceptual y lo materializa mediante principios, prácticas y métricas concretas que determinan qué hacer y cómo actuar para maximizar la confiabilidad y la satisfacción del usuario final.
+
+La disciplina de Site Reliability Engineering organiza su marco de trabajo a través de tres componentes estructurales interconectados:
+- **Procesos**: se contempla el alcance del equipo, la gestión de guardias y toil, la planificación de capacidad, la respuesta a incidentes y los post mortems. Una de las metas operativas primordiales es equilibrar el tiempo dedicado al toil frente al trabajo de ingeniería de proyecto. Se define: tope estricto de 50% puramente de proyecto, franja fija y un rango variable entre el 20% y el 50% para el toil en función de las prioridades del momento.
+- **Tecnología**: la medición de la confiabilidad evoluciona desde enfoques basados en tiempo hacia métricas centradas en el usuario. Se contempla $\text{Disponibilidad} = \frac{\text{Tiempo Activo}}{\text{Tiempo Total}}$, que se puede pensar también como $\text{Disponibilidad} = \frac{\text{Interacciones Exitosas}}{\text{Interacciones Totales}}$.
+	- **Service Level Indicator (SLI)**: representa la métrica cuantitativa y precisa que define si un evento fue suficientemente exitoso, evaluando si el valor medido se mantiene por debajo de un umbral específico.
+	- **Service Level Objective (SLO)**: constituye el objetivo interno prioritario fijado como una meta de cumplimiento para el indicador, estructurado típicamente como el cociente de la suma de indicadores cumplidos sobre la ventana total.
+	- **Service Level Agreement (SLA)**: formaliza el compromiso contractual externo, incorporando el objetivo interno más un margen de tolerancia y las consecuencias financieras o legales derivadas de su incumplimiento.
+- **Gente y Cultura**: incluye la inculpabilidad, la seguridad psicológica, la aceptación del riesgo, la medición generalizada, la reducción de la ambigüedad, el cambio controlado y la sustentabilidad.
+
+---
+## Logs y Monitoreo
+
+La ingestión y procesamiento de **registros** en Google Cloud se canaliza de forma automatizada mediante una arquitectura centralizada que recopila eventos de múltiples fuentes. El componente **Logs Router** actúa como el punto neurálgico de control y filtrado, evaluando el flujo de eventos entrantes para balancear costos y necesidades de retención. 
+![[Pasted image 20261006000218.png|center|424]]
+A través de **filtros de exclusión** es posible descartar eventos prescindibles para evitar gastos de procesamiento innecesarios, mientras que los **filtros de inclusión** o Log Sinks redirigen el tráfico de interés hacia diferentes destinos especializados.
+
+
+
+
