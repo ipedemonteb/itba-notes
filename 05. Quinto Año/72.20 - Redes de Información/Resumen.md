@@ -304,7 +304,12 @@ Existe un problema de side channel attack, ya que los servidores pueden hablar e
 ---
 ## Cloud
 
-Las **zonas de disponibilidad** constituyen particiones lógicas y físicas dentro de la infraestructura de los datacenters virtuales diseñadas para garantizar alta disponibilidad y tolerancia a fallos. Físicamente, una AZ puede estar compuesta por uno o más datacenters discretos que albergan millones de servidores a gran escala. La separación geográfica y el diseño eléctrico son factores críticos para asegurar la resiliencia sin degradar el rendimiento del sistema. A pesar de encontrarse físicamente separadas, mantienen una interconexión de red de alta eficiencia que permite tratarlas casi como un único entorno coordinado. 
+La nube de AWS está dividida en **regiones**, que son ubicaciones geográficas completamente aisladas e independientes entre sí y que agrupan una serie de datacenters. Dividir la nube en regiones tiene varias ventajas:
+- Aislar fallas.
+- Reducir la latencia.
+- Cumplir con los requisitos legales de cada país.
+
+Las **zonas de disponibilidad** constituyen particiones lógicas y físicas dentro de la infraestructura de los datacenters virtuales diseñadas para garantizar alta disponibilidad y tolerancia a fallos. Físicamente, una AZ puede estar compuesta por uno o más datacenters discretos que albergan millones de servidores a gran escala.  Los datacenters están conectados por redes de muy baja latencia, y las AZs de una región están separadas por un máximo de 100 km.
 
 Las **Virtual Private Cloud (VPCs)** son construcciones de red definidas por software (SDN) y permiten la implementación de recursos de las IaaS. Son regionales o globales y contienen subredes. Una **Software Defined Networking (SDN)** organiza la conectividad en una arquitectura modular de tres capas superpuestas:
 ```mermaid
@@ -327,11 +332,22 @@ flowchart TD
 	- Interfaz Southbound APIs: transmite las instrucciones y reglas de reenvío desde el controlador hacia el hardware físico.
 - **Capa de infraestructura**: conforma el plano de datos, integrado por conmutadores físicos encargados de mover el tráfico real según las directivas recibidas.
 
+Existen 3 tipos de equipos a alto nivel.
+- **Hardware de Networking Interno**: La arquitectura interna de la red del datacenter de una nube suele basarse en una topología "Spine-and-Leaf" que utiliza:
+	- **Switches Leaf (Hoja)**: Conmutadores de acceso a los que se conectan directamente los servidores (hosts).
+	- **Switches Spine (Columna Vertebral)**: Conmutadores de agregación que interconectan todos los switches Leaf entre sí. 
+- **Networking Definido por Software**: En la nube, la mayor parte de lo que el usuario ve como "networking" es en realidad una capa de software que se ejecuta sobre el hardware físico. Abarca las VPCs, el Cloud Router, el Cloud Load Balancing, los firewalls y la seguridad de red.
+- **Conectividad Externa (Borde)**: Equipos que conectan los datacenters de la nube con la Internet pública y con las redes privadas de los clientes. Por ejemplo, router de borde, Cloud Interconnect y Cloud VPN.
+
 La segmentación interna y el aislamiento en AWS se resuelven asignando **subredes** dentro de cada zona de disponibilidad. 
 - **Subredes públicas**: configuradas con salida y enrutamiento hacia Internet para servicios expuestos al tráfico externo.
 - **Subredes privadas**: aisladas del acceso público directo, reservadas para componentes internos como bases de datos o lógica de negocio. 
 
 Google Cloud maneja un comportamiento distinto donde las subredes son componentes regionales y no se atan rígidamente a una única zona física. 
+
+En AWS, para comunicar nuestra VPC con otras redes usamos **gateways**. Los dos principales son:
+- **Internet Gateway**: conecta la VPC a internet de forma bidireccional.
+- **NAT Gateway**: permite una comunicación unidireccional. Se crea en una subnet, y esa subnet debe ser pública. NAT Gateway necesita salir a internet a través del Internet Gateway. Además, necesita una IP pública (Elastic IP).
 
 El tamaño de los bloques de red asignables está delimitado por restricciones técnicas que fijan tanto una capacidad mínima como una máxima dentro de la infraestructura:
 - Bloque mínimo con máscara `/28`, lo que equivale a un total de 16 direcciones IP.
@@ -356,6 +372,14 @@ Al momento de reenviar un paquete, el motor de red aplica un orden estricto de e
 2. Luego, busca otra ruta con el destino más específico.
 3. Si más de una ruta tiene el mismo destino más específico, se considera la prioridad de la ruta.
 4. Si no se encuentra un destino aplicable, descarta el paquete.
+
+Los **security groups** son la forma de controlar el tráfico de los recursos de AWS. Definen qué tráfico de entrada (inbound) y de salida (outbound) está permitido para los recursos asignados a ellos. Son stateful. Funcionan como un firewall alrededor de los recursos, con una gran diferencia: las reglas son solo de allow, no de block.
+
+Para correr nuestra aplicación necesitamos instancias de cómputo, que en AWS son las instancias de **EC2**. Al crear una EC2 tenemos que elegir una **AMI (Amazon Machine Image)**, que es una imagen con cierto software y configuración ya instalados. Dentro de cada tipo de instancia EC2 hay **series**. Las más comunes son:
+- **Serie M**: propósito general, pensadas para tráfico predecible donde priorizamos la estabilidad. Más caras.
+- **Serie T**: ambientes no productivos o con menor tráfico.
+
+Para conectarnos por SSH a instancias que están en subredes privadas, una opción clásica es un **bastión**, que es una instancia en una subred pública a la que nos conectamos para estar dentro de la red, y desde ella accedemos a los recursos internos.
 
 Un WAF está diseñado específicamente para frenar ataques dirigidos a vulnerabilidades de las aplicaciones web, tales como:
 - **SQL Injection (SQLi)**
@@ -429,6 +453,43 @@ La ingestión y procesamiento de **registros** en Google Cloud se canaliza de fo
 ![[Pasted image 20261006000218.png|center|424]]
 A través de **filtros de exclusión** es posible descartar eventos prescindibles para evitar gastos de procesamiento innecesarios, mientras que los **filtros de inclusión** o Log Sinks redirigen el tráfico de interés hacia diferentes destinos especializados.
 
+---
+## Sustentabilidad en Cloud
 
+Para auditar y cuantificar el impacto ambiental de toda esta infraestructura, el inventario de emisiones de gases de efecto invernadero se estructura en tres alcances o scopes fundamentales:
+- **Scope 1**: contempla las emisiones directas liberadas por fuentes propias o controladas por la empresa, tales como el consumo de combustibles en instalaciones o generadores y los procesos operativos internos.
+- **Scope 2**: abarca las emisiones indirectas derivadas de la generación de electricidad comercial, vapor, calefacción y refrigeración compradas y consumidas para el funcionamiento de los centros de datos.
+- **Scope 3**: incluye todas las demás emisiones indirectas a lo largo de la cadena de valor, destacando la construcción de los centros de datos, así como la fabricación, ensamble y transporte del hardware informático instalado.
+
+La sustentabilidad en el sector tecnológico se articula a través de dos alcances estratégicos diferenciados y complementarios. 
+- **Greening of IT**: se enfoca en optimizar la propia infraestructura tecnológica, reduciendo el impacto ambiental directo de las operaciones de IT y sus emisiones asociadas. 
+- **Greening by IT**: busca reimaginar modelos de negocio y soluciones externas a gran escala, permitiendo que empresas, gobiernos y entidades alcancen una operación significativamente más sostenible.   
+
+Para cuantificar con exactitud la huella, proveedores como Google Cloud aplican una metodología de atribución de carbono estructurada en etapas progresivas:
+- **Reparto interno**: mide el consumo energético real incorporando el sobrecosto de eficiencia eléctrica, el uso de recursos dedicados y compartidos, y la intensidad de carbono por región y hora.
+- **Reparto por plataforma**: cruza los datos con la facturación y los códigos de producto para calcular el carbono por día, región y servicio específico de nube.
+- **Huella por cliente**: consolida el uso particular por proyecto y cliente, agregando los datos mensualmente para visualización en dashboards o exportación analítica en BigQuery.
+
+
+## Ciberseguridad en la Nube
+
+A la disciplina, herramientas y procesos encargados de descubrir, monitorear y reducir la exposición en la nube se les conoce como:
+- **CAASM (Cloud Attack Surface Management)**: Consiste en la gestión de la superficie de ataque en la nube.
+- **CNAAP (Cloud Native Application Protection Platform)**: Integra la gestión de la superficie y la postura de seguridad de toda la infraestructura nativa de la nube.
+
+Para garantizar la seguridad en la nube, existen una serie de principios que deben respetarse para mitigar los ataques maliciosos:
+- **Modelo de Responsabilidad Compartida**: El proveedor se encarga de la seguridad de la nube, mientras que la organización es responsable de la seguridad en la nube (configuración de servicios, gestión de datos, identidades y control de accesos).
+- **Gestión de Identidades y Accesos (IAM)**:
+	- **Principio de Mínimo Privilegio**: Otorgar a usuarios, aplicaciones y servicios únicamente los permisos estrictamente necesarios para cumplir su función.
+	- **Autenticación Multifactor (MFA)**: Las credenciales comprometidas son el vector de ataque más común. 
+- **Postura y Protección de Cargas**:
+	- **Cloud Security Posture Management (CSPM)**: Soluciones automatizadas para detectar errores de configuración y verificar el cumplimiento normativo.
+	- **Cloud Workload Protection Platform (CWPP)**: Herramientas enfocadas en proteger los recursos activos de la nube.
+- **Arquitectura de Cero Confianza y Cifrado**:
+	- **Zero Trust**: Filosofía que asume que ninguna entidad (interna o externa) debe ser confiada por defecto; se requiere autenticación y autorización continua para cada interacción. Este modelo se fundamenta en tres pilares:
+		- **Verificar Explícitamente**: Siempre se debe autenticar y autorizar basándose en todos los puntos de datos disponibles.
+		- **Usar el Principio de Mínimo Privilegio**
+		- **Asumir una Brecha**: Segmentar la red y los accesos, y aplicar un monitoreo y cifrado continuo de extremo a extremo para detectar anomalías a tiempo.
+	- **Cifrado de Datos**: Asegurar la información. tanto en tránsito (mediante protocolos como TLS) como en reposo (en bases de datos y almacenamiento de objetos) utilizando llaves de cifrado gestionadas.
 
 
