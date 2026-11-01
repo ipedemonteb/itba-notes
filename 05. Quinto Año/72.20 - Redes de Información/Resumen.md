@@ -492,4 +492,339 @@ Para garantizar la seguridad en la nube, existen una serie de principios que deb
 		- **Asumir una Brecha**: Segmentar la red y los accesos, y aplicar un monitoreo y cifrado continuo de extremo a extremo para detectar anomalías a tiempo.
 	- **Cifrado de Datos**: Asegurar la información. tanto en tránsito (mediante protocolos como TLS) como en reposo (en bases de datos y almacenamiento de objetos) utilizando llaves de cifrado gestionadas.
 
+---
+## Docker
+
+La **virtualización** surgió como la respuesta técnica para resolver los conflictos de dependencias compartidas y aislamiento, permitiendo particionar el hardware físico en múltiples máquinas virtuales independientes. El principal inconveniente radica en la duplicación redundante de componentes: ejecutar un sistema operativo completo y un kernel por cada máquina virtual genera un desperdicio significativo de recursos.
+
+Los **contenedores** se consolidan como una nueva solución arquitectónica implementando virtualización a nivel de sistema operativo en lugar de emular hardware completo. Son un método para empaquetar un ejecutable de aplicación y sus dependencias (tiempo de ejecución, herramientas del sistema, bibliotecas del sistema, configuración) y ejecutar el paquete como un conjunto de procesos aislados de recursos. Los contenedores:
+- Consumen menos recursos
+- Consumen menos espacio en disco
+- Son más rapidos, nuevos o cambios escenario.
+- Son independientes del OS
+- No requieren licencias por cada OS
+- Son portables
+
+La **Open Container Initiative (OCI)** surge como un proyecto de estandarización abierto para establecer especificaciones universales en la tecnología de contenedores. El ciclo de vida operativo de los contenedores se articula a través de un flujo de trabajo continuo y normalizado:
+1. Creación y compilación de la imagen a partir del código y sus dependencias.
+2. Publicación y descarga mediante repositorios a través de operaciones push y pull.
+3. Instanciación y ejecución directa del contenedor en el entorno de destino.
+
+La **especificación de imágenes** establece la forma estándar de construir el paquete del sistema de archivos:
+- Manifiesto descriptivo con el detalle de todas las capas que integran la imagen.
+- Conjunto de capas inmutables que componen el contenido del sistema de archivos.
+- Información de configuración requerida por el motor de ejecución para inicializar el contenedor.
+
+La **especificación de tiempo de ejecución** define cómo ejecutar la imagen desempaquetada mediante motores de bajo nivel estandarizados como runc.
+- Configuración de procesos, parámetros de entrada, variables de entorno y puntos de montaje.
+- Parámetros de aislamiento relativos a seguridad, entornos de pruebas y redes virtuales.
+- Operaciones del ciclo de vida que el motor puede ejecutar, tales como create, start, state, kill y delete.
+
+El **Overlay FileSystem** es un sistema de archivos de tipo union, que superpone varios directorios y los presenta como uno solo. Las capas de la imagen se montan como solo lectura (lowerdir) y encima se agrega una capa de escritura propia del contenedor (upperdir); el contenedor ve la vista combinada (merged). Cuando modifica un archivo que pertenece a una capa inferior, este se copia primero a la capa superior (copy-on-write).
+
+Los **CGroups (control groups)** limitan y contabilizan cuántos recursos puede usar un grupo de procesos, como ser CPU, memoria, I/O de disco, cantidad de procesos, etc. Son los que evitan que un contenedor consuma todos los recursos del host y afecte al resto. Los **Namespaces** aíslan lo que el proceso puede ver. Cada namespace virtualiza un recurso global del kernel, de modo que el proceso tiene su propia vista de él:
+- `PID`: árbol de procesos propio (el proceso principal se ve como PID 1).
+- `NET`: interfaces, tabla de ruteo, reglas de firewall y puertos propios.
+- `MNT`: puntos de montaje propios.
+
+El contenedor vive en su propio network namespace, y para comunicarlo con el exterior se usa un **veth pair**: un par de interfaces virtuales. Un extremo queda dentro del contenedor (es su `eth0`) y el otro queda en el host, conectado al bridge `docker0`. Este es un bridge virtual que actúa como un switch de capa 2 al que se conectan todos los contenedores de esa red, permitiendo que se comuniquen entre sí.
+
+Docker ofrece distintos drivers de red:
+- bridge: Docker crea un puente de red virtual. Los contenedores conectados a la misma red bridge pueden comunicarse entre sí usando sus nombres (gracias al DNS de Docker). La mejor práctica es crear una red definida por el usuario en lugar de usar el puente por defecto (bridge).
+- host: El contenedor comparte la pila de red del host directamente.
+- none: El contenedor está aislado y no tiene interfaces de red.
+- overlay: Permite que contenedores en diferentes máquinas host se comuniquen entre sí.
+- macvlan: El contenedor recibe una dirección MAC propia sobre la interfaz física del host y aparece en la red como un dispositivo más, con IP de la misma subred.
+
+El flujo de trabajo con contenedores se divide en tres roles.
+1. En el **builder** se parte de un Dockerfile: imagen base, dependencias a instalar, archivos a copiar y comando a ejecutar al iniciar. Docker lo procesa con `docker build` y genera una imagen, que es un paquete inmutable compuesto por capas de solo lectura con todo lo necesario para correr la aplicación.
+2. Esa imagen se sube con `docker push` a un **registry**, un repositorio centralizado de imágenes (Docker Hub, o uno privado).
+3. En el **runner**, que puede ser otra máquina totalmente distinta (un servidor de producción, por ejemplo), se descarga la imagen con `docker pull` y se la ejecuta con `docker run`, lo que crea un contenedor.
+
+Las **Image Layers** de Docker son la forma fundamental en que se construyen y almacenan las imágenes de Docker. Se pueden conceptualizar como un sistema de archivos apilado, donde cada capa es una plantilla de solo lectura que representa un conjunto de cambios realizados en el sistema de archivos de la imagen anterior. Cada instrucción en un Dockerfile crea una nueva capa, siempre que modifique el sistema de archivos (ej. `FROM`, `RUN`, `COPY`, `ADD`).
+
+Todo lo que Docker almacena en el host (imágenes, contenedores, volúmenes, redes) está bajo `/var/lib/docker/`. Las capas de las imágenes se guardan en `/var/lib/docker/overlay2/<ID de layer>/`, con un directorio por capa. Dentro del directorio de cada capa hay tres subdirectorios:
+- `diff`: contiene los datos propios de la capa, es decir, solo los archivos que esa capa agrega o modifica respecto de las inferiores.
+- `work`: directorio vacío que el overlay FS necesita internamente para preparar las operaciones de escritura antes de aplicarlas. 
+- `merged` es el punto de montaje donde se ve el resultado de apilar todas las capas, y es lo que el contenedor termina viendo como su raíz `/`.
+
+Como cada capa ocupa espacio en el host, conviene reducir su cantidad. Muchos `RUN apt install` seguidos pueden generar varias capas y, si la imagen base ya pesa 1 GB, el total puede crecer muchísimo. Hay dos formas de reducirlas:
+- Juntar los paquetes en un solo `apt install`.
+- Cuando no se puede juntar (por ejemplo, comandos distintos), encadenar los comandos con `&&` dentro de un único `RUN`, que sigue generando una sola capa.
+
+Un Dockerfile tiene un `ENTRYPOINT` y un `CMD` como máximo. Trabajan juntos:
+- **`ENTRYPOINT`**: Qué comando se ejecuta al iniciar el contenedor. Se reemplaza con la flag `--entrypoint`, que cambia el comando entero.
+- **`CMD`**: Los argumentos por defecto de ese comando. Todo lo que escribimos a la derecha del nombre de la imagen en el `docker run` reemplaza al `CMD`.
+
+El `ENTRYPOINT` (y el `CMD`) se pueden escribir de dos formas:
+- **Con corchetes (exec)**: Docker ejecuta directamente el programa, que pasa a ser el proceso raíz del contenedor. Cada elemento de la lista es un argumento separado. Si ponemos varios elementos, el primero es el comando y el resto son argumentos fijos que el `CMD` no pisa. Por ejemplo, `ENTRYPOINT ["run.sh", "--port", "8080"]`.
+- **Sin corchetes (shell)**: Docker lo envuelve en una shell (como un `sh -c "curl"`), por lo que el proceso raíz es la shell y nuestro programa corre como hijo. Esto cambia cómo reacciona el contenedor al `docker stop`. Primero se crea (`RUN useradd appuser`) y después se lo selecciona con `USER`. Si no existe, el `USER` no sirve. No genera capa.
+
+Hasta que aparece un `USER`, todas las instrucciones del Dockerfile corren como root. A partir de `USER appuser`, los `RUN` siguientes y el contenedor al ejecutarse corren con ese usuario.
+
+`EXPOSE` en el Dockerfile es solo **declarativo**: indica que la aplicación escucha en ese puerto, pero no lo publica.
+
+ Los **volúmenes** son un mecanismo de almacenamiento que brinda la capacidad de conservar datos más allá del ciclo de vida de un contenedor individual. Existen distintos tipos:
+- **Named Volumes**: los maneja internamente docker. Arranca vacío. Se le pueden configurar parámetros, como un límite de tamaño.
+- **Bind Mounts**: monta un directorio del host. El origen tiene que ser una ruta absoluta; no se pueden usar rutas relativas como `../carpeta`. La conexión es bidireccional.
+- **tmpfs Mounts**: maneja data en memoria sin persistencia.
+- **Volumen Anónimo**: se declara solo el destino, sin origen (`-v /mi-volumen`), o con `VOLUME /mi-volumen` en el Dockerfile.
+
+**Docker Compose** es una herramienta que facilita la ejecución de varios contenedores a la vez. En ese archivo cada contenedor se describe como un servicio, junto con su configuración, como de dónde sale la imagen, qué puertos publica, qué variables de entorno recibe, qué volúmenes monta y a qué redes se conecta. Con el archivo definido, `docker compose up` levanta toda la aplicación y `docker compose down` la detiene y elimina.
+
+Un Dockerfile puede tener más de un `FROM`; cada uno inicia una **stage**. La ventaja es que las herramientas de una stage no quedan en la imagen final. Con `AS` le damos nombre a una stage, y con `COPY --from=<stage>` copiamos archivos de una stage anterior.
+```dockerfile
+FROM gcc AS builder
+WORKDIR /app
+COPY hello_world.c .
+RUN gcc hello_world.c -o hello_world
+
+FROM debian
+WORKDIR /app
+COPY --from=builder /app/hello_world .
+ENTRYPOINT ["./hello_world"]
+```
+
+---
+## Kubernetes
+
+**Kubernetes** (abreviado k8s) es un sistema de orquestación de clústeres de contenedores de código abierto. En la vista general tenemos un usuario que accede al clúster mediante una CLI, una API o una interfaz gráfica que ofrezca el proveedor. Todos estos pedidos llegan al **Master** (o **Control Plane**), que es el punto desde donde se maneja todo e instrumenta todas las funcionalidades. Este contiene:
+- **apiserver**: Recibe todos los comandos y consulta a los otros componentes. El tráfico pasa por él.
+- **etcd**: base de datos clave-valor que persiste tanto el estado actual (real) del clúster como el estado deseado, es decir, lo que pidió el cliente. Lo accede únicamente apiserver.
+- **scheduler**: asigna a un nodo los pods que todavía no tienen uno asignado, teniendo en cuenta los recursos disponibles y las restricciones que definamos.
+- **controller manager**: supervisa el estado del clúster y lo lleva hacia el estado deseado. Maneja casos específicos de pods como ReplicaSets (cantidad de réplicas), CronJobs, DaemonSets, etc.
+
+Cada **nodo** es un servidor (físico o virtual) que contiene **pods**, que son grupos de uno o más contenedores. Para un correcto desacople, los distintos servicios de una aplicación se distribuyen entre los nodos, y en cada uno de ellos corren los siguientes componentes:
+- **kubelet**: recibe los comandos del control plane y se encarga de crear y matar los pods dentro del nodo, además de configurar la red interna de los mismos. Reporta el estado del nodo al apiserver.
+- **kube-proxy**: mantiene la configuración de networking externa del nodo (services, etc.) usando reglas de iptables.
+- **Container runtime**: es el que efectivamente ejecuta los contenedores.
+- **Monitoring/Logging**: servicios auxiliares como Supervisord o Fluentd.
+
+Los nodos se agrupan en **node pools**, que son grupos de nodos con la misma configuración (mismo tipo de máquina) dentro de un clúster. Esto brinda escalabilidad, clústeres heterogéneos, uso de labels, updates, etc.
+
+La idea clave de Kubernetes es que es **declarativo**, pues nosotros no le decimos qué comandos ejecutar, sino cómo queremos que quede el sistema. Se hace un loop de consulta permanente entre el estado deseado y el estado actual, y el clúster se ocupa automáticamente de converger a lo que pidió el usuario. Además, este modelo se apoya en la **teoría de la promesa**. Sus ideas principales son:
+- **Agentes autónomos**: cada componente del sistema es un agente independiente, que decide por sí mismo cómo comportarse y solo puede garantizar su propio comportamiento.
+- **Promesas en lugar de obligaciones**: un agente no puede imponerle un comportamiento a otro, porque nada asegura que la orden se cumpla, solamente puede prometer.
+- **Convergencia**: una promesa no se cumple una sola vez, sino que el agente verifica periódicamente el estado real y lo corrige hasta que coincida con lo prometido.
+
+Kubernetes nos brinda dos niveles de autoescalado. 
+- **Autoscaling del Clúster**: trabaja sobre las máquinas. Se agregan máquinas cuando se necesitan. Se quitan máquinas cuando no se precisan, por ejemplo ante un bajo uso de CPU.
+- **Autoscaling Horizontal del Pod (HPA)**: trabaja sobre los pods. Agrega o elimina pods automáticamente según sea necesario. Se basa en la utilización de la CPU y otras métricas.
+
+Un **pod** es la unidad mínima que maneja Kubernetes: no se despliegan contenedores sueltos, sino pods que contienen uno o más contenedores. Hay que tener en cuenta que los pods son **efímeros**: pueden morir y ser recreados en cualquier momento (y en otro nodo, con otra IP), por lo que nunca debemos depender de un pod en particular. Los contenedores de un mismo pod comparten algunos namespaces: 
+- Comparten: `NET`, `IPC` y `UTS` (hostname). El `PID` puede compartirse opcionalmente.
+- No comparten: `MNT`, `USER` y `CGroup`, es decir, cada contenedor tiene su propio filesystem y sus propios límites de recursos.
+
+Lo primero que tenemos que decidir es cuántos clústers necesitamos. Tenemos dos enfoques:
+- **Por aplicación**: un clúster por cada aplicación, tanto en desarrollo como en producción. Esto da mucho aislamiento, pero termina en una gran cantidad de clústers para administrar.
+- **Multi-Tenant**: pocos clústers grandes compartidos por varias aplicaciones, típicamente uno de producción y otro de no-producción. Es más simple de administrar, pero el aislamiento se tiene que lograr dentro del clúster (con namespaces, como veremos más adelante).
+
+El master y los nodos pueden distribuirse entre las zonas de disponibilidad de distintas maneras:
+- **Zonal**: el master y todos los nodos están en una misma zona.
+- **Multi-zonal**: hay un único master en una zona (la zona B) y los nodos se distribuyen en varias zonas. Si se cae la zona B, los nodos siguen funcionando y pueden recibir tráfico, pero no se los va a poder configurar ni escalar. 
+- **Regional**: se tienen réplicas del master y nodos en cada zona. Es la opción más cara, pero brinda la mayor protección, ya que se tolera la caída de cualquier zona.
+
+Los objetos en Kubernetes se definen en archivos **Manifest**, que tienen formato YAML. Todo manifest debe tener los siguientes parámetros:
+- `apiVersion`: versión de la API de Kubernetes para el objeto.
+- `kind`: tipo de objeto (Pod, Service, Deployment, etc).
+- `metadata`: Datos que ayudan a identificar de forma única al objeto. Incluye `name`, `namespace`, `labels` y `annotations`.
+- `spec`: toda la configuración, es decir, el estado deseado.
+
+Un **ReplicaSet** mantiene una cantidad de réplicas de un pod.  Es fundamental que el template tenga el label del selector (`app: backend`); si no, los pods que crea no los administra. Un **Deployment** es una abstracción sobre los ReplicaSets: así como el ReplicaSet administra pods, el Deployment administra ReplicaSets. 
+- `replicas`: Número de pods idénticos que se desean mantener corriendo simultáneamente.
+- `selector`: Define cómo el Deployment encuentra los Pods que debe administrar (usualmente vinculado a los matchLabels).
+- `template`: Es la plantilla interna que define cómo se construirán los Pods.
+	- `containers`: Una lista con los contenedores que correrán dentro del Pod:
+		- `name`: Nombre del contenedor.
+		- `image`: La imagen de Docker/OCI (ej. nginx:latest).
+		- `ports`: Puertos que expone el contenedor (containerPort).
+		- `resources`: Límites y peticiones de CPU y memoria (requests y limits), fundamentales para la estabilidad y seguridad del clúster.
+		- `env` o `envFrom`: Variables de entorno o inyección de secretos/configuraciones (ConfigMaps/Secrets).
+		- `securityContext`: Permisos del contenedor (ej. runAsNonRoot: true, allowPrivilegeEscalation: false). Si este parámetro no está, puede ser que el contenedor corra como root, algo que no queremos.
+
+Además de las réplicas, el Deployment se fija en el template del pod. Si cambia (por ejemplo, la versión de la imagen), hace un **rollout**: crea un ReplicaSet nuevo y va reemplazando los pods de a uno. 
+
+Para un Service (Redes):
+- `selector`: Conecta el Service con los Pods que tengan esas etiquetas específicas para redirigirles el tráfico.
+- `type`: El tipo de exposición de red:
+	- `ClusterIP` (por defecto, solo accesible dentro del clúster).
+	- `NodePort` (expone el servicio en un puerto estático en cada nodo).
+	- `LoadBalancer` (integra un balanceador de carga externo del proveedor cloud).
+- `ports`: Mapeo de puertos:
+	- `port`: Puerto en el que escucha el servicio virtual.
+	- `targetPort`: Puerto al que redirige el tráfico dentro del Pod.
+
+Para un ConfigMap o Secret (Configuración):
+- `data` (o `stringData` en Secrets): Pares de clave-valor donde almacenas las configuraciones o datos sensibles (los Secrets van codificados en Base64).
+
+Un **ConfigMap** guarda información no sensible en `data`, como pares clave-valor. Se puede usar como variables de entorno o montar como archivos. Un **Secret** es lo mismo, pero para información sensible (contraseñas, claves privadas). Se usa igual, con `secretRef` en lugar de `configMapRef`. Por defecto los Secrets no son seguros: solo se codifican en base64, así que cualquiera con acceso al clúster puede leerlos y decodificarlos.
+
+Los **labels** son pares clave-valor que identifican, describen y agrupan un conjunto de objetos. No definen unicidad, sino que la idea es justamente que apliquen a muchos objetos a la vez. Los **selectors** usan esos labels para especificar a qué objetos aplican los comandos u otros objetos.
+
+Tenemos tres opciones para derivar workloads (pods) a determinados nodos:
+- **nodeSelector**: requiere que los pods y los nodos tengan etiquetas en común para que un pod determinado se ubique en un nodo determinado.
+- **Affinity**: el sucesor de nodeSelector. Es una coincidencia basada en etiquetas que tiene más operadores y puede crear asociaciones positivas o negativas con nodos, o incluso con otros pods.
+- **Taints**: son el medio por el cual un nodo puede repeler pods, algo así como una lista negra. Solo se ubican en ese nodo los pods que explícitamente toleren la taint.
+
+Los **namespaces** de Kubernetes (que no hay que confundir con los namespaces de Linux) nos permiten, en clústeres multi-tenant, segmentar los pods por aplicación o grupo de trabajo. Cada namespace funciona como un clúster virtual dentro del clúster físico, sobre el cual podemos aplicar permisos y cuotas de recursos por separado.
+
+Podemos elegir qué **canal de release** va a usar el clúster, es decir, con qué ritmo se actualiza la versión de Kubernetes que corre:
+-  **Rapid** recibe la última versión que salió.
+- **Regular** recibe versiones que ya fueron probadas, y es el canal por defecto.
+- **Stable** recibe versiones que vienen funcionando bien hace mucho tiempo y no tienen ningún problema conocido.
+
+Los **service mesh** sirven para gestionar aplicaciones con muchos Services. La idea es que dentro de cada pod, junto al contenedor principal, corre otra aplicación, un **proxy sidecar**, que se encarga de recibir comandos, loguear todo lo que sucede y ejecutar acciones. Como un Pod tiene una única dirección IP y se maneja por puertos, todo lo que hace el contenedor principal pasa por el sidecar y queda logueado. Usamos una service mesh para:
+- **Gestión del tráfico**: con enrutamiento dinámico, reintentos automáticos, balanceo de carga y circuit breaking.
+- **Seguridad**: ya que aplica la autenticación y autorización y encripta el tráfico automáticamente.
+- **Observabilidad**: porque recopila métricas detalladas, logs y trazas sobre todo el tráfico.
+
+Kubernetes usa **probes** (health checks, como en los target groups de AWS) para conocer el estado de los contenedores. Pueden ser comandos o requests HTTP. No hay probes por defecto: sin ellas, Kubernetes solo verifica que el contenedor esté levantado.
+- **Readiness**: determina únicamente si el pod está listo para recibir tráfico. La usan los objetos que distribuyen tráfico (los services) para decidir si le mandan tráfico a ese pod.
+- **Liveness**: determina si el contenedor tiene que reiniciarse. Si falla, Kubernetes lo reinicia automáticamente.
+
+---
+## Estrategias de Deployment
+
+Cuando tenemos que actualizar una aplicación en producción, hay distintas estrategias según cuánto riesgo, complejidad y costo estemos dispuestos a asumir:
+- **Rolling Deployment**: actualiza las instancias de forma gradual (en lotes o de una en una) hasta cubrir todo el sistema. Conviven versiones distintas temporalmente. Es la estrategia por defecto de Kubernetes.
+- **Canary Deployment**: despliega la nueva versión para un porcentaje pequeño de usuarios (por ejemplo, 1% o 5%) para validar su estabilidad antes de pasarla al 100%. Minimiza riesgos en producción.
+- **Feature Flags**: el código se despliega con la nueva función oculta tras un interruptor lógico que se enciende o apaga de forma remota.
+- **Shadow Deployment**: duplica el tráfico real de producción y lo envía en paralelo a la nueva versión de forma invisible, descartando su respuesta. Es ideal para medir rendimiento sin riesgo para el usuario.
+- **A/B Testing**: ejecuta dos versiones en paralelo para segmentos de usuarios distintos, con el fin de medir cuál ofrece mejores resultados de negocio o experiencia.
+
+En el **Blue-Green Deployment** tenemos dos deployments activos en paralelo, que pueden ser la versión actual y la nueva, o variantes que estamos probando. Definimos los dos deployments con labels distintos (`env: blue` y `env: green`) y un service que apunta a uno u otro mediante su selector.
+
+---
+## Modelo de Red de Kubernetes
+
+Kubernetes sigue un modelo de red muy estricto y fundamental para su diseño:
+- Cada pod tiene su propia dirección IP única.
+- Los pods en diferentes nodos pueden comunicarse sin NAT. Es decir, si un pod en el nodo A contacta a un pod en el nodo B, el pod de destino ve la dirección IP del pod de origen, y no la del nodo A.
+- Los agentes del nodo (como el kubelet) pueden comunicarse con todos los pods.
+
+Para exponer los pods tenemos 4 mecanismos principales, llamados Services:
+- **ClusterIP**: Es una dirección única a la cual enviar tráfico, y luego se reparte entre los pods que la atienden (los endpoints), seleccionados por labels. Es un servicio interno del clúster.
+- **NodePort**: Expone el service hacia afuera del clúster abriendo un puerto en la IP de cada nodo. El rango disponible de puertos es `30000`-`32767`. 
+- **Load Balancer**: Es un balanceador sobre los node ports. Interactúa con el cloud provider para crear un load balancer externo, que mapea una IP externa con el ClusterIP del service.
+- **Ingress**: Despacha pedidos HTTP a distintos services, permitiéndonos balancear según la URL. Trabaja en capa 7, por lo que funciona solo para HTTP/S. Es una colección de reglas de enrutamiento que controlan cómo el tráfico externo llega a los services del clúster, y requiere un **Ingress Controller** (como NGINX) para funcionar. Este controlador corre en los nodos y actúa como el router de edge que aplica las reglas definidas en el recurso Ingress. El Ingress maneja la terminación de HTTPS (certificados), liberando a los pods de esa tarea.
+
+Las **Network Policies** son el mecanismo de firewall de Kubernetes. Definen cómo los pods pueden comunicarse entre sí y con otros endpoints de red. Por defecto, Kubernetes no restringe la comunicación entre pods, y una network policy nos permite aislarlos.
+
+Tenemos los siguientes rangos de redes:
+- Red de Nodos (Hosts): `10.100.0.0/24`. No se puede acceder desde fuera (por defecto).
+- Red de Pods (CNI): `10.244.0.0/16`. Sí se puede acceder desde fuera del clúster, dependiendo de la infraestructura.
+- Red de Services (ClusterIP): `10.96.0.0/16` (el rango default es `/12`, pero se superpone con la red de nodos).
+
+---
+## Seguridad
+
+Para proteger un clúster usamos el paradigma de **defensa en profundidad**, que divide la seguridad en 4 capas conocidas como las 4C.
+1. **Cloud**: la capa externa, que es el datacenter o la nube que sustenta toda la arquitectura. Ya sea la VPC de cualquiera de las nubes o una nube privada, tiene que estar cerrada, y todo lo que está dentro tiene que estar protegido. Las medidas son las siguientes. Se usan las reglas IAM del proveedor, y se aplica hardening de VMs y nodos.
+2. **Cluster**: es la protección del plano de control. El API server es el punto central de administración, y se gestiona mediante RBAC (Role-Based Access Control), con Roles y RoleBindings explícitos. El **etcd** también se tiene que proteger, ya que es la base de datos de estado del clúster y acceder a él equivale a tener privilegios de root absolutos. La API tiene una feature de **Admission Control**. Un **Role** define qué acciones se pueden hacer sobre qué recursos. Un **RoleBinding** asigna ese rol a un sujeto.
+3. **Container**: protege el entorno de ejecución y los privilegios del contenedor, con configuraciones en el manifest (ejecución como no-root user, read-only root filesystem, bloqueo de escalada de privilegios). Además, como los contenedores en definitiva se basan en funcionalidades de Linux, podemos aislarlos a nivel kernel y de recursos (como los límites de CPU y memoria, o el filtrado de syscalls).
+4. **Code**: la capa interna, con la lógica de la aplicación, sus dependencias y sus secretos. Puede implementarse mediante escaneo de dependencias, firma criptográfica de imágenes y validación en el clúster. También se puede utilizar una arquitectura de bóvedas externas, donde se accede a secretos a través de una aplicación, para evitar teneros hardcodeados.
+
+---
+## Chaos Engineering
+
+**Chaos Engineering** es una metodología que sirve en este paradigma de contenedores y sistemas distribuidos para entender lo que está pasando y poder probar los sistemas. Es un método científico que consiste en especificar y evaluar hipótesis de resiliencia en la siguiente serie de pasos:
+1. Seleccionar una hipótesis.
+2. Definir el alcance.
+3. Identificar las métricas a monitorear.
+4. Notificar a la organización.
+5. Ejecutar el experimento, documentando todo.
+6. Analizar los resultados.
+7. Automatizar, por ejemplo con un control automático de la cantidad de pods por clúster.
+
+Los experimentos que podemos hacer son los siguientes.
+- Falla de infraestructura.
+- Latencia de red.
+- Agotamiento de recursos.
+- Fallas en dependencias externas.
+- Expiración o corrupción de datos
+
+---
+## Servicios Multimedia
+
+Cuando hablamos de **streaming** nos referimos a la distribución de video en forma digital. Tiene tres características principales:
+- **One-way**: es una transmisión unidireccional, desde la fuente hacia el receptor, sin requerir una interacción bidireccional constante.
+- **Prioridad en calidad**: el objetivo es que el usuario final reciba siempre la mejor calidad de reproducción posible, y para eso se utilizan el almacenamiento en búfer y tasas de bits adaptativas.
+- **Ocupación de red**: el contenido de video y audio es el que tiene la mayor ocupación y volumen de tráfico en las redes públicas.
+
+Como el video necesita mucho ancho de banda, lo primero que hay que hacer es **comprimirlo**. Los algoritmos de compresión estándar actuales pueden comprimir un video a prácticamente cualquier tasa de bits deseada. Estos aplican dos pasos:
+1. **Compresión de imagen**: es la compresión común de cualquier imagen. Se puede aplicar a cada cuadro del video por separado.
+2. **Compresión entre cuadros (interframe)**: hasta que no haya un cambio grande de escena, no tiene sentido guardar cuadros completos si se pueden guardar solo los cambios entre uno y otro.
+
+La arquitectura de **streaming de video** tiene cuatro etapas:
+1. **Input Devices**: es el contenido de entrada, por ejemplo, un programa que se está filmando en vivo o archivos de video pregrabados.
+2. **Media Processing**: el contenido se ingesta en un servidor que lo codifica y transcodifica, para que tenga un formato adecuado para ser transmitido.
+3. **Media Server**: el contenido procesado se copia en un servidor de medios (media server o video server), que lo almacena y empaqueta.
+4. **Cliente final**: desde el servidor de medios se hace el streaming que llega al cliente.
+
+En un principio se utilizó la **transmisión por HTTP**. En este esquema, el video simplemente se almacena en un servidor HTTP como un archivo ordinario con una URL específica. Del lado del cliente, los bytes se van recogiendo en un búfer de la aplicación. Una vez que la cantidad de bytes del búfer supera un umbral predeterminado, la aplicación comienza la reproducción. Esto tiene un problema: todos los clientes reciben la misma codificación del video, a pesar de las grandes variaciones en el ancho de banda disponible.
+
+Para resolver esto se desarrolló un nuevo tipo de transmisión basada en HTTP, llamado **transmisión adaptativa dinámica sobre HTTP (DASH)**. el video se codifica en varias versiones diferentes, cada una con una tasa de bits distinta y, en consecuencia, un nivel de calidad distinto. El cliente solicita dinámicamente fragmentos de segmentos de video de unos pocos segundos de duración. 
+
+Cuando el ancho de banda disponible es alto, la aplicación del cliente selecciona fragmentos de una versión de alta tasa, y cuando es bajo, selecciona fragmentos de una versión de tasa más baja. Por eso decimos que es un protocolo **adaptativo**, que se ajusta al ancho de banda y al dispositivo del usuario final. El **encoder** recibe el video de entrada con un bitrate alto y lo codifica en las distintas versiones de bitrate. Estas versiones van al servidor web, que crea un **archivo manifiesto**.
+
+DASH es uno de muchos protocolos de streaming. De acuerdo con las características que necesitemos, vamos a elegir un protocolo específico. Lo que no cambia es el funcionamiento general, que tiene que permitir que todo el mundo reciba los contenidos en distintas calidades sin depender tanto del ancho de banda ni del dispositivo.
+
+Si tenemos un noticiero o un servicio como Netflix, ¿alcanza con un único servidor que tenga todos los manifiestos y todos los contenidos? No. Cuando aumenta la escala, un centro de datos único y centralizado tiene varias limitaciones, como por ejemplo cuellos de botella. La solución es tener una **Content Delivery Network (CDN)** quwe ubican servidores en el borde (edge servers), en los puntos de presencia, y los clientes acceden al que tienen más cerca, mientras que el servidor original mantiene el contenido de origen.
+- El **contenido estático** son archivos que rara vez cambian y que se almacenan en la memoria caché de los edge servers, cerca de los usuarios. 
+- El  **contenido dinámico** son datos que cambian en tiempo real según el usuario, su ubicación o sus acciones. Sirve para proporcionar respuestas personalizadas, realizar streaming en vivo y permitir llamadas a APIs aceleradas.
+
+En cuanto a la **distribución geográfica**, el contenido se replica en múltiples clústeres distribuidos, que pueden ser **privados** (distribuye el contenido en sus propios data centers) o **de terceros** (empresas que ofrecen sus data centers gigantescos). Además, hay dos filosofías de despliegue de servidores:
+- **Enter Deep (inserción profunda)**: miles de clústeres pequeños dentro de las redes de acceso de los ISP.
+- **Bring Home (traer a casa)**: menos clústeres, pero de gran capacidad, ubicados en los Puntos de Intercambio de Internet o IXP.
+
+Las tres estrategias de enrutamiento y redirección más usadas son las siguientes:
+1. **Enrutamiento a nivel de red (capa 3) con IP Anycast**: múltiples servidores en distintas ubicaciones globales anuncian exactamente la misma dirección IP mediante el protocolo BGP (Border Gateway Protocol).
+2. **Redirección y resolución a nivel de aplicación (capa 7)**: se usa cuando queremos un control más granular sobre a dónde distribuimos. Se aplica mediante DNS geolocalizado, redirección HTTP (códigos 301 y 302) y enrutamiento basado en CNAME.
+3. **Balanceo de carga y selección del edge server**: funciona como cualquier load balancer con monitoreo en tiempo real y políticas de enrutamiento avanzadas.
+
+En la redirección por DNS (segunda estrategia previa) el servidor DNS autoritativo transfiere la consulta al CDN, por lo que en lugar de devolver una dirección IP devuelve al Local DNS un nombre de host en el dominio del CDN. A partir de este momento, la consulta DNS entra en la infraestructura de DNS privada del CDN.
+
+Los servidores que entregan el contenido lo tienen en una **caché**, que es una memoria distribuida que necesitamos que sea persistente para sacar provecho y tener mejor performance. 
+- **Estrategia Push**: los servidores centrales predicen la demanda regional y distribuyen el contenido a las cachés antes de que los usuarios lo soliciten.
+- **Estrategia Pull**: la caché local entrega el video directamente al usuario si se produce un acierto. Sino, el nodo solicita el archivo al servidor central, guarda una copia local y transmite en paralelo al usuario tras recibir los primeros fragmentos, minimizando la latencia.
+- **Enfoque Híbrido**: combina la inserción programada con la extracción bajo demanda según el perfil del cliente o del contenido.
+
+**Transcodificar** significa cambiar el formato del video o su compresión. Para hacerlo simple, se convierten todos los formatos entrantes en un archivo maestro, llamado **mezzanine**, y a partir de él se generan las copias en los distintos formatos que utilizan los usuarios.
+
+---
+## Telefonía
+
+En un principio, la comunicación entre dos personas eran señales eléctricas, y todo el equipamiento dependía de la continuidad de esa señal. Hoy en día, tenemos dos tipos de redes de telefonía:
+- **Red de conmutación de circuitos**: hay centrales de conmutación entre el originador y el receptor, y la continuidad de la llamada depende de la continuidad eléctrica del circuito.
+- **Red de conmutación de paquetes (VoIP)**: usa una red IP (internet o una LAN) para transferir la voz desde el originador hasta el receptor, con protocolos como SIP. No necesita continuidad eléctrica ni pasar por centrales de conmutación, sino que envía paquetes por la red.
+
+Las redes de telefonía se pueden clasificar de la siguiente manera:
+- **Públicas (PSTN/PLMN)**: son las de las telcos, la telefonía que teníamos en nuestras casas o en los teléfonos públicos de la calle.
+	- Circuit switched: es la tecnología legacy (TDM, 2G y 3G), que está en desuso porque se pasó al modelo de voz sobre IP.
+	- Packet switched / VoIP: IMS, 4G/VoLTE e IP.
+- **Privadas (PBX)**: son las centrales telefónicas internas de las empresas.
+	- Circuit switched / analógica: legacy.
+	- Packet switched / VoIP.
+
+Cuando trabajamos con conmutación de paquetes, los requisitos dependen del servicio:
+- **Voz y videoconferencia**: tiene que ser en tiempo real, con menos de 100 ms de round-trip, y full duplex (two way).
+- **Live streaming y on-demand streaming**: es tolerante a la demora (delay tolerant), con baja latencia o casi tiempo real, simplex (one way) y con feedback.
+
+En voz sobre IP tenemos dos planos, y para cada uno hay protocolos que nos ayudan:
+- **Plano de señalización (control)**: envía mensajes para comunicar eventos y controlar los aspectos de cada llamada. Maneja la señalización de comienzo y fin de llamada, quién llama a quién, las negociaciones y los parámetros específicos de la llamada.
+- **Plano de media (datos)**: es el audio o video que se intercambia en cada llamada, una vez que esta se estableció.
+
+Una **PBX (Private Branch Exchange)** es la central telefónica privada de una empresa, de uso corporativo, que se usa para armar los internos. Una PBX IP es una central telefónica digital que utiliza los protocolos de voz sobre IP.
+
+Los **internos** son equipos especiales con interfaz IP, que se conectan a los switches de la red de la empresa. También puede haber un **softphone**, que es un software instalado en la computadora que permite tener un interno de la empresa sin necesidad de un dispositivo físico. Los **contact centers** también hacen uso de estos servicios. Utilizar servicios IP permite procesar las llamadas, grabarlas y tener un tratamiento de los datos mucho más dinámico que con una central analógica.
+
+ La red de telefonía de una empresa con una PBX IP es de la siguiente forma:
+![[Pasted image 20261030170121.png|center|581]]
+- **IP-PBX**: es la central telefónica interna, conectada a un switch de la empresa.
+- **Internos**: al switch se conectan los internos IP físicos y los softphones.
+- **Gateway (GW) hacia la PSTN**: es el punto de unión entre la red pública de telefonía y la central de voz sobre IP interna. Es un equipo que traduce las comunicaciones de la red pública (conmutación de circuitos) a voz sobre IP (conmutación de paquetes), y por el que entran y salen las llamadas de la PBX hacia la red pública.
+- **Conexión IP**: la PBX también puede conectarse directamente por IP a un proveedor de telefonía IP (IPTSP).
+
+En lugar de tener la PBX en un servidor propio, se puede usar una **PBX virtual o hosted**, es decir, una PBX como servicio alojada en internet. En este esquema, la empresa tiene un router, un switch, los internos IP físicos, los softphones y el interno analógico con su gateway, y del otro lado de internet está la PBX hosteada por la telco, conectada a la PSTN:
+![[Pasted image 20261030170315.png|center|519]]
 
