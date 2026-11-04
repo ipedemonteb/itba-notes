@@ -398,7 +398,7 @@ Cuando las cargas de trabajo pertenecen a entidades administrativas completament
 - Compatibilidad con esquemas de enrutamiento tanto estático como dinámico mediante Cloud Router.
 - Negociación y seguridad mediante protocolos criptográficos basados en IKEv1 e IKEv2.
 
-En una **topología de VPN estática**, el túnel cifra la comunicación entre la IP externa regional asignada a la puerta de enlace de Cloud VPN en la nube y la IP externa del dispositivo de VPN local. El tráfico interno se distribuye mediante tablas de enrutamiento fijas configuradas manualmente hacia los distintos recursos en las regiones. la **topología de enrutamiento dinámico** introduce el componente Cloud Router para automatizar el aprendizaje e intercambio de topologías de red sin intervención estática.
+En una **topología de VPN estática**, el túnel cifra la comunicación entre la IP externa regional asignada a la puerta de enlace de Cloud VPN en la nube y la IP externa del dispositivo de VPN local. El tráfico interno se distribuye mediante tablas de enrutamiento fijas configuradas manualmente hacia los distintos recursos en las regiones. La **topología de enrutamiento dinámico** introduce el componente Cloud Router para automatizar el aprendizaje e intercambio de topologías de red sin intervención estática.
 
 **Cloud Interconnect** constituye una solución de conectividad empresarial diseñada para extender redes locales hacia una VPC de Google Cloud mediante enlaces directos de alta capacidad.
 - **Interconexión Dedicada**: se establece una conexión física directa entre la red del cliente y la red de Google en una instalación de colocación o coubicación conjunta.
@@ -470,7 +470,7 @@ Para cuantificar con exactitud la huella, proveedores como Google Cloud aplican 
 - **Reparto por plataforma**: cruza los datos con la facturación y los códigos de producto para calcular el carbono por día, región y servicio específico de nube.
 - **Huella por cliente**: consolida el uso particular por proyecto y cliente, agregando los datos mensualmente para visualización en dashboards o exportación analítica en BigQuery.
 
-
+---
 ## Ciberseguridad en la Nube
 
 A la disciplina, herramientas y procesos encargados de descubrir, monitorear y reducir la exposición en la nube se les conoce como:
@@ -505,15 +505,21 @@ Los **contenedores** se consolidan como una nueva solución arquitectónica impl
 - No requieren licencias por cada OS
 - Son portables
 
-La **Open Container Initiative (OCI)** surge como un proyecto de estandarización abierto para establecer especificaciones universales en la tecnología de contenedores. El ciclo de vida operativo de los contenedores se articula a través de un flujo de trabajo continuo y normalizado:
-1. Creación y compilación de la imagen a partir del código y sus dependencias.
-2. Publicación y descarga mediante repositorios a través de operaciones push y pull.
-3. Instanciación y ejecución directa del contenedor en el entorno de destino.
+La **Open Container Initiative (OCI)** surge como un proyecto de estandarización abierto para establecer especificaciones universales en la tecnología de contenedores. El ciclo de vida operativo de los contenedores se articula a través de un flujo de trabajo continuo y normalizado. La OCI no estandariza las etapas en sí, sino los formatos y las interfaces que se utilizan en cada una, y lo hace mediante **tres especificaciones**:
+![[Pasted image 20261010124941.png|center|615]]
+1. Creación y compilación de la imagen a partir del código y sus dependencias: **especificación de imágenes** (Image Spec).
+2. Publicación y descarga mediante repositorios a través de operaciones push y pull: **especificación de distribución** (Distribution Spec).
+3. Instanciación y ejecución directa del contenedor en el entorno de destino: **especificación de tiempo de ejecución** (Runtime Spec).
 
 La **especificación de imágenes** establece la forma estándar de construir el paquete del sistema de archivos:
 - Manifiesto descriptivo con el detalle de todas las capas que integran la imagen.
 - Conjunto de capas inmutables que componen el contenido del sistema de archivos.
 - Información de configuración requerida por el motor de ejecución para inicializar el contenedor.
+
+La **especificación de distribución** define cómo se publican y se descargan las imágenes de un registro, mediante una API HTTP estándar:
+- En la descarga (pull) se obtiene primero el manifiesto y luego solo las capas y la configuración que faltan en el equipo local.
+- En la publicación (push) se suben primero las capas y la configuración, y por último el manifiesto.
+- Operaciones complementarias, como listar las etiquetas (tags) de una imagen y eliminar contenido.
 
 La **especificación de tiempo de ejecución** define cómo ejecutar la imagen desempaquetada mediante motores de bajo nivel estandarizados como runc.
 - Configuración de procesos, parámetros de entrada, variables de entorno y puntos de montaje.
@@ -530,11 +536,11 @@ Los **CGroups (control groups)** limitan y contabilizan cuántos recursos puede 
 El contenedor vive en su propio network namespace, y para comunicarlo con el exterior se usa un **veth pair**: un par de interfaces virtuales. Un extremo queda dentro del contenedor (es su `eth0`) y el otro queda en el host, conectado al bridge `docker0`. Este es un bridge virtual que actúa como un switch de capa 2 al que se conectan todos los contenedores de esa red, permitiendo que se comuniquen entre sí.
 
 Docker ofrece distintos drivers de red:
-- bridge: Docker crea un puente de red virtual. Los contenedores conectados a la misma red bridge pueden comunicarse entre sí usando sus nombres (gracias al DNS de Docker). La mejor práctica es crear una red definida por el usuario en lugar de usar el puente por defecto (bridge).
-- host: El contenedor comparte la pila de red del host directamente.
-- none: El contenedor está aislado y no tiene interfaces de red.
-- overlay: Permite que contenedores en diferentes máquinas host se comuniquen entre sí.
-- macvlan: El contenedor recibe una dirección MAC propia sobre la interfaz física del host y aparece en la red como un dispositivo más, con IP de la misma subred.
+- **bridge**: Docker crea un puente de red virtual. Los contenedores conectados a la misma red bridge pueden comunicarse entre sí usando sus nombres (gracias al DNS de Docker). La mejor práctica es crear una red definida por el usuario en lugar de usar el puente por defecto (bridge).
+- **host**: El contenedor comparte la pila de red del host directamente.
+- **none**: El contenedor está aislado y no tiene interfaces de red.
+- **overlay**: Permite que contenedores en diferentes máquinas host se comuniquen entre sí.
+- **macvlan**: El contenedor recibe una dirección MAC propia sobre la interfaz física del host y aparece en la red como un dispositivo más, con IP de la misma subred.
 
 El flujo de trabajo con contenedores se divide en tres roles.
 1. En el **builder** se parte de un Dockerfile: imagen base, dependencias a instalar, archivos a copiar y comando a ejecutar al iniciar. Docker lo procesa con `docker build` y genera una imagen, que es un paquete inmutable compuesto por capas de solo lectura con todo lo necesario para correr la aplicación.
