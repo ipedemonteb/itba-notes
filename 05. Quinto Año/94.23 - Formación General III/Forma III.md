@@ -25,3 +25,5 @@ Docentes:
 - [[07. Capacidad de las Personas]]
 - [[08. Complejidad]]
 - [[09. Modelos de Organizaciones]]
+- [[10. Planeamiento Estratégico]]
+- [[11. Integración]]
