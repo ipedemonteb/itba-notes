@@ -225,3 +225,214 @@ Todos los puestos tienen algo de cada uno de los tres factores, pero en diferent
 Tanto en el Modelo Factoreal como en la TON nos encontramos con una organización estratificada con niveles organizacionales donde las posiciones de la base de la pirámide están vinculadas con lo rutinario y operativo, y a medida que subimos los estratos de la pirámide se vinculan más con lo estratégico. La TON trabaja con el concepto del A-T como un concepto clave para esta estratificación, mientras que en modelo factoreal el concepto del tiempo es uno de los factores, y se toma como tal, no es el único para terminar de definir el peso relativo dentro de una organización.
 
 En ambos hay una ponderación creciente de responsabilidad. En el modelo de la TON, la respondibilidad integrativa de las posiciones más altas de la organización por sobre las tareas de la base es incremental. Esto se traduce al modelo factoreal como una puntuación; posiciones en la base de la pirámide tienen un porcentaje de peso de responsabilidad más bajo que las posiciones más altas.
+
+---
+## Capacidad de las Personas
+
+Cuando hablamos de la **capacidad de las personas** nos referimos a las características y fortalezas que hacen a una persona idónea para algo en particular, que en nuestro caso va a ser el trabajo.
+
+En una empresa, ¿cómo se puede saber si una persona está capacitada para un rol? De acuerdo a Jacques, una primera aproximación se obtiene recorriendo distintas variables, como la capacidad de trabajo, la capacidad de ordenar experiencias previas, la tolerancia a la incertidumbre, la formulación de metas y proyectos, etc.
+
+Jacques distingue dos tipos de capacidades.
+- **Capacidad de Trabajo Potencial**: la capacidad máxima con la que una persona puede llegar a trabajar en un rol. Es decir, ¿hasta dónde podría llegar a crecer como máximo una persona? 
+- **Capacidad de Trabajo Aplicada**: cuánto de sus conocimientos y habilidades pone en juego la persona en un momento dado. 
+
+Es importante tener en cuenta que no es saludable, ni para la persona ni para la organización, que haya una gran diferencia entre la capacidad de trabajo aplicada y la capacidad de trabajo potencial. La capacidad de trabajo que una persona aplica puede variar. En una misma semana, una persona puede desempeñar sus tareas de manera distinta. Además, hay momentos de la vida en los que las personas tienen mayor capacidad de desarrollar su potencial.
+
+El **horizonte-temporal** es una variable que cuantifica la CdT potencial de una persona en términos del rol que puede manejar en plenitud. Si la persona está en equilibrio con su rol, resultará que:
+$$\begin{gathered}
+\text{NdT del rol} = \text{CdT-P de la persona} \\[2ex]
+\text{A-T del rol} = \text{H-T de la persona}
+\end{gathered}$$
+
+Si la capacidad potencial es superior a la aplicada, lo más probable es que la persona empiece a sentirse desmotivada y aburrida, ya que percibe que puede aportar mucho más de lo que su trabajo le exige, y por lo tanto no va a estar satisfecha. Si el rol exige aplicar una capacidad de trabajo superior a la capacidad potencial de la persona, el resultado es que la persona se siente abrumada, no logra desarrollar las tareas o no sabe cómo resolver los inconvenientes que debe afrontar en su rol.
+
+Jacques dice que cuanto mayor es una persona, mayor es su capacidad de trabajo. Es decir, debemos considerar la **maduración** de la persona, que es el proceso por el cual un aspecto dado de ella, biológicamente innato, crece de manera regular hasta un estado predecible en el tiempo.
+
+Para la teoría, si el crecimiento en las organizaciones no es gradual sino muy veloz, posiblemente sean necesarios nuevos ingresos para cubrir los nuevos roles. Por el contrario, si una organización crece de manera constante, es más viable que se expanda hacia los costados, es decir, de manera lateral dentro de la estructura existente. El **crecimiento por diferenciación vertical** se produce cuando el PRE atraviesa la frontera de un estrato (por el desafío estratégico que se propone) y debe agregarse uno nuevo.
+
+El **innatismo** es una doctrina que afirma que en la mente humana existen determinadas ideas anteriores a toda experiencia. Es decir, las personas poseen algunos conocimientos innatos, previos a cualquier tipo de experiencia o aprendizaje. Desde este punto de vista, cuando una persona nace ya está predeterminada por factores genéticos o hereditarios. Es decir, estos conocimientos no dependen de la experiencia individual, sino que uno ya los trae en sus genes.
+
+Para los innatistas, las personas nacen biológicamente programadas para el lenguaje. Es decir, el ser humano está dotado genéticamente de una especie de dispositivo a través del cual accede al conocimiento y al uso de la lengua.
+
+El **desarrollismo** es una doctrina que afirma que todo conocimiento procede únicamente de la experiencia. Para los desarrollistas, esa experiencia puede ser:
+- Interna: una reflexión que uno tiene.
+- Externa: una sensación. 
+
+Para los desarrollistas, los factores ambientales, como el lugar donde se vive, la familia y el entorno social, cultural y económico, son los que principalmente determinan a las personas. Locke habla de la mente como una tabula rasa, una especie de pizarra en blanco sobre la cual la experiencia va imprimiendo el conocimiento. Los desarrollistas pensaban que no solo el medio ambiente participa en el desarrollo del lenguaje, sino que además los niños se basan en sus propias experiencias para construirlo. El niño aprende a hablar porque imita a los adultos, sobre todo a la madre.
+
+Además de los innatistas y los desarrollistas, están los llamados **interrelacionistas**, que consideran que el lenguaje es producto tanto de factores innatos como de factores adquiridos. 
+
+---
+## Complejidad
+La **complejidad de los problemas** que provienen del entorno es fundamental, pues no reside en la meta a alcanzar (es decir, en la dificultad de esa meta), sino en lo que debe hacerse en el camino para alcanzarla. Así, el trabajo consiste en tres cuestiones principales:
+- Elegir entre distintos caminos.
+- Desarrollar nuevas alternativas.
+- Adaptarse y superar dificultades no anticipadas en el camino hacia la meta.
+
+Obedecer reglas y procedimientos conocidos no constituye un trabajo en el sentido de la teoría, ni tampoco un problema. Sin embargo, cumplirlas bajo circunstancias particulares sí puede ser un trabajo, ya que las reglas solo fijan los límites del campo de actividad dentro del cual deberá trazarse el camino a recorrer.
+
+La complejidad de un problema también se ve afectada por el conocimiento y las tecnologías disponibles. Los avances en conocimiento y tecnología pueden traducirse en procedimientos específicos que reducen la complejidad del problema y la dificultad de la tarea, permitiendo asignarlas a estratos más bajos.
+
+Las personas pueden interpretar una misma información proveniente del mundo exterior y emplearla de distinta manera según sus capacidades. A medida que ascendemos verticalmente en la jerarquía de una organización, la complejidad de los problemas aumenta y exige distintos tipos de procesamiento para poder enfrentarlos.
+
+Las **tareas del mundo concreto** son, según el estrato:
+- **Estrato 1 - Tareas de Acción Directa**: El camino para alcanzar la meta está preestablecido y se utilizan métodos ya desarrollados y aprendidos previamente para sortear las dificultades.
+- **Estrato 2 - Tareas Acumulativas**: Se llevan a cabo tareas concretas cuyos objetivos precisos deben juzgarse según cada situación encontrada, en función de las necesidades reales. El producto final no puede especificarse totalmente y requiere cierto grado de interpretación. Es necesario acumular datos e información durante la ejecución para llegar a la solución.
+- **Estrato 3 - Tareas Acumulativas en Serie**: El trabajador deberá llevar a cabo tareas alternativas en serie, además de superar obstáculos y realizar una acumulación diagnóstica de datos.  Además, deberá desarrollar constantemente nuevas alternativas para satisfacer necesidades futuras, acompañadas de prescripciones o normativas. También deberá tener previstos caminos alternativos.
+- **Estrato 4 - Tareas de Procesamiento Paralelo**: Ya no basta con avanzar por un solo camino. Deben construirse múltiples de ellos en serie e interconexiones condicionadas entre ellos, y requieren sincronizarse para llegar a la meta. Se requiere un fuerte sentido del equilibrio y de las prioridades, la formulación y negociación de presupuestos generales y la gestión de inversiones significativas que deben ser aprobadas por el directorio.
+
+Las **tareas del mundo abstracto** abarcan desde el estrato 5 en adelante:
+- **Estrato 5 - Tareas de Acción Directa Unificada**: Es el primer nivel de la organización en el cual debe ubicarse una Unidad de Negocios (UN). Se trabaja mediante la acción directa sobre un caleidoscopio con demasiadas variables como para poder representarlas ordenadamente. Se debe cubrir un campo general de necesidad a lo largo de una sociedad. Se requieren estrategias sociales, políticas y financieras de largo plazo, análisis de tendencias, acceso a nuevos capitales, reservas, etc.
+
+A partir del **Estrato 6** la complejidad sigue aumentando. En este, la tarea consiste en asegurar que se produzca un resultado que cubra todos esos campos de manera coordinada, en relación con la totalidad de la sociedad en la que se enfoca. La totalidad de las unidades de e-V debe desarrollarse como un sistema unificado, en el que interactúen entre sí. Se requiere formular estrategias integradas, establecer prioridades inter-operativas, revisar las fronteras internas y manejar cualquier conflicto entre las partes constituyentes del grupo.
+
+El trabajo en el **Estrato 7** consiste en operar en campos de tal naturaleza y dimensión que requieren la creación de varios complejos o conglomerados de unidades de nivel 5, cada una con su propio subcampo definido.
+
+---
+## Nonaka y Takeuchi
+**The New Product Development Game** es un artículo de investigación de Nonaka y de Takeuchi sobra la prácticas y formas de trabajo de varias compañías japonesas innovadoras. La principal diferencia residía en que la manera de desarrollar los productos era distinta de la tradicional, ya que los ciclos de desarrollo se realizan de manera muy solapada. Tan solapada que, más que fases, toman la forma de actividades que se realizan en el momento en que son requeridas, según las necesidades de cada proyecto. Lo denominaron **enfoque holístico**, y es lo que motivó a SCRUM. Este enfoque tiene 6 características:
+- Equipos con inestabilidad incorporada.
+- Equipos autoorganizados.
+- Fases de desarrollo superpuestas.
+- Aprendizaje múltiple.
+- Control sutil.
+- Transferencia organizacional del aprendizaje.
+
+Pero esto tiene limitaciones. Al tratarse de un trabajo en equipo de gran intensidad, requería un esfuerzo enorme de todos los integrantes durante todo el proceso de desarrollo. Además, era más difícil de implementar cuando se requerían innovaciones consideradas revolucionarias, o en proyectos de escala masiva. 
+
+En otro artículo sobre empresas creadoras de conocimiento, estos dos autores reconocen:
+- **Conocimiento Explícito**: es el conocimiento adquirido, como los procedimientos, las estructuras y los sistemas. Es fácil de compartir dentro de la organización.
+- **Conocimiento Tácito**: es el know-how, las habilidades, las creencias y los valores personales. Es más difícil no solo de desarrollar, sino también de comunicar dentro de la organización, y muchas veces surge de la propia experiencia.
+
+La generación de conocimiento innovador se da a partir de una interacción continua entre el conocimiento tácito y el conocimiento explícito. Este proceso se conoce como **espiral de generación de conocimiento**:
+- **Socialización**: El conocimiento pasa de tácito a tácito. Es el conocimiento que tienen las personas, de sus habilidades personales, que se aprenden cuando se socializan distintos saberes y se comparten experiencias. Ej: capacitaciones.
+- **Externalización**: El conocimiento pasa de tácito a explícito a través de la transmisión de historias, de metáforas o de la construcción de modelos. Ej: equipo de desarrollo arma un manual para que el resto lo pueda entender.
+- **Combinación**: El conocimiento pasa de explícito a explícito. Se busca capturar el conocimiento explícito, categorizarlo y sistematizarlo. Ej: programación de código abierto, donde se trabaja en simultáneo para acelerar un desarrollo.
+- **Internalización**: El conocimiento pasa de ser explícito a tácito, hasta crear un conocimiento que pueda ser operacional. Esta parte del proceso está fuertemente ligada al aprender haciendo.
+
+---
+## Modelos de Organizaciones
+
+Las **organizaciones de mando directo (e-II y III)** representan el estado inicial típico de los emprendimientos o de las empresas familiares. En las de e-II, el PRE o fundador (el número uno de la compañía) está en estrecha relación con todos sus colaboradores y generalmente integra todas las funciones. El dueño (asociación) desempeña las funciones del directorio junto con las del PRE. Tiene intercambios con el entorno y se involucra en el diseño del producto y su mejora continua, además de temas de RRHH.
+
+En las de e-III, hay una mayor diferenciación de roles y funciones que en las de e-II. Siguen siendo organizaciones lo suficientemente pequeñas como para que el PRE esté en contacto con toda la operatoria y con todas las funciones. Cuando estas unidades representan un estrato 3 y forman parte de organizaciones más grandes, las llamamos **Unidades de Reconocimiento Mutuo e-III (URM)**, y todos se conocen entre sí. El G ya no puede saber todo lo que ocurre, pero puede estimarlo mentalmente y, por lo tanto, ejercer un mando directo.
+
+En las **organizaciones de mando general (e-IV y V)**, el PRE ya no está en contacto tan directo con la operación, y muchas veces la maneja de forma indirecta a través de indicadores o de información adicional. En la de e-IV el PRE ya no puede representarse mentalmente la situación completa de la empresa. Está alejado de la operación y debe apoyarse en la información que le llega. Debe establecer URMs de e-III efectivas y apoyarse en ellas para concretar con seguridad los planes de largo alcance.
+
+En la de e-V, ya se tiene cierta relevancia en la sociedad en la que se inserta. El Directorio está continuamente involucrado en el desarrollo de la empresa. La posición del PRE requiere más distancia del fenómeno productivo para poder ocuparse plenamente, junto con el Directorio, del desarrollo de la estrategia. El PRE tiene como puente a un e-IV, que conecta la estrategia general de su estrato con la actividad material de las unidades de e-III como URMs. Debe además compatibilizar los objetivos de las distintas unidades de e-III, que no necesariamente son concurrentes.
+
+En las **corporaciones (e-VI a VIII)**, las funciones se dirigen a través de algún instrumento de gestión y las unidades de negocio (UNs - en general de estrato V, aunque también puede haberlas de e-IV) están claramente definidas. A partir del e-VI, es común establecer subsidiarias de e-V (UNs) completamente independientes, con todas las funciones i-D-M-I desarrolladas y con un único Presidente y Gerente General de UN respondible a la cabeza. El PRE tiene a cargo otras figuras, que son las de las unidades corporativas. Surge un Primer Respondible Operativo (PRO), que es quien tiene a su cargo la ejecución del negocio, ya sea en las geografías o en los productos que le correspondan.
+
+Al pensar el **diseño de una organización**, debemos focalizarnos en cuatro aspectos críticos.
+- Misión de la Organización
+- Estrato Inferior (NdT inferior, e–I a III)
+- Estrato Superior (NdT del PRE, e–II a VIII y cantidad de estratos): 
+- Alineación Funcional
+
+Para poder diseñar una organización, la secuencia lógica es:
+1. Definir el NdT del estrato inferior (entre e-I y e-III) necesario para la organización.
+2. Definir el NdT y el estrato del rol más alto esperable (entre e-III y e-V).
+3. Disponer la alineación funcional de acuerdo al tipo de misión a cumplir y sus niveles jerárquicos. Puede ser por geografía, tiempo, clientela o mercado, etc. Estas divisiones siempre deben basarse en el caso concreto.
+4. Determinar los roles de apoyo y sus niveles.
+
+---
+## Organizaciones Emergentes
+
+Dave Ulrich define la organización como un **ecosistema**, es decir, pensarla como un ser vivo compuesto por subsistemas que se coordinan entre sí:
+- **Cultura**: la organización debe definir su cultura en función de cómo quiere ser conocida.
+- **Gestión del Talento**: se buscan empleados comprometidos con la estrategia, y la organización debe valorar el talento.
+- **Estrategia de Negocio**: la organización anticipa e imagina oportunidades futuras a partir de una comprensión profunda de las principales tendencias.
+- **Competencia Profesional**: cada persona debe demostrar competencias de crecimiento personal.
+
+Ulrich plantea una serie de preguntas para evaluar si una organización está orientada al mercado y, en definitiva, preparada para producir los cambios necesarios para sobrevivir a la transformación. Además, propone que los procesos de **gobierno de una organización** se basan en la colaboración. La información se comparte, se arma un mapa de talento colaborativo, se generan ideas, etc. 
+
+El desempeño sigue implicando pensar en el **accountability**, es decir, en ser responsable y respondible por los objetivos que se proponen para cada posición y por las tareas que cada uno desarrolla dentro de la organización. Para generarlo, propone cuatro acciones clave:
+- Aclarar expectativas.
+- Asignar y garantizar consecuencias.
+- Establecer métricas y estándares. 
+- Ayudar a entender.
+
+La idea clave que sustenta toda esta nueva morfología del ecosistema es la **agilidad**, entendida como la necesidad de adaptarse a un entorno que cambia velozmente. Para esto, se requiere:
+- Agilidad estratégica.
+- Liderazgo ágil.
+- Agilidad individual.
+- Prácticas de RRHH.
+- Agilidad Organizacional.
+
+La estrategia evoluciona, según Ulrich, basada en una línea de tiempo:
+1. Planeamiento estratégico basado en un FODA.
+2. Alineamiento estratégico.
+3. Identificación de las capacidades estratégicas.
+4. Agilidad estratégica.
+
+---
+## Planeamiento Estratégico
+
+Una **relación entre roles** se basa en las autoridades y respondibilidades que aparecen entre dos roles vinculados por algún proceso, estable o fortuito, en un sistema social. A la relación vertical jerárquica que venimos viendo se agrega toda una gama de **relaciones laterales transfuncionales** entre roles que pertenecen a distintas líneas de gerenciamiento (relaciones entre pares).
+
+Las relaciones entre roles se dividen según haya o no autoridad entre ellos.
+- **Relación entre Roles de Asignación de Tareas (RRAT)**: Es la relación jerárquica, en la que alguien tiene a otra persona a cargo. El conocimiento del gerente debe ser superior al de las personas que tiene a cargo, y que la relación debe agregar valor a las tareas. Recordemos las autoridades que tiene el G respecto del C:
+	- **DEF I**: tipo de tareas y su asignación.
+	- **DEF II**: veto de candidato.
+	- **DEF III**: evaluación de efectividad y recompensa.
+	- **DEF IV**: separación del rol.
+- **Relaciones entre Roles de Iniciación de Tareas (RRIT)**: Son las relaciones horizontales transfuncionales de iniciación de tareas, que son las que no se conocen claramente y donde ocurren los mayores rozamientos.
+
+Para RRIT, tomemos el siguiente caso:
+![[Pasted image 20261103235358.png|center|188]]
+A tiene diversas autoridades (según la relación transfuncional dada) para que B inicie una determinada tarea. Pero es el GB, y NO el GA, el respondible por lo que B haga, deje de hacer o postergue. En una disputa, lo correcto es involucrar a los superiores, empezando por nuestro superior directo.
+
+La recomendación profesional es, primero, intentar resolverlo hablando de buena manera. Segundo, cuando nos toque establecer un proceso y armar una planificación, dejar bien claro quién hace cada cosa, y hacerlo desde el momento del planeamiento y no en el día a día, cuando la rueda ya está en funcionamiento.
+
+Toda organización establece primero su visión y, a partir de ella, su misión. Una vez definido esto, se trabaja en el cómo, que es la **estrategia**, es decir, de qué manera vamos a avanzar en el cumplimiento de los objetivos. Las principales tareas del PRE comprenden:
+- Elaborar la misión establecida por el organismo de gobierno, comprendidas dentro de su H-T.
+- Generar a partir de ellas un plan estratégico para el sistema gerencial que, según su criterio, sea el mejor camino para lograr la misión, y que fije a su vez el contexto general de las asignaciones.
+
+Cuando delegamos una tarea, o cuando nos la delegan, también hay que delegar los recursos necesarios para poder cumplirla, lo que se conoce como **empowerment**. Además, quien está a cargo de un equipo no debe delegar el total de las tareas, porque parte de la función de ese líder o facilitador es agregarle valor a las tareas que realiza su equipo.
+
+La responsabilidad final nunca se delega. No es válido decir "no tenía idea" sobre una tarea que llevó adelante el propio equipo. Está dentro de las funciones de quien dirige saber, paso a paso y acción por acción, lo que lleva adelante el departamento, el área o el equipo que tiene a cargo.
+
+El PRE es el primero que empieza a delegar y a decidir quién va a llevar adelante cada una de esas tareas. El despliegue se da en tres pasos:
+1. Descomposición de metas propias.
+2. Delegación de metas.
+3. Alineación de metas: el PRE debe, a su vez, alinear sus metas de A-Ts intermedios con las de sus Cs.
+
+La base del equilibrio de la estructura es la **facultación** o delegación de tareas. Los elementos que deben estar en equilibrio son:
+- El estrato donde se encuentra el rol.
+- El nivel de trabajo en el rol, medido en alcance temporal.
+- El nivel de capacidad de trabajo de la persona, medido con su horizonte temporal, y su habilidad para manejar las complejidades de ese estrato.
+- Las autoridades que acompañan a las respondibilidades.
+
+En el equilibrio **R-C-N** el rol R está en el estrato adecuado para su nivel de trabajo N y la capacidad de la persona C está ajustada al mismo. Es la situación óptima, pero se arruina si se agrega más NdT por una facultación errónea. También puede arruinarse si la persona está sobrefacultada, o si el NdT(N) es demasiado bajo para ambos.
+
+La capacidad de trabajo y el nivel de trabajo, definido en parte por el rol, tienen que estar en equilibrio con la paga. Para establecer esto, se formula un **equilibrio integral** para la persona, donde su efectividad y satisfacción giran sobre tres factores críticos:
+- La capacidad de trabajo de la persona (CdT).
+- Su nivel de trabajo (NdT), apropiado a su rol y a su CdT.
+- Su nivel de paga justa (P).
+
+Es el llamado **equilibrio CdT-NdT-P**, y cuando se logra, la persona despliega todas sus capacidades y su creatividad. A nivel social, la posibilidad de alcanzar este equilibrio requiere que haya **trabajo abundante** (no debe cinfundirse con pleno empleo).
+
+Todo lo anterior llevó a varios descubrimientos experimentales, como que a igualdad de NdT medido por su A-T entre dos roles, la paga percibida como justa que declaran dos personas al ser interrogadas resulta igual. A esta variable la abreviamos como **paga justa**. La idea es que todas las personas que realizan tareas que se pueden definir bajo una misma métrica tengan la misma paga. Experimentalmente se descubrió que la paga justa percibida se duplica de estrato en estrato. Se establece como base el estrato 2 con 1X. El e-I tiene paga 0,31X, y el e-VIII P. El criterio de **paga diferencial** se percibe al recompensar las diversas efectividades en el desempeño concreto.
+
+---
+## Integración
+
+La teoría de la organización natural (TON) postula que el ejercicio permanente de las prácticas gerenciales es una condición necesaria para que:
+- Haya una alta efectividad interna y competitividad externa en la empresa.
+- Exista un ambiente favorable para las personas.
+
+Conducir equipos es la principal práctica gerencial. La **conducción** (o liderazgo) es la responsabilidad que tienen algunos roles de influir en una o más personas a su cargo para que acepten de buen grado los objetivos y tareas propuestos, de modo que todos avancen en la dirección fijada, que está dada por la estrategia de la organización.
+
+Quien conduce debe:
+- Tener la capacidad de trabajo en equilibrio con su nivel de trabajo, es decir, la capacidad para conducir equipos.
+- Sustentar los valores y el compromiso con la organización.
+- Contar con la experiencia necesaria.
+
+El G tiene un **gerente de gerente (GdG)**, que también tiene que evaluarlo. Una responsabilidad fundamental del GdG es garantizar que los Gs cumplan efectivamente con sus obligaciones de conducción, lo que sostiene todo el subsistema de conducción gerencial. Lo hace a partir de la revisión de los proyectos a través del ejercicio de la **mejora continua**. Para esto también son útiles las encuestas de satisfacción interna, que algunas organizaciones realizan periódicamente.
+
+El GdG puede realizar prácticas de la de **equilibramiento** o **calibración de la evaluación** para asegurar que las evaluaciones que hacen sus Gs tengan un alto grado de equidad entre todos los colaboradores.
+
+En las organizaciones grandes existe un **procedimiento de apelación** para los conflictos con cierta jerarquía implicada. Permite al colaborador presentar una queja ante su GdG sobre su G por una evaluación o un tratamiento incorrecto. Muchas veces el lugar jerárquico del G y del GdG también está implicado en el conflicto. Por eso, en algunos casos aparece un tercero que puede mediar en la resolución, que generalmente es el área de recursos humanos.
+
+El **desarrollo de los recursos humanos** es una práctica crítica que da previsibilidad y sostenimiento al negocio. Debe asegurar que la organización tenga la gente adecuada para los roles actuales y futuros, y que las personas tengan oportunidades de carrera que les permitan utilizar su pleno potencial a partir de su capacidad actual.
