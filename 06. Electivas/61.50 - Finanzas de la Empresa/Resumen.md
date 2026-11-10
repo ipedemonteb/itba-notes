@@ -999,3 +999,73 @@ El **efecto combinado** mide cómo varía porcentualmente la utilidad por acció
 $$DTL=\frac{\Delta \% EPS}{\Delta \% \text{Ventas}} = DOL \times DFL$$
 
 ---
+## Valuación de Empresas
+
+La valuación es necesaria en muchas otras situaciones:
+- Decisiones de inversión y desinversión
+- Fusiones y adquisiciones
+- Evaluación del desempeño gerencial
+- Salidas a bolsa (IPO, Initial Public Offering)
+- Ingreso de socios o de capital privado
+- Fijación de precios en negociaciones
+
+La **Valuación por Flujos de Fondos Descontados** parte de la idea de que las cosas valen lo que pueden dar. Por lo tanto, el valor de una empresa debería ser todo lo que esta puede entregar. En su primera aplicación calculamos el valor de la empresa a partir del **$FCFF$ (Free Cash Flow to the Firm)**, es decir, el flujo de fondos libre de la firma:
+$$V=\sum_{t=1}^{n}\frac{FCFF_t}{(1+WACC)^t}+\frac{VR}{(1+WACC)^n}$$
+Donde:
+- $FCFF_t$: flujo de fondos libre de la firma del período $t$
+- $WACC$: costo promedio ponderado del capital
+- $n$: horizonte de proyección
+- $VR$: valor residual, donde se contempla un crecimiento $g$, que puede ser $0\%$, $5\%$ o $10\%$ según cómo se vea el futuro: $$VR=\frac{FCFF_{n+1}}{WACC-g}$$
+
+Al construir el $FCFF$ estamos armando, conceptualmente, un flujo hacia un colectivo formado por los accionistas y los acreedores en conjunto. Si en cambio trazamos la frontera alrededor de los accionistas solamente, el flujo pasa a llamarse **$FCFE$ (Free Cash Flow to the Equity)**. En este caso sí debemos considerar esos movimientos, porque cruzan la frontera:
+- Los **intereses** con signo menos, ya que se pagan a los acreedores a través de la gestión de la empresa.
+- Las **tomas de préstamos** con signo más, porque ingresa dinero.
+- Las **cancelaciones de préstamos** con signo menos, porque sale dinero hacia los acreedores.
+
+Con el $WACC$ y un flujo de fondos podemos valorizar la empresa. El valor obtenido corresponde a los dos **claim holders**, es decir, todos los que tienen reclamos sobre el valor de la empresa. Estos son los stockholders (los accionistas) y los bondholders o debtholders (los acreedores, ya sean bancos o bonistas). El valor de la empresa es la suma de los intereses de ambos grupos. Si solo interesa el valor del equity, se resta la deuda al valor de la empresa:
+$$E=V-D$$
+Y para obtener el precio de la acción se divide el equity por la cantidad de acciones:
+$$\text{Precio por acción}=\frac{E}{N^{\circ}\text{ de acciones}}$$
+
+El $WACC$ no se usa siempre. Se deben cumplir cuatro condiciones:
+1. **La estructura de capital es estable**, es decir, la composición entre deuda y equity no cambia significativamente a lo largo del tiempo.
+2. **Se valúa una empresa en marcha** (going concern). No se trata de una empresa que se está cerrando y cuyos activos se van a rematar.
+3. **El valor se estima desde la perspectiva de todos los inversores**. El $FCFF$ representa el valor de la firma completa, deuda más equity, y no solo el del accionista.
+4. **Se dispone de buena información sobre el costo de la deuda y del capital**. Sin ella no es posible calcular el $WACC$ y, por lo tanto, tampoco aplicar el método.
+
+Un **Leveraged Buyout (LBO)** es la compra de una empresa con mucha deuda (apalancada), donde la garantía del préstamo son los activos de la propia empresa que se adquiere. Quien compra puede carecer de activos propios y aun así endeudarse, porque ofrece como respaldo la empresa que va a comprar. Luego se compromete a pagar la deuda con los flujos de esa empresa, que pasa a gestionar. Es equivalente a comprar un departamento con una hipoteca, donde el departamento es la garantía.
+
+Existen métodos de valuación que no usan flujos descontados. El método consiste en buscar en el mercado empresas parecidas a la que queremos evaluar. Una vez identificadas, se busca información sobre ellas. De cada una se obtiene su valor, el $EV$ (Enterprise Value), y se lo divide por una métrica propia de esa empresa, por ejemplo su $EBITDA$. El resultado es el **múltiplo**, llamado así porque luego se lo multiplica por otra cantidad:
+$$\text{Múltiplo}=\frac{EV}{EBITDA}$$
+
+Si ese múltiplo es comparable con nuestra empresa, refleja cómo el mercado valora empresas como la nuestra. Lo que buscamos, el valor de nuestra empresa, es la incógnita, pero su $EBITDA$ sí podemos pronosticarlo razonablemente bien. Entonces:
+$$EV=\text{Múltiplo}\times EBITDA_{\text{previsto}}$$
+Este es el método de **múltiplos comparables**, que, como vemos, no utiliza flujos descontados.
+
+Existen otros métodos, de uso más acotado. Uno es calcular el valor como activos menos pasivos, es decir, el **valor contable**. En general no es una buena forma de valuar, porque la contabilidad no refleja lo que se puede hacer con el dinero. Como criterio general, el método sugerido según el contexto es el siguiente:
+
+|           Criterio           |       Método sugerido       |
+| :--------------------------: | :-------------------------: |
+|  Empresa en marcha estable   |            $DCF$            |
+| Existen empresas comparables |          Múltiplos          |
+| Startup sin flujos actuales  | Múltiplos, opciones reales  |
+| Empresa con activos valiosos | Valor contable, liquidación |
+
+El método **APV (Adjusted Present Value)** se basa en Miller y Modigliani. Vimos que ellos concluyeron que el valor de la empresa endeudada es igual al de la empresa no endeudada más el valor del escudo impositivo:
+$$V_L=V_U+\text{tax shield}$$
+De esta forma, accionistas y acreedores cuentan con un flujo a su favor, formado por todos los **escudos impositivos** a lo largo de la vida de la empresa. Si la deuda es constante, los intereses y el producto $T\cdot I$ también lo son, y tenemos una perpetuidad cuyo valor presente se calcula trayendo cada flujo a hoy:
+$$VP=\frac{T\cdot I}{i}=\frac{T\cdot(i\cdot D)}{i}=T\cdot D$$
+De allí surge el $\text{tax shield}$ de Miller y Modigliani. Si en cambio la vida de la empresa es finita, por ejemplo de cinco años, el valor presente se calcula con la sumatoria de los flujos:
+$$VP=\sum_{t=1}^{n}\frac{T\cdot I_t}{(1+i)^t}$$
+Volviendo al $FCFF$, ahora lo consideramos para una empresa no endeudada. Con este método ya no se trabaja con el $WACC$, sino con dos términos: el valor de la empresa no endeudada y lo que el endeudamiento le agrega, que es el valor presente de los escudos impositivos:
+$$V_{APV}=V_U+TS=\sum_{t=1}^{\infty}\frac{FCFF_t}{(1+K_U)^t}+\sum_{t=1}^{\infty}\frac{T\cdot I_t}{(1+i)^t}$$
+
+En teoría, si el endeudamiento es constante, los resultados de ambos métodos convergen, y esto fue demostrado.
+
+El tercer método de descuento de flujos es el **FTE (Flow to Equity)**, donde se calcula el equity directamente, a partir de la sumatoria del free cash flow to the equity, que considera únicamente a los accionistas. Se parte del $FCFF$ y se restan los intereses y las cancelaciones de préstamos, y se suman las nuevas tomas de préstamos:
+$$FTE_t=FCFF_t-\text{Intereses}_t\cdot(1-T)-\text{Amortización de deuda}_t+\text{Nueva deuda}_t$$
+Los intereses entran netos de impuestos, porque el $FCFF$ se construye con $EBIT(1-T)$ y no incluye el ahorro impositivo que generan. La tasa de descuento es $K_L$, el costo del equity de la empresa endeudada, que representa a los accionistas cualquiera sea la situación de la empresa. Al mirar todo desde el punto de vista del accionista, la tasa debe reflejar esa situación, y es cada vez mayor cuanto más endeudada está la empresa, porque cualquier inversor exige más rendimiento en una empresa más volátil:
+$$E=\sum_{t=1}^{\infty}\frac{FTE_t}{(1+K_L)^t}$$
+Es un método incómodo de aplicar, porque exige todo lo que exigen los otros dos:
+- Como el $WACC$, requiere que $K_L$ sea constante. 
+- Como el APV, requiere conocer con precisión el calendario de deuda, para determinar los intereses de cada período, ya que para pasar del $FCFF$ al $FTE$ hay que restarlos.
