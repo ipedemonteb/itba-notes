@@ -11,5 +11,6 @@
   ],
   "cssTheme": "Cupertino",
   "baseFontSize": 16,
-  "nativeMenus": true
+  "nativeMenus": true,
+  "showRibbon": true
 }
