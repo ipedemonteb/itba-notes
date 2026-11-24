@@ -6,8 +6,8 @@
     "image-center",
     "bullets",
     "mermaid",
-    "claude-mermaid",
-    "pdf-callout-fix"
+    "pdf-callout-fix",
+    "claude-mermaid"
   ],
   "cssTheme": "Cupertino",
   "baseFontSize": 16,
